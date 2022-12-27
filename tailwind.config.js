@@ -22,6 +22,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
+  mode: 'jit',
   theme: {
     extend: {
       colors: {
@@ -39,6 +40,20 @@ module.exports = {
         ...theme('colors'),
         ...primaryColors,
       }),
+      boxShadowColor: theme => ({
+        ...theme('colors'),
+        ...primaryColors,
+      }),
+      gridTemplateColumns: (theme) => {
+        const spacing = theme("spacing");
+
+        return Object.keys(spacing).reduce((accumulator, spacingKey) => {
+          return {
+            ...accumulator,
+            [`fit-${spacingKey}`]: `repeat(auto-fit, minmax(${spacing[spacingKey]}, 1fr))`,
+          };
+        }, {});
+      },
     },
     screens: {
       xs: '480px',

@@ -35,13 +35,14 @@ function NavItem(props: {
     icon: string,
     href: string,
     description: string,
+    active?: boolean,
 }) {
     const [entered, setEntered] = useState(false);
-    let { name, icon, href, description } = props;
+    let { name, icon, href, description, active } = props;
     return (
         <div
             title={description}
-            className="transition-all flex items-center rounded-full max-sm:hover:bg-neutral-100"
+            className={`transition-all flex items-center rounded-full max-sm:hover:bg-neutral-100 ${active ? "bg-primary-100" : ""}`}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
         >
@@ -50,7 +51,7 @@ function NavItem(props: {
                     from="md"
                     name={icon}
                     grade={entered ? 200 : 0}
-                    className={`transition-all hover:bg-neutral-100 rounded-full p-2 ${entered ? "bg-neutral-100" : ""}`}
+                    className={`transition-all rounded-full p-2 ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
                     size={24}
                     type="rounded"
                     fill={entered}
@@ -75,13 +76,13 @@ export default function Nav(props: {
                 onClick={() => setOpen(!open)}
                 className="hidden max-xs:flex"
             />
-            <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 -z-50 ${open ? "hidden" : "block"}`} />
+            <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 -z-50 ${open ? "block" : "hidden"}`} />
             <nav
                 className={
                     `transition-all flex gap-4 z-0 max-xs:rounded-r-2xl ` +
                     `gap-0 flex-col
                      fixed top-0 left-0 w-64 h-full
-                     ${open ? "-translate-x-full" : "translate-x"}
+                     ${open ? "translate-x" : "-translate-x-full"}
                      bg-white z-10 shadow-md p-2
                     `.split(/\s/).map(s => "max-xs:" + s).join(" ")
                 }
@@ -101,6 +102,7 @@ export default function Nav(props: {
                                     icon={link.icon}
                                     href={link.href}
                                     description={link.description}
+                                    active={link.name === props.active}
                                 ></NavItem>
                             )
                         }

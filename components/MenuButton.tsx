@@ -2,16 +2,12 @@ import { useState } from "react";
 import Icon from "./Icon"
 
 export default function MenuButton(props: {
-    open?: boolean,
+    open: boolean,
+    onClick: () => void
     size?: string | number,
     className?: string,
-    onClick?: () => void
 }) {
-    const [open, setOpen] = useState(props.open || false);
-    const onClick = () => {
-        setOpen(!open);
-        if (props.onClick) props.onClick();
-    };
+    const { open, onClick } = props;
     let { className, size } = props;
     className = className || "";
 

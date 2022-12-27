@@ -1,5 +1,3 @@
-import styles from "./Icon.module.sass";
-
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
     for (let valid of valids) {
@@ -49,14 +47,18 @@ export default function Icon(props: {
         type = type as "rounded" | "sharp" | "outlined";
 
         return (
-            <i className={`${styles[{
-                rounded: "material-symbols-rounded",
-                sharp: "material-symbols-sharp",
-                outlined: "material-symbols-outlined"
-            }[type]]} ${className}`} style={{
-                fontSize: size,
-                fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${props.fill ? 1 : 0}, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`
-            }}>
+            <i
+                className={
+                    {
+                        rounded: "material-symbols-rounded",
+                        sharp: "material-symbols-sharp",
+                        outlined: "material-symbols-outlined"
+                    }[type] + " " + className
+                }
+                style={{
+                    fontSize: size,
+                    fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${props.fill ? 1 : 0}, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`
+                }}>
                 {props.name}
             </i>
         );

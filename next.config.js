@@ -1,10 +1,21 @@
 // @ts-check
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
 /**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
-  basePath: 'https://yubo-cao.github.io',
-}
+ * 
+ * @param {string} phase the current build phase, one of 'phase-production-build' | 'phase-development-server' | 'phase-export'
+ * @param {import('next').NextConfig} options the default config 
+ * @returns {import('next').NextConfig}
+ */
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      reactStrictMode: true,
+    }
+  }
 
-module.exports = nextConfig
+  return {
+    reactStrictMode: true,
+    swcMinify: true,
+  }
+}

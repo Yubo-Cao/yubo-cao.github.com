@@ -42,16 +42,16 @@ function NavItem(props: {
     return (
         <div
             title={description}
-            className={`transition-all flex items-center rounded-full max-sm:hover:bg-neutral-100 ${active ? "bg-primary-100" : ""}`}
+            className={`transition-all flex items-center rounded-full ${active ? "bg-primary-100" : ""} ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
         >
-            <div className='h-12 w-12 flex items-center justify-center'>
+            <div className={`h-12 w-12 flex items-center justify-center`}>
                 <Icon
                     from="md"
                     name={icon}
                     grade={entered ? 200 : 0}
-                    className={`transition-all rounded-full p-2 ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
+                    className={`transition-all rounded-full p-3`}
                     size={24}
                     type="rounded"
                     fill={entered}
@@ -59,7 +59,7 @@ function NavItem(props: {
             </div>
             <Link
                 href={href}
-                className="text-base mr-4"
+                className="text-base mr-4 xs:max-sm:hidden"
             >{name}</Link>
         </div>
     )
@@ -67,10 +67,12 @@ function NavItem(props: {
 
 export default function Nav(props: {
     active: string,
+    height?: 48 | 64,
 }) {
     const [open, setOpen] = useState(false);
+    let height = props.height || 64;
     return (
-        <div className='p-2'>
+        <>
             <MenuButton
                 open={open}
                 onClick={() => setOpen(!open)}
@@ -79,19 +81,20 @@ export default function Nav(props: {
             <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 -z-50 ${open ? "block" : "hidden"}`} />
             <nav
                 className={
-                    `transition-all flex gap-4 z-0 max-xs:rounded-r-2xl ` +
-                    `gap-0 flex-col
+                    `transition-all flex gap-4 z-0 bg-slate-50 max-xs:px-2 ` +
+                    `gap-0 flex-col rounded-r-2xl
                      fixed top-0 left-0 w-64 h-full
-                     ${open ? "translate-x" : "-translate-x-full"}
-                     bg-white z-10 shadow-md p-2
-                    `.split(/\s/).map(s => "max-xs:" + s).join(" ")
+                     ${open ? "translate-x shadow-md" : "-translate-x-full"}
+                    z-10
+                    `.split(/\s+/).filter(s => s.trim().length !== 0).map(s => "max-xs:" + s).join(" ")
                 }
             >
-                <MenuButton
-                    open={open}
-                    onClick={() => setOpen(!open)}
-                    className="hidden max-xs:flex"
-                />
+                <div className={`${height === 64 ? "h-16" : "h-12"} items-center hidden max-xs:flex`}>
+                    <MenuButton
+                        open={open}
+                        onClick={() => setOpen(!open)}
+                    />
+                </div>
                 {
                     links.map(
                         (link, i) => {
@@ -109,6 +112,6 @@ export default function Nav(props: {
                     )
                 }
             </nav>
-        </div>
+        </>
     )
 }

@@ -6,6 +6,7 @@
     "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin deploy"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
     "next": "latest",
     "postcss": "^8.4.20",

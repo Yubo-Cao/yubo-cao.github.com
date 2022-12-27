@@ -17,5 +17,9 @@ module.exports = (phase, { defaultConfig }) => {
   return {
     reactStrictMode: true,
     swcMinify: true,
+    images: {
+      loader: 'akamai',
+      path: '',
+    },
   }
 }

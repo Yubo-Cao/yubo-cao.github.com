@@ -12,7 +12,7 @@ export default function Home() {
           <Image src="/about/yubo.png" alt="Yubo's Figure" width={200} height={300} className="grayscale" />
           <div className='flex flex-col gap-2 basis-72 flex-1'>
             <h1 className='text-primary-400 text-6xl font-black'>Yubo Cao</h1>
-            <p className='text-lg'>
+            <p className='text-lg m-4'>
               As a sophomore in high school, programming and artificial
               intelligence are two of my passions. My GPA is 4.0 out of
               4.0 and I attend the Gwinnett School of Mathematics,

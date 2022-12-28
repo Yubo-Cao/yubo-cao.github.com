@@ -1,13 +1,6 @@
+import React from "react";
 import Section from "./Section";
 
-/**
- * Format date. 
- * - 2022-09 -> September 2022
- * - 2022-09-01 -> September 1, 2022
- * - 09-01 -> September 1
- * @param date A date in the format YYYY-MM-DD/YYYY-MM/MM-DD
- * @returns A date in the format B (D,)? YYYY
- */
 function formatDate(date: string): string {
     const [year, month, day] = date.split('-').map(s => parseInt(s, 10));
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -18,11 +11,6 @@ function formatDate(date: string): string {
     }
 }
 
-/**
- * Capitalize a string.
- * @param str the string to capitalize
- * @returns the capitalized string
- */
 function capitlize(str: string): string {
     return str.toUpperCase().substring(0, 1) + str.toLowerCase().substring(1, str.length);
 }

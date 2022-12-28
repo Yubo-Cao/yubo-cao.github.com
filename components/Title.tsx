@@ -26,9 +26,9 @@ export default function Title(props: {
 
     const styles: { [key: string]: string } = {
         h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500",
-        h2: "text-4xl font-bold text-primary-400",
-        h3: "text-2xl font-semibold",
-        h4: "text-3xl",
+        h2: "text-4xl font-extrabold text-primary-400",
+        h3: "text-2xl font-bold",
+        h4: "text-3xl font-semibold",
         h5: "text-2xl",
         h6: "text-xl"
     };
@@ -43,7 +43,12 @@ export default function Title(props: {
         }
         {
             subtitle !== "" &&
-            <p className={`text-lg font-semibold text-slate-500 ${subtitleClassName}`}>{subtitle}</p>
+            React.createElement(
+                "div",
+                { className: `text-lg font-light ${subtitleClassName}` },
+                subtitle,
+                []
+            )
         }
     </>)
 }

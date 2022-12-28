@@ -33,7 +33,6 @@ export default function Project(props: {
             className='flex flex-row gap-4 items-start justify-start flex-wrap'
             onClick={() => { router.push(props.url) }}
             accent="gray"
-            type="filled"
         >
             {/* 
                 Let tailwind css generate:

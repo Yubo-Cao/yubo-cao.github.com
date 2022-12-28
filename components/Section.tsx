@@ -30,13 +30,13 @@ export default function Section(props: {
         if (idx % 2 === 1) {
             let background = document.createElement("div");
             section!!.className += " relative";
-            background.className = "absolute -left-16 -right-16 top-0 bottom-0 bg-primary-100/30 -z-10";
+            background.className = "absolute -left-full -right-full xl:-right-4 top-0 bottom-0 bg-primary-100/30 -z-10";
             section?.appendChild(background);
             return () => { section?.removeChild(background); }
         }
     });
     return (
-        <section id={id} className={"py-8 " + className} ref={ref}>
+        <section id={id} className={"py-4 " + className} ref={ref}>
             {
                 hasTitle &&
                 <Title title={props.title} subtitle={props.subtitle} level={props.level || 2} />

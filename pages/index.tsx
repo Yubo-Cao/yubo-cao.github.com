@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Header active="Home" />
       <div className='xl:grid xl:grid-cols-nav py-4 mx-auto' style={{ maxWidth: 'min(100%, 1444px)' }}>
-        <main className='mx-4 md:mx-8 flex flex-col'>
+        <main className='max-xs:mx-4 mx-8 md:mx-16 flex flex-col'>
           <Section className='pb-0 max-md:pb-4' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4">
             <Image
               src="/about/yubo.png"

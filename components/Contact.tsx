@@ -21,7 +21,7 @@ export default function Contact(props: {
         github: () => { window.open(`https://${value}.github.com`); }
     }[type];
     return (
-        <Card onClick={action} className="p-4">
+        <Card onClick={action} className="p-4" accent="primary">
             <div className="flex items-center gap-4">
                 {icon}
                 <div className="text-lg font-medium">{value}</div>

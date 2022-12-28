@@ -44,7 +44,7 @@ export default function Title(props: {
         {
             subtitle !== "" &&
             React.createElement(
-                "div",
+                "p",
                 { className: `text-lg font-light ${subtitleClassName}` },
                 subtitle,
                 []

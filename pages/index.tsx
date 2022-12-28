@@ -6,6 +6,7 @@ import Project from '../components/Project'
 import Section from '../components/Section'
 import Title from '../components/Title'
 import StickNav from '../components/StickNav'
+import Achievement from '../components/Achievement'
 
 export default function Home() {
   return (
@@ -85,6 +86,24 @@ export default function Home() {
                 <li>Help other members with programming and mechanical design.</li>
               </ul>
             </Experience>
+          </Section>
+          <Section title="Achievement" subtitle="I have received…" contentClassName='grid gap-4 grid-cols-fit-96'>
+            <Achievement title="Academic achievement" subtitle='in mathematics'>
+              In 2021 fall award, I was the only student in my freshman class to receive
+              the award for my outstanding performance in mathematics.
+            </Achievement>
+            <Achievement title="GHP nomination">
+              Governor’s honors program nomination in mathematics, computer programming,
+              and mechanical engineering
+            </Achievement>
+            <Achievement title="Academic Letter">
+              Upon start of the 2022 fall semester, I was awarded the academic letter
+              for having high GPA in all subjects (NGA &gt; 95).
+            </Achievement>
+            <Achievement title="CyberPatriot First Place">
+              Under my leadership, my team lambda won the first place in
+              silver tier at Georgia open division.
+            </Achievement>
           </Section>
           <Section title="Contact" subtitle="You can reach me at…" contentClassName='grid gap-4 grid-cols-fit-96'>
             <Contact type="email" value="cao2006721@gmail.com" />

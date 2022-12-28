@@ -2,13 +2,14 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import Project from '../components/Project'
 import Section from '../components/Section'
+import Experience from '../components/Experience'
 
 export default function Home() {
   return (
     <>
       <Header active="Home" />
       <main className='m-4 md:m-8 flex flex-col'>
-        <Section className='pb-0' contentClassName="flex gap-4 items-center justify-center max-md:flex-col max-md:p-8">
+        <Section className='pb-0' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4">
           <Image
             src="/about/yubo.png"
             alt="Yubo's Figure"
@@ -18,7 +19,7 @@ export default function Home() {
           />
           <div className='flex flex-col gap-2 basis-48 flex-1 md:mx-16' style={{ flexGrow: 3 }}>
             <h1 className='text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500'>Yubo Cao</h1>
-            <p className='text-lg'>
+            <p className='text-lg prose'>
               As a sophomore in high school, programming and artificial
               intelligence are two of my passions. My GPA is 4.0 out of
               4.0 and I attend the Gwinnett School of Mathematics,
@@ -53,8 +54,35 @@ export default function Home() {
             and <code>Playwright</code>.
           </Project>
         </Section>
-        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-80'>
-
+        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-128 max-sm:grid-cols-fit-64'>
+          <Experience title="officer" company="Computer Science Club" start="2022-09">
+            <ul>
+              <li>Create instructional materials, plan activities, and be present at regular meetings.</li>
+              <li>Participate in initiatives including internet, machine learning, and cybersecurity.</li>
+              <li>Assisting members of the computer science club</li>
+            </ul>
+          </Experience>
+          <Experience title="tutor" company='Learn to be' start='2022-05'>
+            <ul>
+              <li>Tutor students about knowledge of CS, math, and physics/chemistry</li>
+              <li>Help students with homework and prepare for tests.</li>
+            </ul>
+          </Experience>
+          <Experience title="member" company='Tri-M music honor society' start='2022-05'>
+            <ul>
+              <li>Participate in music performances and competitions.</li>
+              <li>Help organize and run music events.</li>
+              <li>Help students with music theory and instrument playing.</li>
+            </ul>
+          </Experience>
+          {/* Red robodragons */}
+          <Experience title="member" company='Red Robodragons' start='2021-09'>
+            <ul>
+              <li>Participate in robotics competitions.</li>
+              <li>Program robots with Android Studio/OnBotJava</li>
+              <li>Help other members with programming and mechanical design.</li>
+            </ul>
+          </Experience>
         </Section>
       </main>
     </>

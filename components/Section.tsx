@@ -4,8 +4,8 @@ export default function Section(props: {
     id?: string,
     className?: string,
     contentClassName?: string,
-    title?: string,
-    subtitle?: string,
+    title?: string | React.ReactNode,
+    subtitle?: string | React.ReactNode,
     level?: 1 | 2 | 3 | 4 | 5 | 6,
     children?: React.ReactNode
 }) {
@@ -19,8 +19,8 @@ export default function Section(props: {
         throw new Error("Subtitle must have a title.");
     const styles: { [key: string]: string } = {
         h1: "text-6xl font-black text-primary-400",
-        h2: "text-5xl font-bold text-primary-400",
-        h3: "text-4xl font-medium text-primary-300",
+        h2: "text-4xl font-bold text-primary-400",
+        h3: "text-2xl font-semibold",
         h4: "text-3xl",
         h5: "text-2xl",
         h6: "text-xl"
@@ -32,6 +32,7 @@ export default function Section(props: {
             child = parent?.firstChild,
             idx = 0;
         if (!child) return;
+        if (parent?.tagName !== "MAIN") return;
         while (true) {
             if (child.nodeType === Node.ELEMENT_NODE) idx++;
             if (child === section || !child.nextSibling) break;
@@ -61,7 +62,7 @@ export default function Section(props: {
             }
             {
                 subtitle !== "" &&
-                <p className="text-lg text-slate-300">{subtitle}</p>
+                <p className="text-lg font-semibold text-slate-500">{subtitle}</p>
             }
             {
                 // if this is a even section, draw a full width line

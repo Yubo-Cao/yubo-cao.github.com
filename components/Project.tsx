@@ -57,9 +57,9 @@ export default function Project(props: {
                     <Image src={props.image} alt={props.title} width={size} height={size} />
                 }
             </div>
-            <div className="flex-1 basis-64">
-                <h3 className='text-xl font-bold text-primary-400 mb-1'>{props.title}</h3>
-                <div className="text-base font-light flex-1">
+            <div className="flex-1 basis-64 prose">
+                <h3>{props.title}</h3>
+                <div className="flex-1">
                     {description && <p>{description}</p>}
                     {
                         typeof props.children === "object" &&

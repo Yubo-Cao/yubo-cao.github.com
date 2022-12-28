@@ -28,6 +28,12 @@ module.exports = {
       colors: {
         'primary': primary[500],
       },
+      spacing: {
+        '102': '26rem',
+        '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
+      },
       backgroundColor: theme => ({
         ...theme('colors'),
         ...primaryColors,
@@ -50,11 +56,10 @@ module.exports = {
       }),
       gridTemplateColumns: (theme) => {
         const spacing = theme("spacing");
-
         return Object.keys(spacing).reduce((accumulator, spacingKey) => {
           return {
             ...accumulator,
-            [`fit-${spacingKey}`]: `repeat(auto-fit, minmax(${spacing[spacingKey]}, 1fr))`,
+            [`fit-${spacingKey}`]: `repeat(auto-fit,minmax(${spacing[spacingKey]}, 1fr))`,
           };
         }, {});
       },

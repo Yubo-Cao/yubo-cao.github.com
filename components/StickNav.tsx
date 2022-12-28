@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Title from "./Title";
 
 function TOC(props: {
     items: { id: string, title: string, level: number }[],
@@ -39,7 +40,7 @@ function TOC(props: {
             }
         }
     }
-    return ordered ? <ol className="mt-0">{result}</ol> : <ul className="mt-0">{result}</ul>;
+    return ordered ? <ol className="mt-0 ml-0">{result}</ol> : <ul className="mt-0 ml-0">{result}</ul>;
 }
 
 class StickNav extends React.Component {
@@ -103,11 +104,11 @@ class StickNav extends React.Component {
                 if (nav) {
                     if (entry.intersectionRatio > 0) {
                         nav.classList.remove("text-slate-300");
-                        nav.classList.add("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-2", "-ml-4");
+                        nav.classList.add("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-4", "-ml-4");
                         nav.parentElement!.classList.add("list-none");
                     } else {
                         nav.classList.add("text-slate-300");
-                        nav.classList.remove("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-2", "-ml-4");
+                        nav.classList.remove("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-4", "-ml-4");
                         nav.parentElement!.classList.remove("list-none");
                     }
                 }
@@ -122,8 +123,7 @@ class StickNav extends React.Component {
     render(): React.ReactNode {
         return (
             <aside className={"sticky top-2 mr-8 prose self-start hidden xl:block" + this.className}>
-                <h2 className="text-2xl my-2 font-bold">Table of Content</h2>
-                <hr className="border-slate-300 m-0 -mt-2 mb-2" />
+                <Title level={2}>Table of Content</Title>
                 <nav ref={this.nav}>
                     <TOC items={this.state.toc} ordered={this.ordered} />
                 </nav>

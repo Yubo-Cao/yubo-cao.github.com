@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Project from '../components/Project'
 import Section from '../components/Section'
 import Title from '../components/Title'
+import Contact from '../components/Contact'
 
 export default function Home() {
   return (
@@ -21,14 +22,13 @@ export default function Home() {
           <div className='flex flex-col gap-2 basis-48 flex-1 md:mx-16' style={{ flexGrow: 3 }}>
             <Title level={1}>Yubo Cao</Title>
             <p className='text-lg prose'>
-              As a sophomore in high school, prgramming and artificial
-              intelligence are two of my passions. My GPA is 4.0 out of
-              4.0 and I attend the Gwinnett School of Mathematics,
-              Science, and Technology.
+              I am a highly motivated and ambitious sophomore with a passion for programming and artificial intelligence.
+              I am excited to continue exploring and learning about these fields, and I am commited to strive
+              for excellence in all of my endeavors.
             </p>
           </div>
         </Section>
-        <Section title="Projects" subtitle="I am working on…" contentClassName='grid gap-4 grid-cols-fit-80'>
+        <Section title="Projects" subtitle="I am working on…" contentClassName='grid gap-4 grid-cols-fit-96'>
           <Project title="My Website" icon="public" url="https://yubo-cao.github.io">
             A gallery of my projects and a blog. Built with
             <code>Next.js</code>, <code>React</code>, <code>Tailwind CSS</code>,
@@ -55,7 +55,7 @@ export default function Home() {
             and <code>Playwright</code>.
           </Project>
         </Section>
-        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-102 max-sm:grid-cols-fit-64'>
+        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-96'>
           <Experience title="officer" company="Computer Science Club" start="2022-09">
             <ul>
               <li>Create instructional materials, plan activities, and be present at regular meetings.</li>
@@ -76,7 +76,6 @@ export default function Home() {
               <li>Help students with music theory and instrument playing.</li>
             </ul>
           </Experience>
-          {/* Red robodragons */}
           <Experience title="member" company='Red Robodragons' start='2021-09'>
             <ul>
               <li>Participate in robotics competitions.</li>
@@ -84,6 +83,12 @@ export default function Home() {
               <li>Help other members with programming and mechanical design.</li>
             </ul>
           </Experience>
+        </Section>
+        <Section title="Contact" subtitle="You can reach me at…" contentClassName='grid gap-4 grid-cols-fit-64'>
+          <Contact type="email" value="cao2006721@gmail.com" />
+          <Contact type="discord" value="yubo#6746" />
+          <Contact type="github" value="yubo-cao" />
+          <Contact type="tel" value="4709549826" />
         </Section>
       </main>
     </>

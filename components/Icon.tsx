@@ -25,7 +25,7 @@ function to_px(length: string | number): number {
 export default function Icon(props: {
     name: string,
     from?: "md" | "fa" | "mdi",
-    type?: "rounded" | "sharp" | "outlined" | "brands" | "classic" | "regular" | "solid",
+    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid",
     weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700,
     grade?: -25 | 0 | 200,
     size?: string | number,
@@ -66,10 +66,18 @@ export default function Icon(props: {
         const supported = ["brand", "classic", "regular", "sharp", "solid", "outlined"];
         if (!supported.includes(type))
             throw new Error(`Font Awesome only support ${supported.join(', ')}. Got ${type}.`);
-        type = type as "brands" | "classic" | "regular" | "sharp" | "solid" | "outlined";
+        type = type as "brand" | "classic" | "regular" | "sharp" | "solid" | "outlined";
+        let cls = {
+            brand: "fab",
+            classic: "fas",
+            regular: "far",
+            sharp: "fas",
+            solid: "fas",
+            outlined: "far"
+        }[type];
 
         return (
-            <i className={`fa fa-${type} fa-${props['name']} ${className}`} style={{
+            <i className={`fa ${cls} fa-${props['name']} ${className}`} style={{
                 fontSize: size,
                 // fa doesn't support font weight
             }}> </i>

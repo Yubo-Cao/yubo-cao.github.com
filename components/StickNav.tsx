@@ -53,7 +53,7 @@ class StickNav extends React.Component {
             id: string,
             title: string,
             level: number
-        }[]
+        }[],
     }
 
     constructor(props: {
@@ -63,7 +63,7 @@ class StickNav extends React.Component {
     }) {
         super(props);
         this.state = {
-            toc: []
+            toc: [],
         }
 
         this.nav = React.createRef();
@@ -103,13 +103,13 @@ class StickNav extends React.Component {
 
                 if (nav) {
                     if (entry.intersectionRatio > 0) {
-                        nav.classList.add("font-medium");
                         nav.classList.remove("text-slate-300");
-                        nav.classList.add("text-slate-500");
+                        nav.classList.add("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-2", "-ml-4");
+                        nav.parentElement!.classList.add("list-none");
                     } else {
-                        nav.classList.remove("font-medium");
                         nav.classList.add("text-slate-300");
-                        nav.classList.remove("text-slate-500");
+                        nav.classList.remove("text-slate-500", "font-medium", "border-l-4", "border-slate-500", "pl-2", "-ml-4");
+                        nav.parentElement!.classList.remove("list-none");
                     }
                 }
             });

@@ -46,17 +46,16 @@ function NavItem(props: {
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
         >
-            <div className={`h-12 w-12 flex items-center justify-center`}>
-                <Icon
-                    from="md"
-                    name={icon}
-                    grade={entered ? 200 : 0}
-                    className={`transition-all rounded-full p-3`}
-                    size={24}
-                    type="rounded"
-                    fill={entered}
-                />
-            </div>
+            <Icon
+                from="md"
+                name={icon}
+                grade={entered ? 200 : 0}
+                className={`transition-all rounded-full p-3`}
+                size={48}
+                iconSize={24}
+                type="rounded"
+                fill={entered}
+            />
             <Link
                 href={href}
                 className="text-base mr-4 xs:max-sm:hidden"

@@ -36,7 +36,7 @@ export default function Title(props: {
         {
             React.createElement(
                 "h" + level,
-                { className: `${styles[("h" + level) as string]} mb-1 ${className}` },
+                { className: `${styles[("h" + level) as string]} mb-1.5 ${className}` },
                 title,
                 []
             )
@@ -44,7 +44,7 @@ export default function Title(props: {
         {
             subtitle !== "" &&
             React.createElement(
-                "p",
+                "div",
                 { className: `text-lg font-light ${subtitleClassName}` },
                 subtitle,
                 []

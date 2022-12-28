@@ -1,3 +1,6 @@
+
+import Image from "next/image";
+
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
     for (let valid of valids) {
@@ -22,22 +25,22 @@ function to_px(length: string | number): number {
 }
 
 
-export default function Icon(props: {
+function _icon(props: {
     name: string,
     from?: "md" | "fa" | "mdi",
     type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid",
     weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700,
     grade?: -25 | 0 | 200,
-    size?: string | number,
+    size?: number,
     fill?: boolean,
-    className?: string
+    className?: string,
 }) {
     let from = props.from || "md",
         type = props.type || "outlined",
         weight = props.weight ? Math.max(100, Math.min(700,
             Math.round(props.weight / 100) * 100)) : 200,
         grade = props.grade ? to_nearest(props.grade, [-25, 0, 200]) : 0,
-        size = props.size || "24px",
+        size = props.size || 24,
         className = props.className || "";
 
     if (from === "md") {
@@ -57,7 +60,7 @@ export default function Icon(props: {
                 }
                 style={{
                     fontSize: size,
-                    fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${props.fill ? 1 : 0}, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`
+                    fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${props.fill ? 1 : 0}, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`,
                 }}>
                 {props.name}
             </i>
@@ -94,4 +97,44 @@ export default function Icon(props: {
     } else {
         throw new Error(`Unknown icon source: ${from}`);
     }
+}
+
+export default function Icon(props: {
+    name: string,
+    from?: "md" | "fa" | "mdi" | "image",
+    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid",
+    weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700,
+    grade?: -25 | 0 | 200,
+    size?: number,
+    iconSize?: number,
+    wrap?: boolean,
+    fill?: boolean,
+    className?: string,
+    wrapClassName?: string,
+    alt?: string,
+}) {
+    let size = props.size || 24,
+        iconSize = props.iconSize || size,
+        wrap = props.wrap || props.wrapClassName || iconSize !== size,
+        from = props.name.startsWith("/") ? "image" : props.from === undefined ? "md" : props.from,
+        cp = { ...props };
+    cp.size = iconSize;
+    if (!wrap && from !== "image") return _icon(cp as any);
+    let icon = (from === "image") ? (
+        <Image
+            src={props.name}
+            width={iconSize}
+            height={iconSize}
+            alt={props.alt || ""}
+            className={props.className || ""}
+        />
+    ) : _icon(cp as any);
+    return wrap ? (
+        <div
+            className={`flex justify-center items-center ${props.wrapClassName || ""}`}
+            style={{ width: size, height: size }}
+        >
+            {icon}
+        </div>
+    ) : icon;
 }

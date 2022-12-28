@@ -1,20 +1,22 @@
 import Image from 'next/image'
+import Achievement from '../components/Achievement'
 import Contact from '../components/Contact'
 import Experience from '../components/Experience'
 import Header from '../components/Header'
 import Project from '../components/Project'
 import Section from '../components/Section'
-import Title from '../components/Title'
+import Skill from '../components/Skill'
 import StickNav from '../components/StickNav'
-import Achievement from '../components/Achievement'
+import Title from '../components/Title'
+import React from 'react'
 
 export default function Home() {
   return (
     <>
       <Header active="Home" />
-      <div className='xl:grid xl:grid-cols-nav py-4 mx-auto' style={{ maxWidth: 'min(100%, 1400px)' }}>
+      <div className='xl:grid xl:grid-cols-nav py-4 mx-auto' style={{ maxWidth: 'min(100%, 1444px)' }}>
         <main className='mx-4 md:mx-8 flex flex-col'>
-          <Section className='pb-0' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0">
+          <Section className='pb-0 max-md:pb-4' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4">
             <Image
               src="/about/yubo.png"
               alt="Yubo's Figure"
@@ -22,9 +24,9 @@ export default function Home() {
               className="grayscale basis-12 flex-auto max-h-96 object-contain object-left drop-shadow-2xl"
               style={{ flexGrow: 1 }}
             />
-            <div className='flex flex-col gap-2 basis-96 flex-1 md:mx-16' style={{ flexGrow: 3 }}>
+            <div className='flex flex-col gap-2 basis-96 flex-1 md:mx-16 max-md:basis-16  prose' style={{ flexGrow: 3 }}>
               <Title level={1}>Yubo Cao</Title>
-              <p className='text-lg prose'>
+              <p className='text-lg mt-2'>
                 I am a highly motivated and ambitious sophomore with a passion for programming and artificial intelligence.
                 I am excited to continue exploring and learning about these fields, and I am commited to strive
                 for excellence in all of my endeavors.
@@ -58,7 +60,7 @@ export default function Home() {
               and <code>Playwright</code>.
             </Project>
           </Section>
-          <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-96'>
+          <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-8 grid-cols-fit-96'>
             <Experience title="officer" company="Computer Science Club" start="2022-09">
               <ul>
                 <li>Create instructional materials, plan activities, and be present at regular meetings.</li>
@@ -87,10 +89,10 @@ export default function Home() {
               </ul>
             </Experience>
           </Section>
-          <Section title="Achievement" subtitle="I have received…" contentClassName='grid gap-4 grid-cols-fit-96'>
+          <Section title="Achievement" subtitle="I have received…" contentClassName='grid gap-8 grid-cols-fit-96'>
             <Achievement title="Academic achievement" subtitle='in mathematics'>
               In 2021 fall award, I was the only student in my freshman class to receive
-              the award for my outstanding performance in mathematics.
+              the award for my outstanding performance in mathematics
             </Achievement>
             <Achievement title="GHP nomination">
               Governor’s honors program nomination in mathematics, computer programming,
@@ -104,6 +106,24 @@ export default function Home() {
               Under my leadership, my team lambda won the first place in
               silver tier at Georgia open division.
             </Achievement>
+          </Section>
+          <Section title="Skills" subtitle="I can…" contentClassName='grid gap-8 grid-cols-fit-96'>
+            <Skill title='Office' icons='file-powerpoint file-word file-excel file-pdf /about/tex.svg'>
+              Utilize Microsoft Office to generate and modify documents,
+              spreadsheets, and presentations while exhibiting a proficient
+              understanding of design and layout principles, including the
+              concept of reusability, in order to produce visually appealing and
+              easily editable documents. I am also familiar with LaTeX.
+            </Skill>
+            <Skill title='Programming' type="brand" icons='python java git github /about/cpp.svg /about/pytorch.svg /about/tensorflow.svg'>
+              I have a explored in various programming languages, including Python, Java, and C++. I can write spiders, do data analysis, and build websites. I am also familiar with machine learning frameworks such as PyTorch and TensorFlow. I also understand version control with Git and GitHub.
+            </Skill>
+            <Skill title="Cybersecurity & System Administration" type="brand" icons="ubuntu centos redhat fedora">
+              I have experience with Linux administration, including installing and configuring Linux distributions, managing users and groups, and using the command line to perform various tasks. I am OK with both Debian-based and Red Hat-based distributions.
+            </Skill>
+            <Skill title="Web development" icons="/about/nextjs.svg /about/react.svg /about/tailwindcss.svg /about/sass.svg /about/typescript.svg">
+              I have experience with web development, including building websites with Next.js, React, and Tailwind CSS. I am also familiar with Sass and TypeScript. This website is built with Next.js and Tailwind CSS, deployed through Github Action.
+            </Skill>
           </Section>
           <Section title="Contact" subtitle="You can reach me at…" contentClassName='grid gap-4 grid-cols-fit-96'>
             <Contact type="email" value="cao2006721@gmail.com" />

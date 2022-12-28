@@ -3,10 +3,14 @@ export default function Card(props: {
     children: React.ReactNode,
     className?: string,
     type?: "outlined" | "filled" | "elevated",
+    hoverType?: "outlined" | "filled" | "elevated",
+    activeType?: "outlined" | "filled" | "elevated",
     rounded?: boolean,
     accent?: string,
 }) {
-    let type = props.type || "elevated",
+    let type = props.type || "outlined",
+        hoverType = props.hoverType || type,
+        activeType = props.activeType || type,
         className = props.className || "",
         rounded = props.rounded || true,
         accent = props.accent || "gray";
@@ -26,7 +30,7 @@ export default function Card(props: {
         elevated: `active:shadow-lg active:shadow-${accent}-500/30`
     };
     return (
-        <div className={`p-8 transition-all cursor-pointer ${rounded ? "rounded-lg" : ""}  ${hoverCls[type]} ${activeCls[type]} ${cls[type]} ` + className} onClick={props.onClick}>
+        <div className={`p-8 transition-all cursor-pointer ${rounded ? "rounded-lg" : ""}  ${hoverCls[hoverType]} ${activeCls[activeType]} ${cls[type]} ` + className} onClick={props.onClick}>
             {props.children}
         </div>
     );

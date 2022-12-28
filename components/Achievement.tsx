@@ -11,7 +11,7 @@ export default function Achievement(props: {
 }) {
     let height = props.height || 144,
         width = Math.round(height * 0.5),
-        compression = Math.round(height * 0.2);
+        compression = Math.round(height * 0.1);
     return (
         <div className="flex items-center">
             <Image src="/achievement/wheat-left.svg" alt="Left side of wheat"

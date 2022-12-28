@@ -22,7 +22,7 @@ export default function Section(props: {
             idx = 0;
         if (!child) return;
         if (parent?.tagName !== "MAIN") {
-            section!!.classList.remove('my-6', 'py-4');
+            section!!.classList.remove('my-6', 'py-8');
             return;
         }
         while (true) {
@@ -37,19 +37,19 @@ export default function Section(props: {
         if (idx % 2 === 1) {
             let background = document.createElement("div");
             section!!.classList.add("relative");
-            background.classList.add("absolute", "-left-full", "-right-full", "rounded-2xl", "xl:-right-4", "top-0", "bottom-0", "bg-primary-100/30", "-z-10");
+            background.classList.add("absolute", "-left-full", "-right-full", "xl:right-0", "top-0", "rounded-lg", "bottom-0", "bg-primary-100/30", "-z-10");
             section?.appendChild(background);
             return () => { section?.removeChild(background); }
         }
     });
     let level = props.level || 2;
     return (
-        <section id={id} className={"py-4 my-6 " + className} ref={ref}>
+        <section id={id} className={"my-6 py-8 " + className} ref={ref}>
             {
                 hasTitle &&
                 <Title title={props.title} subtitle={props.subtitle} level={level} />
             }
-            <div className={`${hasTitle ? (level < 3 ? "mt-6" : "mt-3") : ""} ${props.contentClassName || ""}`}>
+            <div className={`${hasTitle ? (level < 3 ? "mt-8" : "mt-4") : ""} ${props.contentClassName || ""}`}>
                 {props.children}
             </div>
         </section>

@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Header active="Home" />
-      <div className='xl:grid xl:grid-cols-nav py-4 mx-auto' style={{ maxWidth: 'min(100%, 1444px)' }}>
+      <div className='xl:grid xl:grid-cols-nav py-4 mx-auto max-xl:overflow-x-hidden' style={{ maxWidth: 'min(100%, 1444px)' }}>
         <main className='max-xs:mx-4 mx-8 md:mx-16 flex flex-col'>
           <Section className='pb-0 max-md:pb-4' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4">
             <Image
@@ -118,7 +118,7 @@ export default function Home() {
             <Skill title='Programming' type="brand" icons='python java git github /about/cpp.svg /about/pytorch.svg /about/tensorflow.svg'>
               I have a explored in various programming languages, including Python, Java, and C++. I can write spiders, do data analysis, and build websites. I am also familiar with machine learning frameworks such as PyTorch and TensorFlow. I also understand version control with Git and GitHub.
             </Skill>
-            <Skill title="Cybersecurity & System Administration" type="brand" icons="ubuntu centos redhat fedora">
+            <Skill title="Cybersecurity" type="brand" icons="ubuntu centos redhat fedora">
               I have experience with Linux administration, including installing and configuring Linux distributions, managing users and groups, and using the command line to perform various tasks. I am OK with both Debian-based and Red Hat-based distributions.
             </Skill>
             <Skill title="Web development" icons="/about/nextjs.svg /about/react.svg /about/tailwindcss.svg /about/sass.svg /about/typescript.svg">

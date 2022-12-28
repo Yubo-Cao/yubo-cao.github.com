@@ -1,10 +1,9 @@
-import { useState } from "react";
-import Icon from "./Icon"
+import Icon from "./Icon";
 
 export default function MenuButton(props: {
     open: boolean,
     onClick: () => void
-    size?: string | number,
+    size?: number,
     className?: string,
 }) {
     const { open, onClick } = props;

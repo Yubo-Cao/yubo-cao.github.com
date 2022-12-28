@@ -1,10 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import Card from "./Card";
+import ClickCopy from "./ClickCopy";
 import Icon from "./Icon";
 import Modal from "./Modal";
-import Title from "./Title";
-import ClickCopy from "./ClickCopy";
 
 export default function Contact(props: {
     type: "email" | "tel" | "discord" | "github",
@@ -20,7 +19,6 @@ export default function Contact(props: {
         github: <Icon name="github" size={size} from="fa" type="brand" />
     }[type];
     const [open, setOpen] = React.useState(false);
-    const [copied, setCopied] = React.useState(false);
     let action = {
         email: () => { window.open(`mailto:${value}`); },
         tel: () => { window.open(`tel:${value}`); },
@@ -36,7 +34,7 @@ export default function Contact(props: {
             {
                 type === "discord" &&
                 <Modal onClose={() => { setOpen(false); window.open('https://discord.com/users/@me', "_blank") }} open={open}>
-                    <Title level={3}>Add me in discord</Title>
+                    <p className="text-2xl font-bold mb-2">Discord</p>
                     <p className="prose">
                         Click my discord username <ClickCopy content={value} className="text-blue-500 hover:underline"><code>{value}</code></ClickCopy>
                         You will be sent to <Link href="https://discord.com/users/@me">https://discord.com/users/@me</Link> after you close

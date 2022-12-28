@@ -30,10 +30,14 @@ export default function Section(props: {
             if (child === section || !child.nextSibling) break;
             child = child.nextSibling;
         }
+        if (idx === 1) {
+            section!!.classList.remove('my-6');
+            section!!.classList.add('mb-6');
+        }
         if (idx % 2 === 1) {
             let background = document.createElement("div");
-            section!!.className += " relative";
-            background.className = "absolute -left-full -right-full rounded-2xl xl:-right-4 top-0 bottom-0 bg-primary-100/30 -z-10";
+            section!!.classList.add("relative");
+            background.classList.add("absolute", "-left-full", "-right-full", "rounded-2xl", "xl:-right-4", "top-0", "bottom-0", "bg-primary-100/30", "-z-10");
             section?.appendChild(background);
             return () => { section?.removeChild(background); }
         }

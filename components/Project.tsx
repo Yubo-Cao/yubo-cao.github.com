@@ -11,16 +11,10 @@ export default function Project(props: {
     title: string,
     url: string,
     description?: string,
-    icon?: string,
-    image?: string,
+    name: string,
     size?: number,
     children?: React.ReactNode
 }) {
-    if (props.icon && props.image)
-        throw new Error("Icon and image cannot be used at the same time.");
-    if (!props.icon && !props.image)
-        throw new Error("Icon or image must be used.");
-
     let size = props.size || 64,
         description = props.description || "";
     if (typeof props.children === "string")
@@ -48,16 +42,8 @@ export default function Project(props: {
                 - hover:bg-gray-100
                 - active:bg-gray-200
             */}
-            <div style={{ width: 64, height: 64 }} className="flex shrink-0 grow-0 items-center justify-center">
-                {
-                    props.icon &&
-                    <Icon name={props.icon} size={size} />
-                }
-                {
-                    props.image &&
-                    <Image src={props.image} alt={props.title} width={size} height={size} />
-                }
-            </div>
+
+            <Icon name={props.name} size={size} className="image-primary-400" wrap={true} grade={200} />
             <div className="flex-1 basis-64 prose">
                 <h3>{props.title}</h3>
                 <div className="flex-1">

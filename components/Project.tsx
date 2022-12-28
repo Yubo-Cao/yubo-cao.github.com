@@ -1,11 +1,6 @@
-/*
-
-*/
-
-import Image from "next/image";
-import Icon from "./Icon";
-import Card from "./Card";
 import { useRouter } from "next/router";
+import Card from "./Card";
+import Icon from "./Icon";
 
 export default function Project(props: {
     title: string,
@@ -13,6 +8,7 @@ export default function Project(props: {
     description?: string,
     name: string,
     size?: number,
+    iconSize?: number,
     children?: React.ReactNode
 }) {
     let size = props.size || 64,
@@ -43,7 +39,7 @@ export default function Project(props: {
                 - active:bg-gray-200
             */}
 
-            <Icon name={props.name} size={size} className="image-primary-400" wrap={true} grade={200} />
+            <Icon name={props.name} size={size} className="image-primary-400" wrap={true} grade={200} iconSize={props.iconSize} />
             <div className="flex-1 basis-64 prose">
                 <h3>{props.title}</h3>
                 <div className="flex-1">

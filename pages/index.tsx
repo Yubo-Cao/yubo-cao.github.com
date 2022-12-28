@@ -39,11 +39,11 @@ export default function Home() {
               <code>Next.js</code>, <code>React</code>, <code>Tailwind CSS</code>,
               <code>SASS</code>, and <code>TypeScript</code>.
             </Project>
-            <Project title="FPN Object detection" name="/about/object.png" size={48} url="https://www.github.com/yubo-cao/RedFTCController">
+            <Project title="FPN Object detection" name="/about/object.png" iconSize={48} url="https://www.github.com/yubo-cao/RedFTCController">
               A feature pyramid network object detection model for the FTC robotics
               competition. Built with <code>Python</code> and <code>TensorFlow</code>.
             </Project>
-            <Project title="Algorithms" name="/about/flow-chart.png" size={48} url="https://www.github.com/yubo-cao/Algorithms">
+            <Project title="Algorithms" name="/about/flow-chart.png" iconSize={48} url="https://www.github.com/yubo-cao/Algorithms">
               A collection of solutions to common algorithms question and a book regarding them.
               Built with <code>C++</code>, <code>Java</code>, and <code>LaTeX</code>.
             </Project>

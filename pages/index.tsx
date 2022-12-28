@@ -108,7 +108,7 @@ export default function Home() {
             </Achievement>
           </Section>
           <Section title="Skills" subtitle="I can…" contentClassName='grid gap-8 grid-cols-fit-96'>
-            <Skill title='Office' icons='file-powerpoint file-word file-excel file-pdf /about/tex.svg'>
+            <Skill title='Office' icons='file-powerpoint file-word file-excel file-pdf /about/TeX.svg'>
               Utilize Microsoft Office to generate and modify documents,
               spreadsheets, and presentations while exhibiting a proficient
               understanding of design and layout principles, including the

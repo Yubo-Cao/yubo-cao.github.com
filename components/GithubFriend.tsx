@@ -32,6 +32,8 @@ export default function GithubFriend({
                 window.open(`https://github.com/${username}`, '_blank')
             }
             className="flex flex-col gap-2 xs:flex-row xs:gap-4 xs:items-center"
+            hoverType="elevated"
+            activeType="elevated"
         >
             {image ? (
                 <img

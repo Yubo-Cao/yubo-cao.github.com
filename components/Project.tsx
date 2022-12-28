@@ -24,20 +24,13 @@ export default function Project(props: {
                 router.push(props.url);
             }}
             accent="gray"
-            activeType="elevated"
             hoverType="elevated"
+            activeType="elevated"
         >
             {/* 
-                Let tailwind css generate:
-                - shadow-primary-300/30
-                - hover:shadow-primary-400/30
-                - active:shadow-primary-500/30
-                - bg-primary-100/30
-                - hover:bg-primary-100
-                - active:bg-primary-200
-                - bg-gray-100/30
-                - hover:bg-gray-100
-                - active:bg-gray-200
+                - border-gray-300
+                - hover:shadow-gray-400/30
+                - active:shadow-gray-500/30
             */}
 
             <Icon

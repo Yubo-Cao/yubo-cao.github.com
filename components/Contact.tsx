@@ -55,7 +55,14 @@ export default function Contact(props: {
             className="p-4"
             activeType="elevated"
             hoverType="elevated"
+            accent="primary"
         >
+            {/* 
+                - border-primary-300
+                - hover:shadow-primary-400/30
+                - active:shadow-primary-500/30
+            */}
+
             <div className="flex items-center gap-4">
                 {icon}
                 <div className="text-lg font-medium">{value}</div>

@@ -44,6 +44,10 @@ module.exports = {
         ...theme('colors'),
         ...primaryColors,
       }),
+      gradientColorStops: theme => ({
+        ...theme('colors'),
+        ...primaryColors,
+      }),
       gridTemplateColumns: (theme) => {
         const spacing = theme("spacing");
 

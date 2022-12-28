@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Section(props: {
     id?: string,
@@ -7,7 +7,6 @@ export default function Section(props: {
     title?: string,
     subtitle?: string,
     level?: 1 | 2 | 3 | 4 | 5 | 6,
-    flow?: boolean,
     children?: React.ReactNode
 }) {
     let id = props.id || "",
@@ -15,7 +14,7 @@ export default function Section(props: {
         title = props.title || "",
         subtitle = props.subtitle || "",
         level = props.level || 2,
-        flow = props.flow || false;
+        ref = React.useRef<HTMLDivElement>(null);
     if (title === "" && subtitle !== "")
         throw new Error("Subtitle must have a title.");
     const styles: { [key: string]: string } = {
@@ -26,8 +25,31 @@ export default function Section(props: {
         h5: "text-2xl",
         h6: "text-xl"
     };
+
+    useEffect(() => {
+        let section = ref?.current,
+            parent = section?.parentElement,
+            child = parent?.firstChild,
+            idx = 0;
+        if (!child) return;
+        while (true) {
+            if (child.nodeType === Node.ELEMENT_NODE) idx++;
+            if (child === section || !child.nextSibling) break;
+            child = child.nextSibling;
+        }
+        if (idx % 2 === 1) {
+            console.log(`Section ${title} is odd.`)
+            let background = document.createElement("div");
+            section!!.className += " relative";
+            background.className = "absolute -left-16 -right-16 top-0 bottom-0 bg-primary-100/30 -z-10";
+            section?.appendChild(background);
+            return () => {
+                section?.removeChild(background);
+            }
+        }
+    });
     return (
-        <section id={id} className={`p-8 rounded-lg odd:p-0 odd:m-8 odd:bg-primary-100` + className}>
+        <section id={id} className={"py-8 " + className} ref={ref}>
             {
                 title !== "" &&
                 React.createElement(
@@ -40,6 +62,9 @@ export default function Section(props: {
             {
                 subtitle !== "" &&
                 <p className="text-lg text-slate-300">{subtitle}</p>
+            }
+            {
+                // if this is a even section, draw a full width line
             }
             <div className={`${title !== "" && subtitle !== "" ? "mt-4" : ""} ${props.contentClassName || ""}`}>
                 {props.children}

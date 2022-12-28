@@ -78,16 +78,13 @@ export default function Nav(props: {
                 onClick={() => setOpen(!open)}
                 className="hidden max-xs:flex"
             />
-            <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 -z-50 ${open ? "block" : "hidden"}`} />
+            <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 z-10 ${open ? "block" : "hidden"}`} />
             <nav
-                className={
-                    `transition-all flex gap-4 z-0 bg-slate-50 max-xs:px-2 ` +
-                    `gap-0 flex-col rounded-r-2xl
-                     fixed top-0 left-0 w-64 h-full
-                     ${open ? "translate-x shadow-md" : "-translate-x-full"}
-                    z-10
-                    `.split(/\s+/).filter(s => s.trim().length !== 0).map(s => "max-xs:" + s).join(" ")
-                }
+                className={`transition-all flex gap-4 bg-slate-50 z-10
+                    max-xs:px-2
+                    max-xs:gap-0 max-xs:flex-col max-xs:rounded-r-2xl
+                    max-xs:fixed max-xs:top-0 max-xs:left-0 max-xs:w-64 max-xs:h-full max-xs:z-10
+                    ${open ? "max-xs:translate-x max-xs:shadow-md" : "max-xs:-translate-x-full"}`}
             >
                 <div className={`${height === 64 ? "h-16" : "h-12"} items-center hidden max-xs:flex`}>
                     <MenuButton

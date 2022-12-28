@@ -7,12 +7,18 @@ export default function Home() {
   return (
     <>
       <Header active="Home" />
-      <main className='m-4'>
-        <Section contentClassName="flex gap-4 items-center justify-center flex-wrap">
-          <Image src="/about/yubo.png" alt="Yubo's Figure" width={200} height={300} className="grayscale" />
-          <div className='flex flex-col gap-2 basis-72 flex-1'>
-            <h1 className='text-primary-400 text-6xl font-black'>Yubo Cao</h1>
-            <p className='text-lg m-4'>
+      <main className='m-4 md:m-8 flex flex-col'>
+        <Section className='pb-0' contentClassName="flex gap-4 items-center justify-center max-md:flex-col max-md:p-8">
+          <Image
+            src="/about/yubo.png"
+            alt="Yubo's Figure"
+            width={200} height={300}
+            className="grayscale basis-12 flex-auto max-h-96 object-contain object-left drop-shadow-2xl"
+            style={{ flexGrow: 1 }}
+          />
+          <div className='flex flex-col gap-2 basis-48 flex-1 md:mx-16' style={{ flexGrow: 3 }}>
+            <h1 className='text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500'>Yubo Cao</h1>
+            <p className='text-lg'>
               As a sophomore in high school, programming and artificial
               intelligence are two of my passions. My GPA is 4.0 out of
               4.0 and I attend the Gwinnett School of Mathematics,
@@ -21,7 +27,7 @@ export default function Home() {
           </div>
         </Section>
         <Section title="Projects" subtitle="I am working on…" contentClassName='grid gap-4 grid-cols-fit-80'>
-          <Project title="My Website" icon="public" url="https://yubo-cao.github.com">
+          <Project title="My Website" icon="public" url="https://yubo-cao.github.io">
             A gallery of my projects and a blog. Built with
             <code>Next.js</code>, <code>React</code>, <code>Tailwind CSS</code>,
             <code>SASS</code>, and <code>TypeScript</code>.
@@ -46,6 +52,9 @@ export default function Home() {
             A tool to manage and create Quizlet sets. Built with <code>Python</code>
             and <code>Playwright</code>.
           </Project>
+        </Section>
+        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-80'>
+
         </Section>
       </main>
     </>

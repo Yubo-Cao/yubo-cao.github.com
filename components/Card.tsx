@@ -12,17 +12,17 @@ export default function Card(props: {
         accent = props.accent || "gray";
     let cls = {
         outlined: `border border-${accent}-300`,
-        filled: `bg-${accent}-100`,
+        filled: `bg-${accent}-100/30`,
         elevated: `shadow shadow-${accent}-300/30`
     };
     let hoverCls = {
         outlined: `hover:border-${accent}-400`,
-        filled: `hover:bg-${accent}-200`,
+        filled: `hover:bg-${accent}-100`,
         elevated: `hover:shadow-md hover:shadow-${accent}-400/30`
     };
     let activeCls = {
         outlined: `active:border-${accent}-500`,
-        filled: `active:bg-${accent}-300`,
+        filled: `active:bg-${accent}-200`,
         elevated: `active:shadow-lg active:shadow-${accent}-500/30`
     };
     return (

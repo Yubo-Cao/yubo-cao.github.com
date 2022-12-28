@@ -30,15 +30,22 @@ export default function Project(props: {
 
     return (
         <Card
-            className='flex flex-row gap-4 items-center flex-wrap'
+            className='flex flex-row gap-4 items-start justify-start flex-wrap'
             onClick={() => { router.push(props.url) }}
-            accent="primary"
+            accent="gray"
+            type="filled"
         >
             {/* 
                 Let tailwind css generate:
-                - shadow-primary-300/30 shadow-gray-300/30
-                - hover:shadow-primary-400/30 hover:shadow-gray-400/30
-                - active:shadow-primary-500/30 active:shadow-gray-500/30
+                - shadow-primary-300/30
+                - hover:shadow-primary-400/30
+                - active:shadow-primary-500/30
+                - bg-primary-100/30
+                - hover:bg-primary-100
+                - active:bg-primary-200
+                - bg-gray-100/30
+                - hover:bg-gray-100
+                - active:bg-gray-200
             */}
             <div style={{ width: 64, height: 64 }} className="flex shrink-0 grow-0 items-center justify-center">
                 {
@@ -50,9 +57,9 @@ export default function Project(props: {
                     <Image src={props.image} alt={props.title} width={size} height={size} />
                 }
             </div>
-            <div className="basis-72 flex-1">
+            <div className="flex-1 basis-64">
                 <h3 className='text-xl font-bold text-primary-400 mb-1'>{props.title}</h3>
-                <div className="text-base font-thi">
+                <div className="text-base font-light flex-1">
                     {description && <p>{description}</p>}
                     {
                         typeof props.children === "object" &&

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Title from "./Title";
 
 export default function Section(props: {
     id?: string,
@@ -11,20 +12,8 @@ export default function Section(props: {
 }) {
     let id = props.id || "",
         className = props.className || "",
-        title = props.title || "",
-        subtitle = props.subtitle || "",
-        level = props.level || 2,
-        ref = React.useRef<HTMLDivElement>(null);
-    if (title === "" && subtitle !== "")
-        throw new Error("Subtitle must have a title.");
-    const styles: { [key: string]: string } = {
-        h1: "text-6xl font-black text-primary-400",
-        h2: "text-4xl font-bold text-primary-400",
-        h3: "text-2xl font-semibold",
-        h4: "text-3xl",
-        h5: "text-2xl",
-        h6: "text-xl"
-    };
+        ref = React.useRef<HTMLDivElement>(null),
+        hasTitle = props.title !== undefined || props.subtitle !== undefined;
 
     useEffect(() => {
         let section = ref?.current,
@@ -39,35 +28,20 @@ export default function Section(props: {
             child = child.nextSibling;
         }
         if (idx % 2 === 1) {
-            console.log(`Section ${title} is odd.`)
             let background = document.createElement("div");
             section!!.className += " relative";
             background.className = "absolute -left-16 -right-16 top-0 bottom-0 bg-primary-100/30 -z-10";
             section?.appendChild(background);
-            return () => {
-                section?.removeChild(background);
-            }
+            return () => { section?.removeChild(background); }
         }
     });
     return (
         <section id={id} className={"py-8 " + className} ref={ref}>
             {
-                title !== "" &&
-                React.createElement(
-                    "h" + level,
-                    { className: `${styles[("h" + level) as string]} mb-1` },
-                    title,
-                    []
-                )
+                hasTitle &&
+                <Title title={props.title} subtitle={props.subtitle} level={props.level || 2} />
             }
-            {
-                subtitle !== "" &&
-                <p className="text-lg font-semibold text-slate-500">{subtitle}</p>
-            }
-            {
-                // if this is a even section, draw a full width line
-            }
-            <div className={`${title !== "" && subtitle !== "" ? "mt-4" : ""} ${props.contentClassName || ""}`}>
+            <div className={`${hasTitle ? "mt-4" : ""} ${props.contentClassName || ""}`}>
                 {props.children}
             </div>
         </section>

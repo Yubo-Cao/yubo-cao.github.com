@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import Experience from '../components/Experience'
 import Header from '../components/Header'
 import Project from '../components/Project'
 import Section from '../components/Section'
-import Experience from '../components/Experience'
+import Title from '../components/Title'
 
 export default function Home() {
   return (
@@ -18,9 +19,9 @@ export default function Home() {
             style={{ flexGrow: 1 }}
           />
           <div className='flex flex-col gap-2 basis-48 flex-1 md:mx-16' style={{ flexGrow: 3 }}>
-            <h1 className='text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500'>Yubo Cao</h1>
+            <Title level={1}>Yubo Cao</Title>
             <p className='text-lg prose'>
-              As a sophomore in high school, programming and artificial
+              As a sophomore in high school, prgramming and artificial
               intelligence are two of my passions. My GPA is 4.0 out of
               4.0 and I attend the Gwinnett School of Mathematics,
               Science, and Technology.
@@ -54,7 +55,7 @@ export default function Home() {
             and <code>Playwright</code>.
           </Project>
         </Section>
-        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-128 max-sm:grid-cols-fit-64'>
+        <Section title="Experience" subtitle="I have worked with…" contentClassName='grid gap-4 grid-cols-fit-102 max-sm:grid-cols-fit-64'>
           <Experience title="officer" company="Computer Science Club" start="2022-09">
             <ul>
               <li>Create instructional materials, plan activities, and be present at regular meetings.</li>

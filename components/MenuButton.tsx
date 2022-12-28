@@ -1,14 +1,14 @@
-import Icon from "./Icon";
+import Icon from './Icon';
 
 export default function MenuButton(props: {
-    open: boolean,
-    onClick: () => void
-    size?: number,
-    className?: string,
+    open: boolean;
+    onClick: () => void;
+    size?: number;
+    className?: string;
 }) {
     const { open, onClick } = props;
     let { className, size } = props;
-    className = className || "";
+    className = className || '';
 
     return (
         <div
@@ -17,7 +17,7 @@ export default function MenuButton(props: {
         >
             <Icon
                 from="md"
-                name={open ? "menu_open" : "menu"}
+                name={open ? 'menu_open' : 'menu'}
                 size={size}
                 className="transition-all"
             ></Icon>

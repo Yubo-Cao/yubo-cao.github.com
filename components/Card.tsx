@@ -1,19 +1,19 @@
 export default function Card(props: {
-    onClick: () => void
-    children: React.ReactNode,
-    className?: string,
-    type?: "outlined" | "filled" | "elevated",
-    hoverType?: "outlined" | "filled" | "elevated",
-    activeType?: "outlined" | "filled" | "elevated",
-    rounded?: boolean,
-    accent?: string,
+    onClick: () => void;
+    children: React.ReactNode;
+    className?: string;
+    type?: 'outlined' | 'filled' | 'elevated';
+    hoverType?: 'outlined' | 'filled' | 'elevated';
+    activeType?: 'outlined' | 'filled' | 'elevated';
+    rounded?: boolean;
+    accent?: string;
 }) {
-    let type = props.type || "outlined",
+    let type = props.type || 'outlined',
         hoverType = props.hoverType || type,
         activeType = props.activeType || type,
-        className = props.className || "",
+        className = props.className || '',
         rounded = props.rounded || true,
-        accent = props.accent || "gray";
+        accent = props.accent || 'gray';
     let cls = {
         outlined: `border border-${accent}-300`,
         filled: `bg-${accent}-100/30`,
@@ -30,7 +30,16 @@ export default function Card(props: {
         elevated: `active:shadow-lg active:shadow-${accent}-500/30`
     };
     return (
-        <div className={`p-8 transition-all cursor-pointer ${rounded ? "rounded-lg" : ""}  ${hoverCls[hoverType]} ${activeCls[activeType]} ${cls[type]} ` + className} onClick={props.onClick}>
+        <div
+            className={
+                `p-4 transition-all cursor-pointer ${
+                    rounded ? 'rounded-lg' : ''
+                }  ${hoverCls[hoverType]} ${activeCls[activeType]} ${
+                    cls[type]
+                } ` + className
+            }
+            onClick={props.onClick}
+        >
             {props.children}
         </div>
     );

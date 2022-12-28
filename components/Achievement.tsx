@@ -14,7 +14,7 @@ export default function Achievement(props: {
         compression = Math.round(height * 0.1);
     return (
         <div className="flex items-center">
-            <Image src="/achievement/wheat-left.svg" alt="Left side of wheat"
+            <Image src="/images/achievement/wheat-left.svg" alt="Left side of wheat"
                 width={width} height={height} style={{ marginRight: `-${compression}px` }} />
             <div className="flex-1 text-center">
                 {<Title title={props.title} subtitle={props.subtitle} level={props.level || 3}
@@ -24,7 +24,7 @@ export default function Achievement(props: {
                     {props.children}
                 </p>
             </div>
-            <Image src="/achievement/wheat-right.svg" alt="Left side of wheat"
+            <Image src="/images/achievement/wheat-right.svg" alt="Left side of wheat"
                 width={width} height={height} style={{ marginLeft: `-${compression}px` }} />
         </div>
     )

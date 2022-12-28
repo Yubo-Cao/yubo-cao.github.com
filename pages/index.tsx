@@ -13,7 +13,7 @@ export default function Home() {
     <NavigationLayout active='Home'>
       <Section className='pb-0 max-md:pb-4' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4">
         <Image
-          src="/about/yubo.png"
+          src="/images/about/yubo.png"
           alt="Yubo's Figure"
           width={200} height={300}
           className="grayscale basis-12 flex-auto max-h-96 object-contain object-left drop-shadow-2xl"
@@ -34,11 +34,11 @@ export default function Home() {
           <code>Next.js</code>, <code>React</code>, <code>Tailwind CSS</code>,
           <code>SASS</code>, and <code>TypeScript</code>.
         </Project>
-        <Project title="FPN Object detection" name="/about/object.png" iconSize={48} url="https://www.github.com/yubo-cao/RedFTCController">
+        <Project title="FPN Object detection" name="/images/about/object.png" iconSize={48} url="https://www.github.com/yubo-cao/RedFTCController">
           A feature pyramid network object detection model for the FTC robotics
           competition. Built with <code>Python</code> and <code>TensorFlow</code>.
         </Project>
-        <Project title="Algorithms" name="/about/flow-chart.png" iconSize={48} url="https://www.github.com/yubo-cao/Algorithms">
+        <Project title="Algorithms" name="/images/about/flow-chart.png" iconSize={48} url="https://www.github.com/yubo-cao/Algorithms">
           A collection of solutions to common algorithms question and a book regarding them.
           Built with <code>C++</code>, <code>Java</code>, and <code>LaTeX</code>.
         </Project>
@@ -103,20 +103,20 @@ export default function Home() {
         </Achievement>
       </Section>
       <Section title="Skills" subtitle="I can…" contentClassName='grid gap-8 grid-cols-fit-96'>
-        <Skill title='Office' icons='file-powerpoint file-word file-excel file-pdf /about/TeX.svg'>
+        <Skill title='Office' icons='file-powerpoint file-word file-excel file-pdf /images/about/TeX.svg'>
           Utilize Microsoft Office to generate and modify documents,
           spreadsheets, and presentations while exhibiting a proficient
           understanding of design and layout principles, including the
           concept of reusability, in order to produce visually appealing and
           easily editable documents. I am also familiar with LaTeX.
         </Skill>
-        <Skill title='Programming' type="brand" icons='python java git github /about/cpp.svg /about/pytorch.svg /about/tensorflow.svg'>
+        <Skill title='Programming' type="brand" icons='python java git github /images/about/cpp.svg /images/about/pytorch.svg /images/about/tensorflow.svg'>
           I have a explored in various programming languages, including Python, Java, and C++. I can write spiders, do data analysis, and build websites. I am also familiar with machine learning frameworks such as PyTorch and TensorFlow. I also understand version control with Git and GitHub.
         </Skill>
         <Skill title="Cybersecurity" type="brand" icons="ubuntu centos redhat fedora">
           I have experience with Linux administration, including installing and configuring Linux distributions, managing users and groups, and using the command line to perform various tasks. I am OK with both Debian-based and Red Hat-based distributions.
         </Skill>
-        <Skill title="Web development" icons="/about/nextjs.svg /about/react.svg /about/tailwindcss.svg /about/sass.svg /about/typescript.svg">
+        <Skill title="Web development" icons="/images/about/nextjs.svg /images/about/react.svg /images/about/tailwindcss.svg /images/about/sass.svg /images/about/typescript.svg">
           I have experience with web development, including building websites with Next.js, React, and Tailwind CSS. I am also familiar with Sass and TypeScript. This website is built with Next.js and Tailwind CSS, deployed through Github Action.
         </Skill>
       </Section>

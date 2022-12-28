@@ -9,8 +9,8 @@ export default function ({ active, children }: { active: string, children: React
                 <main className='mx-2 sm:mx-4 md:mx-16 xl:mr-0 flex flex-col'>
                     {children}
                 </main>
+                <StickyNavigation />
             </div>
-            <StickyNavigation />
         </>
     );
 }

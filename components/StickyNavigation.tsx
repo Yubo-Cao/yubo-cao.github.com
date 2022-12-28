@@ -124,7 +124,7 @@ export default class extends React.Component {
     render(): React.ReactNode {
         return (
             <aside className={"sticky top-2 mr-8 prose self-start hidden xl:block" + this.className}>
-                <Title level={2}>Table of Content</Title>
+                <Title level={2} className='mb-4'>Table of Content</Title>
                 <nav ref={this.nav}>
                     <TOC items={this.state.toc} ordered={this.ordered} />
                 </nav>

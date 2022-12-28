@@ -43,7 +43,8 @@ function TOC(props: {
     return ordered ? <ol className="mt-0 ml-0">{result}</ol> : <ul className="mt-0 ml-0">{result}</ul>;
 }
 
-class StickNav extends React.Component {
+
+export default class extends React.Component {
     level: number;
     ordered: boolean;
     nav: React.RefObject<HTMLDivElement>;
@@ -131,5 +132,3 @@ class StickNav extends React.Component {
         )
     }
 }
-
-export default StickNav;

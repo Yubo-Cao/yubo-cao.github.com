@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from './Icon';
 import MenuButton from './MenuButton';
 
@@ -70,6 +70,17 @@ export default function Nav(props: {
 }) {
     const [open, setOpen] = useState(false);
     let height = props.height || 64;
+    useEffect(() => {
+        const close = () => {
+            if (open) setOpen(false);
+        }
+        window.addEventListener("resize", close);
+        window.addEventListener("scroll", close);
+        return () => {
+            window.removeEventListener("resize", close);
+            window.removeEventListener("scroll", close);
+        }
+    }, [open]);
     return (
         <>
             <MenuButton
@@ -77,7 +88,7 @@ export default function Nav(props: {
                 onClick={() => setOpen(!open)}
                 className="hidden max-xs:flex"
             />
-            <div className={`xs:hidden bg-black fixed left-0 top-0 h-full w-full opacity-20 z-10 ${open ? "block" : "hidden"}`} />
+            <div className={`transition-all bg-black fixed left-0 top-0 h-full w-full ${open ? "z-10 opacity-40" : "-z-10 opacity-0"}`} />
             <nav
                 className={`transition-all flex gap-4 bg-slate-50 z-10
                     max-xs:px-2

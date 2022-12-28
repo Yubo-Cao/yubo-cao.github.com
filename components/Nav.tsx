@@ -14,7 +14,7 @@ const links = [
         name: "Blog",
         icon: "book",
         href: "/blog",
-        description: "Coding &amps; Life"
+        description: "Coding & Life"
     },
     {
         name: "Projects",

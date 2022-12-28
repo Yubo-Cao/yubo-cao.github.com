@@ -14,7 +14,11 @@ export default function Home() {
   return (
     <>
       <Header active="Home" />
+<<<<<<< HEAD
       <div className='xl:grid xl:grid-cols-nav xl:gap-8 mt-4 mx-auto max-xl:overflow-x-hidden' style={{ maxWidth: 'min(100%, 1444px)' }}>
+=======
+      <div className='xl:grid xl:grid-cols-nav xl:gap-8 py-4 mx-auto max-xl:overflow-x-hidden' style={{ maxWidth: 'min(100%, 1444px)' }}>
+>>>>>>> 0169589e41b4a3ab6141a4de45ea8dc5ca84ea07
         <main className='mx-2 sm:mx-4 md:mx-16 xl:mr-0 flex flex-col'>
           <Section className='pb-0 max-md:pb-4' contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4">
             <Image

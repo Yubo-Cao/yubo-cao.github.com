@@ -112,7 +112,7 @@ export default function Nav(props: {
                                     icon={link.icon}
                                     href={link.href}
                                     description={link.description}
-                                    active={link.name === props.active}
+                                    active={link.name.toLowerCase() === props.active.toLowerCase()}
                                 ></NavItem>
                             )
                         }

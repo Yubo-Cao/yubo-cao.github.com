@@ -5,14 +5,6 @@ const materialSymbolsRounded = localFont({
     src: "./fonts/MaterialSymbolsRounded.woff2",
     variable: "--font-material-symbols-rounded"
 });
-const materialSymbolsOutlined = localFont({
-    src: "./fonts/MaterialSymbolsOutlined.woff2",
-    variable: "--font-material-symbols-outlined"
-});
-const materialSymbolsSharp = localFont({
-    src: "./fonts/MaterialSymbolsSharp.woff2",
-    variable: "--font-material-symbols-sharp"
-});
 
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
@@ -54,7 +46,7 @@ interface InnerIcon {
 function _icon({
     name,
     from = "md",
-    type = "outlined",
+    type = "rounded",
     weight = 200,
     grade = 0,
     size = 24,
@@ -69,16 +61,12 @@ function _icon({
             );
         }
         type = type as "rounded" | "sharp" | "outlined";
-
+        if (type !== "rounded") {
+            throw new Error(`Material Design Icons only support rounded icons. Got ${type}.`);
+        }
         return (
             <i
-                className={
-                    {
-                        rounded: materialSymbolsRounded,
-                        sharp: materialSymbolsSharp,
-                        outlined: materialSymbolsOutlined
-                    }[type].className + ` ${className}`
-                }
+                className={materialSymbolsRounded.className + ` ${className}`}
                 style={{
                     fontSize: size,
                     fontWeight: "normal",

@@ -67,7 +67,6 @@ function NavButton({
                 className={`transition-all rounded-full p-3`}
                 size={size}
                 iconSize={size / 2}
-                type="rounded"
                 fill={entered}
             />
             <Link href={href} className="mr-4 xs:max-sm:hidden">

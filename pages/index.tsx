@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Title from "../components/Title";
-import Section from "../components/Section";
 import HeaderLayout from "../components/HeaderLayout";
+import Section from "../components/Section";
+import Title from "../components/Title";
 
 export default function Index() {
     return (

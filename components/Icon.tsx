@@ -1,5 +1,5 @@
-import Image from "next/image";
 import localFont from "@next/font/local";
+import Image from "next/image";
 
 const materialSymbolsRounded = localFont({
     src: "./fonts/MaterialSymbolsRounded.woff2",

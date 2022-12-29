@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import Card from "./Card";
 import Icon from "./Icon";
-import { useRef } from "react";
 
 export default function Project(props: {
     title: string;

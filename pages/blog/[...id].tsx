@@ -1,8 +1,8 @@
-import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import NavigationLayout from "../../components/NavigationLayout";
-import Image from "next/image";
+import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
 
 async function getStaticPaths() {

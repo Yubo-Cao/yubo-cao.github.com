@@ -1,5 +1,5 @@
-import Title from "./Title";
 import Image from "next/image";
+import Title from "./Title";
 
 export default function Achievement(props: {
     title: string;

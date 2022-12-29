@@ -1,9 +1,9 @@
 import { promises, readFileSync } from "fs";
-import path from "path";
 import matter from "gray-matter";
-import { formatDate } from "./utils";
-import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import path from "path";
+import { formatDate } from "./utils";
 
 interface BlogPost {
     id: string[];

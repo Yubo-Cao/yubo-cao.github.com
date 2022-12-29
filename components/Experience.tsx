@@ -1,6 +1,6 @@
 import React from "react";
-import Section from "./Section";
 import { formatDate } from "../lib/utils";
+import Section from "./Section";
 
 function capitlize(str: string): string {
     return str.toUpperCase().substring(0, 1) + str.toLowerCase().substring(1, str.length);

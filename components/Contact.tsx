@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
+import Card from "./Card";
 import ClickCopy from "./ClickCopy";
 import Icon from "./Icon";
 import Modal from "./Modal";
-import Card from "./Card";
 
 export default function Contact(props: {
     type: "email" | "tel" | "discord" | "github";
@@ -13,10 +13,10 @@ export default function Contact(props: {
         value = props.value,
         size = 48;
     let icon = {
-        email: <Icon name="email" size={size} from="md" type="rounded" fill={true}/>,
-        tel: <Icon name="phone" size={size} from="md" type="outlined" fill={true}/>,
-        discord: <Icon name="discord" size={size} from="fa" type="brand"/>,
-        github: <Icon name="github" size={size} from="fa" type="brand"/>
+        email: <Icon name="email" size={size} from="md" type="rounded" fill={true} />,
+        tel: <Icon name="phone" size={size} from="md" type="outlined" fill={true} />,
+        discord: <Icon name="discord" size={size} from="fa" type="brand" />,
+        github: <Icon name="github" size={size} from="fa" type="brand" />
     }[type];
     const [open, setOpen] = React.useState(false);
     let action = {

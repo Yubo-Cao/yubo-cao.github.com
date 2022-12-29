@@ -1,10 +1,10 @@
-import {useEffect, useState} from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
-import Image from "next/image";
 
-export default function GithubFriend({username, name}: { username: string; name?: string }) {
+export default function GithubFriend({ username, name }: { username: string; name?: string }) {
     const [image, setImage] = useState<string>(""),
         [description, setDescription] = useState<string>("");
 
@@ -39,7 +39,7 @@ export default function GithubFriend({username, name}: { username: string; name?
                     height={80}
                 />
             ) : (
-                <Loading type="icon" size={80}/>
+                <Loading type="icon" size={80} />
             )}
             <div className="space-y-0">
                 <Title level={3}>{name || username}</Title>
@@ -47,7 +47,7 @@ export default function GithubFriend({username, name}: { username: string; name?
                     description ? (
                         <p>{description}</p>
                     ) : (
-                        <Loading type="text" width={300} height={45}/>
+                        <Loading type="text" width={300} height={45} />
                     )
                 ) : null}
             </div>

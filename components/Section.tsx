@@ -1,5 +1,4 @@
-import React, {useEffect} from "react";
-import Title from "./Title";
+import React, { useEffect } from "react";
 import {
     isEvenChild,
     isFirstChild,
@@ -7,6 +6,7 @@ import {
     isParentMain,
     isParentRoot
 } from "../lib/elements";
+import Title from "./Title";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
     while (el.tagName !== "SECTION" && el.parentElement) el = el.parentElement;
@@ -87,7 +87,7 @@ export default function Section(props: {
 
     return (
         <section id={id} className={"my-6 py-8 px-4 " + className} ref={ref}>
-            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level}/>}
+            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level} />}
             <div className={`${flowClass} ${titleClass} ${props.contentClassName || ""}`}>
                 {props.children}
             </div>
@@ -95,4 +95,4 @@ export default function Section(props: {
     );
 }
 
-export {findContainingSection, isContainingSectionAlternating, Section};
+export { findContainingSection, isContainingSectionAlternating, Section };

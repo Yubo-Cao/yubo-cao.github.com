@@ -10,23 +10,35 @@ export default function Logo({
     className?: string;
 }) {
     return (
-        <Link href="/" className="flex items-center gap-4">
-            <Icon
-                name="/icon.png"
-                iconSize={size * 0.75}
-                size={size}
-                wrapClassName={`border border-slate-300 rounded-full transition-all hover:border-slate-500`}
-            />
+        <Link
+            href="/"
+            className={cls(
+                "flex",
+                "items-center",
+                {
+                    24: "gap-2",
+                    32: "gap-2",
+                    40: "gap-3",
+                    48: "gap-4"
+                }[size],
+                // chip
+                "rounded-full",
+                "transition-all",
+                "hover:bg-slate-100",
+                "p-2"
+            )}
+        >
+            <Icon name="/icon.png" size={size} />
             <p
                 className={cls(
                     className,
                     {
                         24: "text-base",
-                        32: "text-lg",
+                        32: "text-xl",
                         40: "text-2xl",
                         48: "text-3xl"
                     }[size],
-                    "font-mono",
+                    "font-mono"
                 )}
             >
                 YUBO CAO

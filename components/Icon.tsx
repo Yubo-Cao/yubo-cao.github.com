@@ -2,15 +2,15 @@ import Image from "next/image";
 import localFont from "@next/font/local";
 
 const materialSymbolsRounded = localFont({
-    src: "../public/fonts/MaterialSymbolsRounded.woff2",
+    src: "../fonts/MaterialSymbolsRounded.woff2",
     variable: "--font-material-symbols-rounded"
 });
 const materialSymbolsOutlined = localFont({
-    src: "../public/fonts/MaterialSymbolsOutlined.woff2",
+    src: "../fonts/MaterialSymbolsOutlined.woff2",
     variable: "--font-material-symbols-outlined"
 });
 const materialSymbolsSharp = localFont({
-    src: "../public/fonts/MaterialSymbolsSharp.woff2",
+    src: "../fonts/MaterialSymbolsSharp.woff2",
     variable: "--font-material-symbols-sharp"
 });
 

@@ -6,6 +6,7 @@ import {
     isParentMain,
     isParentRoot
 } from "../lib/elements";
+import { cls } from "../lib/utils";
 import Title from "./Title";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
@@ -19,7 +20,18 @@ function isContainingSectionAlternating(el: HTMLElement): boolean {
     return section.classList.contains("alternate");
 }
 
-export default function Section(props: {
+export default function Section({
+    id = "",
+    className = "",
+    contentClassName = "",
+    title = "",
+    subtitle = "",
+    level = 2,
+    children = null,
+    flow = false,
+    alternate = "even",
+    avoidTOC = true
+}: {
     id?: string;
     className?: string;
     contentClassName?: string;
@@ -31,40 +43,37 @@ export default function Section(props: {
     alternate?: "even" | "odd" | "none" | "this";
     avoidTOC?: boolean;
 }) {
-    let id = props.id || "",
-        className = props.className || "",
-        ref = React.useRef<HTMLDivElement>(null),
-        hasTitle = props.title !== undefined || props.subtitle !== undefined,
-        flow = props.flow || false,
-        alternate = props.alternate || "even",
-        level = props.level || 2,
-        avoidTOC = Object.hasOwn(props, "avoidTOC") ? props.avoidTOC : true;
+    let ref = React.useRef<HTMLDivElement>(null),
+        hasTitle = title || subtitle,
+        flowClass = flow
+            ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4".split(/\s+/)
+            : [],
+        titleClass = hasTitle ? (level < 3 ? "mt-8" : "mt-4") : "",
+        spacingClass = ["my-6", "px-2", "py-4", "sm:py-8", "sm:px-4"];
 
-    const addBackground = (section: HTMLElement) => {
-            let background = document.createElement("div");
-            background.classList.add(
-                "absolute",
-                "-left-full",
-                "-right-full",
-                "top-0",
-                "rounded-lg",
-                "bottom-0",
-                "bg-primary-100/30",
-                "-z-10"
-            );
-            if (avoidTOC) background.classList.add("xl:right-0");
-            section.classList.add("relative", "alternate"); // tagging purpose only
-            section.appendChild(background);
-            return () => section?.removeChild(background);
-        },
-        flowClass = flow ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4 " : " ",
-        titleClass = hasTitle ? (level < 3 ? "mt-8 " : "mt-4 ") : " ";
-
+    function addBackground(section: HTMLElement) {
+        let background = document.createElement("div");
+        background.classList.add(
+            "absolute",
+            "-left-full",
+            "-right-full",
+            "top-0",
+            "rounded-lg",
+            "bottom-0",
+            "bg-primary-100/30",
+            "-z-10"
+        );
+        if (avoidTOC) background.classList.add("xl:right-0");
+        section.classList.add("relative", "alternate"); // tagging purpose only
+        section.appendChild(background);
+        return () => section?.removeChild(background);
+    }
+    
     useEffect(() => {
         let section = ref.current;
         if (!section) return;
         if (!isParentMain(section)) {
-            section.classList.remove("my-6", "py-8");
+            section.classList.remove(...spacingClass);
         }
         if (isFirstChild(section)) {
             section.classList.remove("my-6");
@@ -86,11 +95,9 @@ export default function Section(props: {
     });
 
     return (
-        <section id={id} className={"my-6 py-8 px-4 " + className} ref={ref}>
-            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level} />}
-            <div className={`${flowClass} ${titleClass} ${props.contentClassName || ""}`}>
-                {props.children}
-            </div>
+        <section id={id} className={cls(...spacingClass, className)} ref={ref}>
+            {hasTitle && <Title title={title} subtitle={subtitle} level={level} />}
+            <div className={cls(...flowClass, titleClass, contentClassName)}>{children}</div>
         </section>
     );
 }

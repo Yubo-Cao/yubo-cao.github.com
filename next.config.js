@@ -13,10 +13,10 @@ module.exports = (phase) => {
                     pathname: "**"
                 }
             ]
-        },
+        }
     };
 
-    if (phase !== PHASE_DEVELOPMENT_SERVER && phase !== PHASE_PRODUCTION_BUILD) {
+    if (phase !== PHASE_DEVELOPMENT_SERVER) {
         config.images.unoptimized = true;
         config.swcMinify = true;
     }

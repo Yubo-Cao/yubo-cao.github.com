@@ -1,16 +1,25 @@
 // @ts-check
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const {PHASE_DEVELOPMENT_SERVER} = require("next/constants");
 
 /**
  *
  * @param {string} phase the current build phase, one of 'phase-production-build' | 'phase-development-server' | 'phase-export'
- * @param {import('next').NextConfig} options the default config
  * @returns {import('next').NextConfig}
  */
-module.exports = (phase, { defaultConfig }) => {
+module.exports = (phase) => {
     if (phase === PHASE_DEVELOPMENT_SERVER) {
         return {
-            reactStrictMode: true
+            reactStrictMode: true,
+            images: {
+                remotePatterns: [
+                    {
+                        protocol: "https",
+                        hostname: "avatars.githubusercontent.com",
+                        port: '',
+                        pathname: "**",
+                    }
+                ]
+            }
         };
     }
 
@@ -18,7 +27,15 @@ module.exports = (phase, { defaultConfig }) => {
         reactStrictMode: true,
         swcMinify: true,
         images: {
+            remotePatterns: [
+                {
+                    protocol: "https",
+                    hostname: "avatars.githubusercontent.com",
+                    port: '',
+                    pathname: "**",
+                }
+            ],
             unoptimized: true
         }
-    };
+    }
 };

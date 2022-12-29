@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Icon from "./Icon";
 import MenuButton from "./MenuButton";
+import {useRouter} from "next/router";
 
 const links = [
     {
@@ -38,15 +39,18 @@ function NavItem(props: {
     active?: boolean;
 }) {
     const [entered, setEntered] = useState(false);
-    let { name, icon, href, description, active } = props;
+    let { name, icon, href, description, active } = props,
+        router = useRouter();
+
     return (
         <div
             title={description}
-            className={`transition-all flex items-center rounded-full ${
+            className={`transition-all flex items-center rounded-full cursor-pointer ${
                 active ? "bg-primary-100" : ""
             } ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
+            onClick={() => router.push(href)}
         >
             <Icon
                 from="md"

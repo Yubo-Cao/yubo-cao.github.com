@@ -14,6 +14,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
                 <title>Yubo Cao</title>
                 <meta name="author" content="Yubo Cao" />
                 <link rel="icon" href="/favicon.png" />
+                <link rel="icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             </Head>
             <Component {...pageProps} />

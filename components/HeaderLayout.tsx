@@ -1,5 +1,5 @@
 import Header from "./Header";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 
 export default function HeaderLayout({
     active,

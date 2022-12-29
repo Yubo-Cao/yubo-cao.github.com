@@ -55,20 +55,27 @@ function TOC(props: {
     );
 }
 
-export default class extends React.Component {
+type StickyNavigationState = {
+    toc: {
+        id: string;
+        title: string;
+        level: number;
+    }[];
+};
+
+type StickyNavigationProps = { level?: number; ordered?: boolean; className?: string };
+
+export default class StickyNavigation extends React.Component<
+    StickyNavigationProps,
+    StickyNavigationState
+> {
     level: number;
     ordered: boolean;
     nav: React.RefObject<HTMLDivElement>;
     className: string;
-    state: {
-        toc: {
-            id: string;
-            title: string;
-            level: number;
-        }[];
-    };
+    state: StickyNavigationState;
 
-    constructor(props: { level?: number; ordered?: boolean; className?: string }) {
+    constructor(props: StickyNavigationProps) {
         super(props);
         this.state = {
             toc: []

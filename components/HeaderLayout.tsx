@@ -1,6 +1,13 @@
 import Header from "./Header";
+import {ReactNode} from "react";
 
-export default function ({ active, children }: { active: string; children: React.ReactNode }) {
+export default function HeaderLayout({
+    active,
+    children
+}: {
+    active: string;
+    children: ReactNode;
+}) {
     return (
         <>
             <Header active={active} />

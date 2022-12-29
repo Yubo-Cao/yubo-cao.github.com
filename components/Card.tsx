@@ -67,7 +67,7 @@ function AlternatingCard(props: {
         let current = ref.current;
         if (!current) return;
         setColor(isContainingSectionAlternating(current) ? alternateAccent : accent);
-    }, [ref]);
+    }, [ref, alternateAccent, accent]);
     return (
         <Card
             className={props.className}

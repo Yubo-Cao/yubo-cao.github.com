@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AlternatingCard } from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
+import Image from "next/image";
 
 export default function GithubFriend({ username, name }: { username: string; name?: string }) {
     const [image, setImage] = useState<string>(""),
@@ -30,7 +31,13 @@ export default function GithubFriend({ username, name }: { username: string; nam
             alternateAccent={"primary"}
         >
             {image ? (
-                <img src={image} alt={username} className="w-20 h-20 rounded-full" />
+                <Image
+                    src={image}
+                    alt={username}
+                    className="w-20 h-20 rounded-full"
+                    width={80}
+                    height={80}
+                />
             ) : (
                 <Loading type="icon" size={80} />
             )}

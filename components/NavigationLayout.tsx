@@ -1,7 +1,13 @@
 import Header from "./Header";
 import StickyNavigation from "./StickyNavigation";
 
-export default function ({ active, children }: { active: string; children: React.ReactNode }) {
+export default function NavigatioLayout({
+    active,
+    children
+}: {
+    active: string;
+    children: React.ReactNode;
+}) {
     return (
         <>
             <Header active={active} />

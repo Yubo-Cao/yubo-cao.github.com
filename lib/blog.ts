@@ -1,7 +1,6 @@
 import { promises } from "fs";
 import matter from "gray-matter";
 
-
 class Blog {
     private _load_content?: {
         header: {
@@ -33,10 +32,12 @@ class Blog {
         } catch (e) {
             throw new Error(`Blog ${path} has an invalid date`);
         }
+
         function _ensure_list(data: string | string[]): string[] {
             if (typeof data === "string") return data.split(",").map((s) => s.trim());
             return data;
         }
+
         let authors = _ensure_list(data.author);
         let tags = _ensure_list(data.tags);
 
@@ -58,7 +59,7 @@ class Blog {
         return Promise.all(
             files
                 .filter((file) => file.endsWith(".md"))
-                .map((file) => Blog.load(path + "/" + file))
+                .map((file) => new Blog(`${path}/${file}`))
         );
     }
 }

@@ -3,7 +3,7 @@ import Title from "../components/Title";
 import Section from "../components/Section";
 import HeaderLayout from "../components/HeaderLayout";
 
-export default function () {
+export default function Index() {
     return (
         <HeaderLayout active={"Home"}>
             <Section

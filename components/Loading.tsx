@@ -103,7 +103,7 @@ function LoadImage(width: number, height: number, className?: string) {
     );
 }
 
-export default function ({
+export default function Loading({
     type,
     size,
     width,

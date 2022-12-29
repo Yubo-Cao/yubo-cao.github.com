@@ -65,7 +65,7 @@ function NavButton({
                 "flex",
                 "items-center",
                 "px-4",
-                active ? "border-b-4 border-primary-200" : "",
+                active ? "border-y-4 border-primary-200 border-t-transparent" : "border-y-4 border-transparent",
                 active ? "max-xs:bg-primary-100" : "",
                 entered
                     ? active

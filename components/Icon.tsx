@@ -144,7 +144,7 @@ interface IconProps extends InnerIcon {
 
 export default function Icon({
     name,
-    from = name.startsWith("/") ? "image" : "md",
+    from,
     type,
     weight,
     grade,
@@ -156,7 +156,7 @@ export default function Icon({
     wrapClassName = "",
     alt = `${from} icon ${name}`
 }: IconProps) {
-    const cp = { ...{ name, from, type, weight, grade, fill, className }, size: iconSize };
+    from = name.startsWith("/") ? "image" : from;
     const icon =
         from === "image" ? (
             <Image
@@ -167,7 +167,10 @@ export default function Icon({
                 className={className}
             />
         ) : (
-            _icon(cp as any)
+            _icon({
+                ...{ name, from, type, weight, grade, fill, className },
+                size: iconSize
+            } as any)
         );
     return wrap ? (
         <div

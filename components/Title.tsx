@@ -30,12 +30,12 @@ export default function Title(props: {
         h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500",
         h2: "text-4xl font-extrabold text-primary-400",
         h3: "text-2xl font-bold",
-        h4: "text-3xl font-semibold",
-        h5: "text-2xl",
-        h6: "text-xl"
+        h4: "text-xl font-semibold",
+        h5: "text-lg font-medium",
+        h6: "text-base font-medium"
     };
     return (
-        <>
+        <div>
             {React.createElement(
                 "h" + level,
                 {
@@ -47,10 +47,10 @@ export default function Title(props: {
             {subtitle !== "" &&
                 React.createElement(
                     "div",
-                    { className: `text-lg font-light ${subtitleClassName}` },
+                    { className: `text-lg ${subtitleClassName}` },
                     subtitle,
                     []
                 )}
-        </>
+        </div>
     );
 }

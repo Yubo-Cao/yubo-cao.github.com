@@ -61,6 +61,9 @@ module.exports = {
                     "monospace"
                 ]
             },
+            maxWidth: {
+                "1/2": "50%",
+            },
             backgroundColor: (theme) => ({
                 ...theme("colors"),
                 ...primaryColors

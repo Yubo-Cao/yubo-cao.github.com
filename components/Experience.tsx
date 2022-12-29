@@ -1,28 +1,6 @@
 import React from "react";
 import Section from "./Section";
-
-function formatDate(date: string): string {
-    const [year, month, day] = date.split("-").map((s) => parseInt(s, 10));
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ];
-    if (day) {
-        return `${months[month - 1]} ${day}, ${year}`;
-    } else {
-        return `${months[month - 1]} ${year}`;
-    }
-}
+import { formatDate } from "../lib/utils";
 
 function capitlize(str: string): string {
     return str.toUpperCase().substring(0, 1) + str.toLowerCase().substring(1, str.length);

@@ -62,7 +62,7 @@ function NavItem(props: {
                 type="rounded"
                 fill={entered}
             />
-            <Link href={href} className="text-base mr-4 xs:max-sm:hidden">
+            <Link href={href} className="font-medium mr-4 xs:max-sm:hidden">
                 {name}
             </Link>
         </div>

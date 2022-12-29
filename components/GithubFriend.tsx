@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { AlternatingCard } from "./Card";
+import {useEffect, useState} from "react";
+import Card from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
 import Image from "next/image";
 
-export default function GithubFriend({ username, name }: { username: string; name?: string }) {
+export default function GithubFriend({username, name}: { username: string; name?: string }) {
     const [image, setImage] = useState<string>(""),
         [description, setDescription] = useState<string>("");
 
@@ -22,7 +22,7 @@ export default function GithubFriend({ username, name }: { username: string; nam
     }, [username]);
 
     return (
-        <AlternatingCard
+        <Card
             onClick={() => window.open(`https://github.com/${username}`, "_blank")}
             className="flex flex-col gap-2 xs:flex-row xs:gap-4 xs:items-center"
             hoverType="elevated"
@@ -39,7 +39,7 @@ export default function GithubFriend({ username, name }: { username: string; nam
                     height={80}
                 />
             ) : (
-                <Loading type="icon" size={80} />
+                <Loading type="icon" size={80}/>
             )}
             <div className="space-y-0">
                 <Title level={3}>{name || username}</Title>
@@ -47,10 +47,10 @@ export default function GithubFriend({ username, name }: { username: string; nam
                     description ? (
                         <p>{description}</p>
                     ) : (
-                        <Loading type="text" width={300} height={45} />
+                        <Loading type="text" width={300} height={45}/>
                     )
                 ) : null}
             </div>
-        </AlternatingCard>
+        </Card>
     );
 }

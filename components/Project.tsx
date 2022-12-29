@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { AlternatingCard } from "./Card";
+import Card from "./Card";
 import Icon from "./Icon";
 import { useRef } from "react";
 
@@ -19,7 +19,7 @@ export default function Project(props: {
         router = useRouter();
 
     return (
-        <AlternatingCard
+        <Card
             className="flex flex-row gap-4 items-start justify-start flex-wrap"
             onClick={() => router.push(props.url)}
             accent={"gray"}
@@ -50,6 +50,6 @@ export default function Project(props: {
                     {typeof props.children === "object" && props.children}
                 </div>
             </div>
-        </AlternatingCard>
+        </Card>
     );
 }

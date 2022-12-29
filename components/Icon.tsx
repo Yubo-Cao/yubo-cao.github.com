@@ -1,18 +1,4 @@
 import Image from "next/image";
-import localFont from "@next/font/local";
-
-const materialSymbolsRounded = localFont({
-    src: "./icon/MaterialSymbolsRounded.woff2",
-    variable: "--font-material-symbols-rounded"
-});
-const materialSymbolsOutlined = localFont({
-    src: "./icon/MaterialSymbolsOutlined.woff2",
-    variable: "--font-material-symbols-outlined"
-});
-const materialSymbolsSharp = localFont({
-    src: "./icon/MaterialSymbolsSharp.woff2",
-    variable: "--font-material-symbols-sharp"
-});
 
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
@@ -69,15 +55,7 @@ function _icon(props: {
 
         return (
             <i
-                className={
-                    {
-                        rounded: materialSymbolsRounded.className,
-                        sharp: materialSymbolsSharp.className,
-                        outlined: materialSymbolsOutlined.className
-                    }[type] +
-                    " " +
-                    className
-                }
+                className={className}
                 style={{
                     fontSize: size,
                     fontWeight: "normal",
@@ -92,6 +70,11 @@ function _icon(props: {
                     MozOsxFontSmoothing: "grayscale",
                     WebkitFontFeatureSettings: "liga",
                     WebkitFontSmoothing: "antialiased",
+                    fontFamily: {
+                        rounded: "var(--font-material-symbols-rounded)",
+                        sharp: "var(--font-material-symbols-sharp)",
+                        outlined: "var(--font-material-symbols-outlined)"
+                    }[type],
                     fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${
                         props.fill ? 1 : 0
                     }, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`

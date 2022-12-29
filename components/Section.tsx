@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Title from "./Title";
 import {
     isEvenChild,
@@ -28,7 +28,8 @@ export default function Section(props: {
     level?: 1 | 2 | 3 | 4 | 5 | 6;
     children?: React.ReactNode;
     flow?: boolean;
-    alternate?: "even" | "odd" | "none";
+    alternate?: "even" | "odd" | "none" | "this";
+    avoidTOC?: boolean;
 }) {
     let id = props.id || "",
         className = props.className || "",
@@ -36,7 +37,8 @@ export default function Section(props: {
         hasTitle = props.title !== undefined || props.subtitle !== undefined,
         flow = props.flow || false,
         alternate = props.alternate || "even",
-        level = props.level || 2;
+        level = props.level || 2,
+        avoidTOC = Object.hasOwn(props, "avoidTOC") ? props.avoidTOC : true;
 
     const addBackground = (section: HTMLElement) => {
             let background = document.createElement("div");
@@ -44,13 +46,13 @@ export default function Section(props: {
                 "absolute",
                 "-left-full",
                 "-right-full",
-                "xl:right-0",
                 "top-0",
                 "rounded-lg",
                 "bottom-0",
                 "bg-primary-100/30",
                 "-z-10"
             );
+            if (avoidTOC) background.classList.add("xl:right-0");
             section.classList.add("relative", "alternate"); // tagging purpose only
             section.appendChild(background);
             return () => section?.removeChild(background);
@@ -76,13 +78,16 @@ export default function Section(props: {
                 case "odd":
                     isOddChild(section) && addBackground(section);
                     break;
+                case "this":
+                    addBackground(section);
+                    break;
             }
         }
     });
 
     return (
         <section id={id} className={"my-6 py-8 px-4 " + className} ref={ref}>
-            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level} />}
+            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level}/>}
             <div className={`${flowClass} ${titleClass} ${props.contentClassName || ""}`}>
                 {props.children}
             </div>
@@ -90,4 +95,4 @@ export default function Section(props: {
     );
 }
 
-export { findContainingSection, isContainingSectionAlternating, Section };
+export {findContainingSection, isContainingSectionAlternating, Section};

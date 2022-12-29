@@ -1,19 +1,20 @@
-import { Blog as BlogManager, BlogPost } from "../../lib/blog";
+import {Blog as BlogManager, BlogPost} from "../../lib/blog";
 import Section from "../../components/Section";
 import Card from "../../components/Card";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 import Title from "../../components/Title";
-import { Chip } from "../../components/Chip";
+import {Chip} from "../../components/Chip";
 import Icon from "../../components/Icon";
 import HeaderLayout from "../../components/HeaderLayout";
-import { cls } from "../../lib/utils";
+import {cls} from "../../lib/utils";
 import Image from "next/image";
 
 function BlogCard(props: { blog: BlogPost }) {
-    let router = useRouter();
+    let router = useRouter(),
+        {blog} = props;
     return (
         <Card
-            onClick={() => router.push(props.blog.url)}
+            onClick={() => router.push(blog.url)}
             hoverType={"elevated"}
             activeType={"elevated"}
             className={cls("p-0", "max-w-2xl")}
@@ -28,12 +29,12 @@ function BlogCard(props: { blog: BlogPost }) {
                     "md:gap-4"
                 )}
             >
-                <div className={cls("overflow-hidden", "md:h-full", "md:w-1/3")}>
+                <div className={cls("overflow-hidden", "md:h-full", "md:w-1/2", "lg:w-1/3")}>
                     <Image
-                        src={props.blog.cover}
+                        src={blog.cover}
                         width={300}
                         height={200}
-                        alt={`Cover image for ${props.blog.title}`}
+                        alt={`Cover image for ${blog.title}`}
                         className={cls(
                             "rounded-t-lg",
                             "w-full",
@@ -47,7 +48,8 @@ function BlogCard(props: { blog: BlogPost }) {
                 <div
                     className={cls(
                         "p-4",
-                        "md:w-2/3",
+                        "md:w-1/2",
+                        "lg:w-2/3",
                         "flex-auto",
                         "flex",
                         "justify-between",
@@ -56,17 +58,17 @@ function BlogCard(props: { blog: BlogPost }) {
                 >
                     <Title
                         level={3}
-                        title={props.blog.title}
-                        subtitle={props.blog.abstract}
+                        title={blog.title}
+                        subtitle={blog.abstract}
                         subtitleClassName={cls("text-slate-500", "text-lg", "font-semibold")}
                         className={cls("mb-0")}
                     />
                     <div className={cls("mt-4", "space-y-2")}>
-                        <p className={cls("text-sm", "text-gray-500")}>{props.blog.date}</p>
+                        <p className={cls("text-sm", "text-gray-500")}>{blog.date}</p>
                         <div className={cls("flex", "flex-row", "gap-2")}>
-                            <Icon name={"tag"} className={cls("text-gray-500")} size={24} />
+                            <Icon name={"tag"} className={cls("text-gray-500")} size={24}/>
                             <div className={`space-x-2`}>
-                                {props.blog.tags.map((tag) => (
+                                {blog.tags.map((tag) => (
                                     <Chip key={tag}>{tag}</Chip>
                                 ))}
                             </div>
@@ -78,10 +80,14 @@ function BlogCard(props: { blog: BlogPost }) {
     );
 }
 
-export default function Index({ blogs }: { blogs: BlogPost[] }) {
+export default function Index({
+                                  blogs
+                              }: {
+    blogs: BlogPost[]
+}) {
     return (
         <HeaderLayout active={"blog"}>
-            <Section title={"Recent"} flow={true}>
+            <Section title={"Recent"} flow={true} alternate={"this"} avoidTOC={false}>
                 {blogs
                     .filter(
                         (blog) =>
@@ -89,12 +95,12 @@ export default function Index({ blogs }: { blogs: BlogPost[] }) {
                             7
                     )
                     .map((blog) => (
-                        <BlogCard key={blog.id.join("-")} blog={blog} />
+                        <BlogCard key={blog.id.join("-")} blog={blog}/>
                     ))}
             </Section>
-            <Section title={"All"} flow={true}>
+            <Section title={"All"} flow={true} alternate={"none"}>
                 {blogs.map((blog) => (
-                    <BlogCard key={blog.id.join("-")} blog={blog} />
+                    <BlogCard key={blog.id.join("-")} blog={blog}/>
                 ))}
             </Section>
         </HeaderLayout>

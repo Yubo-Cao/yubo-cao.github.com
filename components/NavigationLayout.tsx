@@ -4,10 +4,10 @@ import StickyNavigation from "./StickyNavigation";
 export default function NavigatioLayout({
     active,
     children,
-    className,
-    mainClassName,
-    navigationClassName,
-    maxWidth
+    className = "",
+    mainClassName = "",
+    navigationClassName = "",
+    maxWidth = 1444
 }: {
     active: string;
     children: React.ReactNode;
@@ -22,16 +22,14 @@ export default function NavigatioLayout({
             <div
                 className={
                     "xl:grid xl:grid-cols-nav xl:gap-4 mt-4 mx-auto max-xl:overflow-x-hidden " +
-                    (className || "")
+                    className
                 }
-                style={{ maxWidth: `min(100%, ${maxWidth || 1444}px)` }}
+                style={{ maxWidth: `min(100%, ${maxWidth}px)` }}
             >
-                <main className={"mx-3 sm:mx-8 md:mx-16 xl:mr-0 " + (mainClassName || "")}>
+                <main className={"mx-3 sm:mx-8 md:mx-16 xl:mr-0 " + mainClassName}>
                     {children}
                 </main>
-                <StickyNavigation
-                    className={"hidden xl:block " + (navigationClassName || "")}
-                />
+                <StickyNavigation className={"hidden xl:block " + navigationClassName} />
             </div>
         </>
     );

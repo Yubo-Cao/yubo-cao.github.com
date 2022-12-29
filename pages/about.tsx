@@ -10,7 +10,7 @@ import Title from "../components/Title";
 
 export default function Home() {
     return (
-        <NavigationLayout active="About">
+        <NavigationLayout active="About" navigationClassName="mt-20">
             <Title level={1}>About me</Title>
             <Section title="Projects" subtitle="My hobby, passion, and dream" flow={true}>
                 <Project title="My Website" name="public" url="https://yubo-cao.github.io">

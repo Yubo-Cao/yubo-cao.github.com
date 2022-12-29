@@ -1,4 +1,18 @@
 import Image from "next/image";
+import localFont from "@next/font/local";
+
+const materialSymbolsRounded = localFont({
+    src: "../public/fonts/MaterialSymbolsRounded.woff2",
+    variable: "--font-material-symbols-rounded"
+});
+const materialSymbolsOutlined = localFont({
+    src: "../public/fonts/MaterialSymbolsOutlined.woff2",
+    variable: "--font-material-symbols-outlined"
+});
+const materialSymbolsSharp = localFont({
+    src: "../public/fonts/MaterialSymbolsSharp.woff2",
+    variable: "--font-material-symbols-sharp"
+});
 
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
@@ -57,15 +71,27 @@ function _icon(props: {
             <i
                 className={
                     {
-                        rounded: "material-symbols-rounded",
-                        sharp: "material-symbols-sharp",
-                        outlined: "material-symbols-outlined"
+                        rounded: materialSymbolsRounded.className,
+                        sharp: materialSymbolsSharp.className,
+                        outlined: materialSymbolsOutlined.className
                     }[type] +
                     " " +
                     className
                 }
                 style={{
                     fontSize: size,
+                    fontWeight: "normal",
+                    fontStyle: "normal",
+                    lineHeight: 1,
+                    letterSpacing: "normal",
+                    textTransform: "none",
+                    whiteSpace: "nowrap",
+                    wordWrap: "normal",
+                    direction: "ltr",
+                    MozFontFeatureSettings: "liga",
+                    MozOsxFontSmoothing: "grayscale",
+                    WebkitFontFeatureSettings: "liga",
+                    WebkitFontSmoothing: "antialiased",
                     fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${
                         props.fill ? 1 : 0
                     }, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`

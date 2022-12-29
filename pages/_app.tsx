@@ -1,6 +1,12 @@
 import React from "react";
 import "../styles/globals.css";
 import Head from "next/head";
+import { Inter } from "@next/font/google";
+
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter"
+});
 
 interface AppProps {
     Component: React.ComponentType;
@@ -17,7 +23,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             </Head>
-            <Component {...pageProps} />
+            <div className={`${inter.variable} font-sans`}>
+                <Component {...pageProps} />
+            </div>
         </>
     );
 };

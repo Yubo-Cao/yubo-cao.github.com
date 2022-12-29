@@ -40,7 +40,16 @@ function to_px(length: string | number): number {
     );
 }
 
-function _icon(props: {
+function _icon({
+    name,
+    from = "md",
+    type = "outlined",
+    weight = 200,
+    grade = 0,
+    size = 24,
+    fill = false,
+    className = ""
+}: {
     name: string;
     from?: "md" | "fa" | "mdi";
     type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
@@ -50,21 +59,13 @@ function _icon(props: {
     fill?: boolean;
     className?: string;
 }) {
-    let from = props.from || "md",
-        type = props.type || "outlined",
-        weight = props.weight
-            ? Math.max(100, Math.min(700, Math.round(props.weight / 100) * 100))
-            : 200,
-        grade = props.grade ? to_nearest(props.grade, [-25, 0, 200]) : 0,
-        size = props.size || 24,
-        className = props.className || "";
-
     if (from === "md") {
         const supported = ["rounded", "sharp", "outlined"];
-        if (!supported.includes(type))
+        if (!supported.includes(type)) {
             throw new Error(
                 `Material Design Icons only support ${supported.join(", ")}. Got ${type}.`
             );
+        }
         type = type as "rounded" | "sharp" | "outlined";
 
         return (
@@ -91,17 +92,18 @@ function _icon(props: {
                     WebkitFontFeatureSettings: "liga",
                     WebkitFontSmoothing: "antialiased",
                     fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${
-                        props.fill ? 1 : 0
+                        fill ? 1 : 0
                     }, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`
                 }}
             >
-                {props.name}
+                {name}
             </i>
         );
     } else if (from === "fa") {
         const supported = ["brand", "classic", "regular", "sharp", "solid", "outlined"];
-        if (!supported.includes(type))
+        if (!supported.includes(type)) {
             throw new Error(`Font Awesome only support ${supported.join(", ")}. Got ${type}.`);
+        }
         type = type as "brand" | "classic" | "regular" | "sharp" | "solid" | "outlined";
         let cls = {
             brand: "fab",
@@ -114,7 +116,7 @@ function _icon(props: {
 
         return (
             <i
-                className={`fa ${cls} fa-${props["name"]} ${className}`}
+                className={`fa ${cls} fa-${name} ${className}`}
                 style={{
                     fontSize: size
                     // fa doesn't support font weight
@@ -122,11 +124,12 @@ function _icon(props: {
             ></i>
         );
     } else if (from === "mdi") {
-        if (type !== "solid")
+        if (type !== "solid") {
             throw new Error(`Material Design Icons only support solid icons. Got ${type}.`);
+        }
         return (
             <i
-                className={`mdi mdi-${props.name} ${className}`}
+                className={`mdi mdi-${name} ${className}`}
                 style={{
                     fontSize: size,
                     fontWeight: weight
@@ -138,7 +141,20 @@ function _icon(props: {
     }
 }
 
-export default function Icon(props: {
+export default function Icon({
+    name,
+    from = name.startsWith("/") ? "image" : "md",
+    type,
+    weight,
+    grade,
+    size = 24,
+    iconSize = size,
+    wrap = iconSize !== size,
+    fill,
+    className = "",
+    wrapClassName = "",
+    alt = `${from} icon ${name}`
+}: {
     name: string;
     from?: "md" | "fa" | "mdi" | "image";
     type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
@@ -152,32 +168,22 @@ export default function Icon(props: {
     wrapClassName?: string;
     alt?: string;
 }) {
-    let size = props.size || 24,
-        iconSize = props.iconSize || size,
-        wrap = props.wrap || props.wrapClassName || iconSize !== size,
-        from = props.name.startsWith("/")
-            ? "image"
-            : props.from === undefined
-            ? "md"
-            : props.from,
-        cp = { ...props };
-    cp.size = iconSize;
-    if (!wrap && from !== "image") return _icon(cp as any);
-    let icon =
+    const cp = { ...{ name, from, type, weight, grade, fill, className }, size: iconSize };
+    const icon =
         from === "image" ? (
             <Image
-                src={props.name}
+                src={name}
                 width={iconSize}
                 height={iconSize}
-                alt={props.alt || ""}
-                className={props.className || ""}
+                alt={alt}
+                className={className}
             />
         ) : (
             _icon(cp as any)
         );
     return wrap ? (
         <div
-            className={`flex justify-center items-center ${props.wrapClassName || ""}`}
+            className={`flex justify-center items-center ${wrapClassName || ""}`}
             style={{ width: size, height: size }}
         >
             {icon}

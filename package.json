@@ -3,7 +3,9 @@
     "scripts": {
         "dev": "next",
         "build": "next build && next export",
-        "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin deploy"
+        "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin deploy",
+        "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+        "lint": "next lint"
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
@@ -21,6 +23,8 @@
         "@types/node": "^18.11.5",
         "@types/react": "^18.0.23",
         "@types/react-dom": "^18.0.7",
+        "eslint": "8.30.0",
+        "eslint-config-next": "13.1.1",
         "typescript": "^4.8.4"
     }
 }

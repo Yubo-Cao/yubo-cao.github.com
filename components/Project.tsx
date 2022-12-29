@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import Card from './Card';
-import Icon from './Icon';
+import { useRouter } from "next/router";
+import Card from "./Card";
+import Icon from "./Icon";
 
 export default function Project(props: {
     title: string;
@@ -12,8 +12,8 @@ export default function Project(props: {
     children?: React.ReactNode;
 }) {
     let size = props.size || 64,
-        description = props.description || '';
-    if (typeof props.children === 'string') description = props.children;
+        description = props.description || "";
+    if (typeof props.children === "string") description = props.children;
 
     const router = useRouter();
 
@@ -45,7 +45,7 @@ export default function Project(props: {
                 <h3>{props.title}</h3>
                 <div className="flex-1">
                     {description && <p>{description}</p>}
-                    {typeof props.children === 'object' && props.children}
+                    {typeof props.children === "object" && props.children}
                 </div>
             </div>
         </Card>

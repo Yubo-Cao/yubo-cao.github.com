@@ -1,5 +1,5 @@
-import React from 'react';
-import Icon from './Icon';
+import React from "react";
+import Icon from "./Icon";
 
 export default function Modal(props: {
     children: React.ReactNode;
@@ -30,17 +30,15 @@ export default function Modal(props: {
             className={`transition-all fixed inset-0 bg-black flex items-center justify-center
               ${
                   isVisible
-                      ? 'bg-opacity-50 backdrop-blur-sm opacity-100  z-50'
-                      : 'bg-opacity-0 opacity-0 -z-50'
+                      ? "bg-opacity-50 backdrop-blur-sm opacity-100  z-50"
+                      : "bg-opacity-0 opacity-0 -z-50"
               }`}
             ref={ref}
         >
             <div
                 className={`relative bg-white rounded-md p-8 ${
-                    props.className || ''
-                } transition-all  transform ${
-                    isVisible ? 'scale-100' : 'scale-95'
-                }`}
+                    props.className || ""
+                } transition-all  transform ${isVisible ? "scale-100" : "scale-95"}`}
                 style={props.style}
             >
                 {showCloseButton && (

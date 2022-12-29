@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 export default function ClickCopy(props: {
     children: React.ReactNode;
@@ -37,8 +37,8 @@ export default function ClickCopy(props: {
                     className={`absolute bg-black text-white rounded-md p-2 text-sm top-full left-1/2 -translate-x-1/2 transition-all`}
                     style={{
                         clipPath: copied
-                            ? 'polygon(0 0, 100% 0%, 100% 100%, 0 100%)'
-                            : 'polygon(0 0, 100% 0%, 100% 0, 0 0)'
+                            ? "polygon(0 0, 100% 0%, 100% 100%, 0 100%)"
+                            : "polygon(0 0, 100% 0%, 100% 0, 0 0)"
                     }}
                 >
                     Copied

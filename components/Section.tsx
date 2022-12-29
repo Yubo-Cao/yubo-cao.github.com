@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Title from './Title';
+import React, { useEffect } from "react";
+import Title from "./Title";
 
 export default function Section(props: {
     id?: string;
@@ -11,8 +11,8 @@ export default function Section(props: {
     children?: React.ReactNode;
     flow?: boolean;
 }) {
-    let id = props.id || '',
-        className = props.className || '',
+    let id = props.id || "",
+        className = props.className || "",
         ref = React.useRef<HTMLDivElement>(null),
         hasTitle = props.title !== undefined || props.subtitle !== undefined,
         flow = props.flow || false;
@@ -23,8 +23,8 @@ export default function Section(props: {
             child = parent?.firstChild,
             idx = 0;
         if (!child) return;
-        if (parent?.tagName !== 'MAIN') {
-            section!!.classList.remove('my-6', 'py-8');
+        if (parent?.tagName !== "MAIN") {
+            section!!.classList.remove("my-6", "py-8");
             return;
         }
         while (true) {
@@ -33,22 +33,22 @@ export default function Section(props: {
             child = child.nextSibling;
         }
         if (idx === 1) {
-            section!!.classList.remove('my-6');
-            section!!.classList.add('mb-6');
+            section!!.classList.remove("my-6");
+            section!!.classList.add("mb-6");
         }
         if (idx % 2 === 1) {
-            let background = document.createElement('div');
-            section!!.classList.add('relative');
+            let background = document.createElement("div");
+            section!!.classList.add("relative");
             background.classList.add(
-                'absolute',
-                '-left-full',
-                '-right-full',
-                'xl:right-0',
-                'top-0',
-                'rounded-lg',
-                'bottom-0',
-                'bg-primary-100/30',
-                '-z-10'
+                "absolute",
+                "-left-full",
+                "-right-full",
+                "xl:right-0",
+                "top-0",
+                "rounded-lg",
+                "bottom-0",
+                "bg-primary-100/30",
+                "-z-10"
             );
             section?.appendChild(background);
             return () => {
@@ -58,22 +58,16 @@ export default function Section(props: {
     });
     let level = props.level || 2;
     return (
-        <section id={id} className={'my-6 py-8 ' + className} ref={ref}>
-            {hasTitle && (
-                <Title
-                    title={props.title}
-                    subtitle={props.subtitle}
-                    level={level}
-                />
-            )}
+        <section id={id} className={"my-6 py-8 " + className} ref={ref}>
+            {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level} />}
             <div
                 className={
-                    (hasTitle ? (level < 3 ? 'mt-8 ' : 'mt-4 ') : ' ') +
+                    (hasTitle ? (level < 3 ? "mt-8 " : "mt-4 ") : " ") +
                     (flow
-                        ? 'grid grid-cols-fit-96 md:grid-cols-fit-102 gap-2 sm:gap-4 '
-                        : ' ') +
-                    ' ' +
-                    (props.contentClassName || '')
+                        ? "grid grid-cols-fit-96 md:grid-cols-fit-102 gap-2 sm:gap-4 "
+                        : " ") +
+                    " " +
+                    (props.contentClassName || "")
                 }
             >
                 {props.children}

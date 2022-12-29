@@ -1,18 +1,13 @@
-import { css, keyframes } from '@emotion/react';
+import { css, keyframes } from "@emotion/react";
 
-function LoadText(
-    width: number,
-    height: number,
-    lineheight?: number,
-    className?: string
-) {
+function LoadText(width: number, height: number, lineheight?: number, className?: string) {
     let lineHeight = lineheight || 16,
         lineCount = Math.ceil(height / lineHeight);
     return (
         <div
             style={{ width: width, height: height }}
             className={`animate-pulse space-y-2 
-            overflow-hidden ${className || ''}`}
+            overflow-hidden ${className || ""}`}
         >
             {[...Array(lineCount)].map((_, i) => (
                 <div
@@ -63,7 +58,7 @@ function LoadIcon(size: number, className?: string) {
                 animation: ${rotate} 4.8s linear infinite;
                 position: relative;
             `}
-            className={`${className || ''}`}
+            className={`${className || ""}`}
         >
             <span
                 css={css`
@@ -80,7 +75,7 @@ function LoadIcon(size: number, className?: string) {
                     animation: ${rotatePartial} 1.2s linear infinite;
 
                     &::after {
-                        content: '';
+                        content: "";
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -91,8 +86,7 @@ function LoadIcon(size: number, className?: string) {
                         width: ${size}px;
                         border-radius: 50%;
                         clip: rect(0, ${size}px, ${size}px, ${size / 2}px);
-                        animation: ${backandforth} 1.2s
-                            cubic-bezier(0.77, 0, 0.175, 1) infinite;
+                        animation: ${backandforth} 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
                     }
                 `}
                 className={`after:border-gray-300 after:border-4 after:border-solid after:rounded-full`}
@@ -103,10 +97,7 @@ function LoadIcon(size: number, className?: string) {
 
 function LoadImage(width: number, height: number, className?: string) {
     return (
-        <div
-            style={{ width: width, height: height }}
-            className={className || ''}
-        >
+        <div style={{ width: width, height: height }} className={className || ""}>
             <div className="w-full h-full bg-gray-300 rounded"></div>
         </div>
     );
@@ -120,7 +111,7 @@ export default function ({
     className,
     lineheight
 }: {
-    type: 'text' | 'icon' | 'image';
+    type: "text" | "icon" | "image";
     size?: number;
     width?: number;
     height?: number;
@@ -129,33 +120,33 @@ export default function ({
 }) {
     if (!width && !height && !size) {
         throw new Error(
-            'You must specify either width, height, or size for a text loading component'
+            "You must specify either width, height, or size for a text loading component"
         );
     }
     switch (type) {
-        case 'text':
+        case "text":
             let w = width || size,
                 h = height || size;
             return LoadText(w!!, h!!, lineheight, className);
-        case 'icon':
+        case "icon":
             let s = size;
             if (!s) {
                 if (width && height && width !== height) {
                     throw new Error(
-                        'Width and height must be equal for an icon loading component'
+                        "Width and height must be equal for an icon loading component"
                     );
                 }
                 s = width || height;
             }
             return LoadIcon(s!!, className);
-        case 'image':
+        case "image":
             if (!width || !height) {
                 throw new Error(
-                    'You must specify both width and height for an image loading component'
+                    "You must specify both width and height for an image loading component"
                 );
             }
             return LoadImage(width, height, className);
         default:
-            throw new Error('Invalid loading type');
+            throw new Error("Invalid loading type");
     }
 }

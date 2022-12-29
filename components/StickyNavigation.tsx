@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import React from 'react';
-import Title from './Title';
+import Link from "next/link";
+import React from "react";
+import Title from "./Title";
 
 function TOC(props: {
     items: { id: string; title: string; level: number }[];
@@ -11,11 +11,11 @@ function TOC(props: {
     let items = props.items,
         level = props.level || 1,
         ordered = props.ordered || false,
-        className = props.className || '';
+        className = props.className || "";
 
     let result = [];
     const cls =
-        'transition-all no-underline hover:underline text-slate-300 hover:text-slate-500 ' +
+        "transition-all no-underline hover:underline text-slate-300 hover:text-slate-500 " +
         className;
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
@@ -33,11 +33,7 @@ function TOC(props: {
                         <Link href={`#${item.id}`} className={cls}>
                             {item.title}
                         </Link>
-                        <TOC
-                            items={children}
-                            level={level + 1}
-                            ordered={ordered}
-                        />
+                        <TOC items={children} level={level + 1} ordered={ordered} />
                     </li>
                 );
             } else {
@@ -71,11 +67,7 @@ export default class extends React.Component {
         }[];
     };
 
-    constructor(props: {
-        level?: number;
-        ordered?: boolean;
-        className?: string;
-    }) {
+    constructor(props: { level?: number; ordered?: boolean; className?: string }) {
         super(props);
         this.state = {
             toc: []
@@ -84,25 +76,23 @@ export default class extends React.Component {
         this.nav = React.createRef();
         this.level = props.level || 6;
         this.ordered = props.ordered || false;
-        this.className = props.className || '';
+        this.className = props.className || "";
     }
 
     componentDidMount(): void {
-        let root = document.querySelector('main') || document.body;
+        let root = document.querySelector("main") || document.body;
         let headings: HTMLElement[] = Array.from(
-            root.querySelector('main')
-                ? root
-                      .querySelector('main')!
-                      .querySelectorAll('h1, h2, h3, h4, h5, h6')
-                : root.querySelectorAll('h1, h2, h3, h4, h5, h6')
+            root.querySelector("main")
+                ? root.querySelector("main")!.querySelectorAll("h1, h2, h3, h4, h5, h6")
+                : root.querySelectorAll("h1, h2, h3, h4, h5, h6")
         );
 
         let toc = headings
             .filter((e: HTMLElement) => parseInt(e.tagName[1]) <= this.level)
             .map((e: HTMLElement) => {
                 let id = e.id;
-                if (id === '') {
-                    id = e.innerText.toLowerCase().replace(/\s+/g, '-');
+                if (id === "") {
+                    id = e.innerText.toLowerCase().replace(/\s+/g, "-");
                     e.id = id;
                 }
                 return {
@@ -123,27 +113,27 @@ export default class extends React.Component {
 
                 if (nav) {
                     if (entry.intersectionRatio > 0) {
-                        nav.classList.remove('text-slate-300');
+                        nav.classList.remove("text-slate-300");
                         nav.classList.add(
-                            'text-slate-500',
-                            'font-medium',
-                            'border-l-4',
-                            'border-slate-500',
-                            'pl-4',
-                            '-ml-4'
+                            "text-slate-500",
+                            "font-medium",
+                            "border-l-4",
+                            "border-slate-500",
+                            "pl-4",
+                            "-ml-4"
                         );
-                        nav.parentElement!.classList.add('list-none');
+                        nav.parentElement!.classList.add("list-none");
                     } else {
-                        nav.classList.add('text-slate-300');
+                        nav.classList.add("text-slate-300");
                         nav.classList.remove(
-                            'text-slate-500',
-                            'font-medium',
-                            'border-l-4',
-                            'border-slate-500',
-                            'pl-4',
-                            '-ml-4'
+                            "text-slate-500",
+                            "font-medium",
+                            "border-l-4",
+                            "border-slate-500",
+                            "pl-4",
+                            "-ml-4"
                         );
-                        nav.parentElement!.classList.remove('list-none');
+                        nav.parentElement!.classList.remove("list-none");
                     }
                 }
             });
@@ -158,8 +148,7 @@ export default class extends React.Component {
         return (
             <aside
                 className={
-                    'sticky top-2 mr-8 prose self-start hidden xl:block' +
-                    this.className
+                    "sticky top-2 mr-8 prose self-start hidden xl:block" + this.className
                 }
             >
                 <Title level={2} className="mb-4">

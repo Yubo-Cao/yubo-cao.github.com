@@ -1,5 +1,5 @@
-import Icons from './Icons';
-import Section from './Section';
+import Icons from "./Icons";
+import Section from "./Section";
 
 export default function Skill(props: {
     children: React.ReactNode;
@@ -13,7 +13,7 @@ export default function Skill(props: {
             subtitle={
                 <Icons
                     from="fa"
-                    type={props.type || ('solid' as any)}
+                    type={props.type || ("solid" as any)}
                     iconSize={24}
                     size={48}
                     wrapClassName="transition-all rounded-full bg-slate-100 hover:bg-slate-200"

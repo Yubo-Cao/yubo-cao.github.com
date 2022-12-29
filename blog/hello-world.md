@@ -1,25 +1,23 @@
 ---
 date: 2022-12-28
+last_modified: 2022-12-28
 title: Greetings, fellow tech aficionados
 author: Yubo-Cao
-tags: [blog]
-cover: /images/blog/hello-world.jpg
+tags: blog
+cover: /images/blog/hello-world/hello-world.jpg
 ---
 
 # Greetings, fellow tech aficionados
 
-Welcome to the inaugural post of this highly advanced digital platform. In the
-following series of posts, I shall delve into the intricate details of my
-personal and academic experiences.
+Welcome to the inaugural post of this highly advanced digital platform. In the following series
+of posts, I shall delve into the intricate details of my personal and academic experiences.
 
-This blog has been meticulously crafted using the `Next.js` framework, a highly
-efficient and modular solution for server-rendered React applications. The
-markdown formatting is facilitated by the `react-markdown` library, which
-seamlessly integrates with the React ecosystem. The visually stunning theme is
-based on the `tailwindcss` framework, a utility-first CSS library that allows
-for the rapid prototyping of visually appealing layouts.
+This blog has been meticulously crafted using the `Next.js` framework, a highly efficient and
+modular solution for server-rendered React applications. The markdown formatting is facilitated
+by the `react-markdown` library, which seamlessly integrates with the React ecosystem. The
+visually stunning theme is based on the `tailwindcss` framework, a utility-first CSS library
+that allows for the rapid prototyping of visually appealing layouts.
 
-For those interested in the inner workings of this website, the source code is
-readily available on [GitHub](https://github.com/Yubo-Cao/yubo-cao.github.com)
-for your perusal. The website is hosted on the highly reliable and widely used
-GitHub Pages platform.
+For those interested in the inner workings of this website, the source code is readily available
+on [GitHub](https://github.com/Yubo-Cao/yubo-cao.github.com) for your perusal. The website is
+hosted on the highly reliable and widely used GitHub Pages platform.

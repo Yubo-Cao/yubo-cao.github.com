@@ -1,5 +1,5 @@
-import Logo from './Logo';
-import Nav from './Nav';
+import Logo from "./Logo";
+import Nav from "./Nav";
 
 export default function Header(props: { active: string; height?: 48 | 64 }) {
     const height = props.height || 64,

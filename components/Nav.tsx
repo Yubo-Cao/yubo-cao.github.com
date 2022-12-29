@@ -1,31 +1,31 @@
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import Icon from './Icon';
-import MenuButton from './MenuButton';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Icon from "./Icon";
+import MenuButton from "./MenuButton";
 
 const links = [
     {
-        name: 'Home',
-        icon: 'home',
-        href: '/',
-        description: 'Home page'
+        name: "Home",
+        icon: "home",
+        href: "/",
+        description: "Home page"
     },
     {
-        name: 'Blog',
-        icon: 'book',
-        href: '/blog',
-        description: 'Coding & Life'
+        name: "Blog",
+        icon: "book",
+        href: "/blog",
+        description: "Coding & Life"
     },
     {
-        name: 'Projects',
-        icon: 'code',
-        href: '/projects',
-        description: 'What Yubo has done'
+        name: "Projects",
+        icon: "code",
+        href: "/projects",
+        description: "What Yubo has done"
     },
     {
-        name: 'Resume',
-        icon: 'description',
-        href: '/resume',
+        name: "Resume",
+        icon: "description",
+        href: "/resume",
         description: "Yubo's resume"
     }
 ];
@@ -43,8 +43,8 @@ function NavItem(props: {
         <div
             title={description}
             className={`transition-all flex items-center rounded-full ${
-                active ? 'bg-primary-100' : ''
-            } ${entered ? (active ? 'bg-primary-200' : 'bg-neutral-100') : ''}`}
+                active ? "bg-primary-100" : ""
+            } ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
         >
@@ -72,11 +72,11 @@ export default function Nav(props: { active: string; height?: 48 | 64 }) {
         const close = () => {
             if (open) setOpen(false);
         };
-        window.addEventListener('resize', close);
-        window.addEventListener('scroll', close);
+        window.addEventListener("resize", close);
+        window.addEventListener("scroll", close);
         return () => {
-            window.removeEventListener('resize', close);
-            window.removeEventListener('scroll', close);
+            window.removeEventListener("resize", close);
+            window.removeEventListener("scroll", close);
         };
     }, [open]);
     return (
@@ -88,7 +88,7 @@ export default function Nav(props: { active: string; height?: 48 | 64 }) {
             />
             <div
                 className={`transition-all bg-black fixed left-0 top-0 h-full w-full ${
-                    open ? 'z-10 opacity-40' : '-z-10 opacity-0'
+                    open ? "z-10 opacity-40" : "-z-10 opacity-0"
                 }`}
             />
             <nav
@@ -98,13 +98,13 @@ export default function Nav(props: { active: string; height?: 48 | 64 }) {
                     max-xs:fixed max-xs:top-0 max-xs:left-0 max-xs:w-64 max-xs:h-full max-xs:z-10
                     ${
                         open
-                            ? 'max-xs:translate-x max-xs:shadow-md'
-                            : 'max-xs:-translate-x-full'
+                            ? "max-xs:translate-x max-xs:shadow-md"
+                            : "max-xs:-translate-x-full"
                     }`}
             >
                 <div
                     className={`${
-                        height === 64 ? 'h-16' : 'h-12'
+                        height === 64 ? "h-16" : "h-12"
                     } items-center hidden max-xs:flex`}
                 >
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
@@ -117,10 +117,7 @@ export default function Nav(props: { active: string; height?: 48 | 64 }) {
                             icon={link.icon}
                             href={link.href}
                             description={link.description}
-                            active={
-                                link.name.toLowerCase() ===
-                                props.active.toLowerCase()
-                            }
+                            active={link.name.toLowerCase() === props.active.toLowerCase()}
                         ></NavItem>
                     );
                 })}

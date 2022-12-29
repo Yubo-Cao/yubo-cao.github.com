@@ -1,21 +1,21 @@
-import React from 'react';
-import Section from './Section';
+import React from "react";
+import Section from "./Section";
 
 function formatDate(date: string): string {
-    const [year, month, day] = date.split('-').map((s) => parseInt(s, 10));
+    const [year, month, day] = date.split("-").map((s) => parseInt(s, 10));
     const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
     ];
     if (day) {
         return `${months[month - 1]} ${day}, ${year}`;
@@ -25,10 +25,7 @@ function formatDate(date: string): string {
 }
 
 function capitlize(str: string): string {
-    return (
-        str.toUpperCase().substring(0, 1) +
-        str.toLowerCase().substring(1, str.length)
-    );
+    return str.toUpperCase().substring(0, 1) + str.toLowerCase().substring(1, str.length);
 }
 
 export default function Experience(props: {
@@ -41,20 +38,14 @@ export default function Experience(props: {
     let title = props.title,
         company = props.company,
         start = formatDate(props.start),
-        end = props.end ? formatDate(props.end) : 'Present';
+        end = props.end ? formatDate(props.end) : "Present";
     return (
         <Section
             title={capitlize(company)}
             subtitle={
                 <>
-                    <p className="font-semibold text-base">
-                        {' '}
-                        {capitlize(title)}{' '}
-                    </p>
-                    <p className="font-light text-base">
-                        {' '}
-                        {`${start}–${end}`}{' '}
-                    </p>
+                    <p className="font-semibold text-base"> {capitlize(title)} </p>
+                    <p className="font-light text-base"> {`${start}–${end}`} </p>
                 </>
             }
             level={3}

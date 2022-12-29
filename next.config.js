@@ -1,5 +1,5 @@
 // @ts-check
-const {PHASE_DEVELOPMENT_SERVER} = require("next/constants");
+const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 /**
  *
@@ -15,8 +15,8 @@ module.exports = (phase) => {
                     {
                         protocol: "https",
                         hostname: "avatars.githubusercontent.com",
-                        port: '',
-                        pathname: "**",
+                        port: "",
+                        pathname: "**"
                     }
                 ]
             }
@@ -31,11 +31,11 @@ module.exports = (phase) => {
                 {
                     protocol: "https",
                     hostname: "avatars.githubusercontent.com",
-                    port: '',
-                    pathname: "**",
+                    port: "",
+                    pathname: "**"
                 }
             ],
             unoptimized: true
         }
-    }
+    };
 };

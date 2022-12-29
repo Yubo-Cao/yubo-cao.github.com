@@ -1,8 +1,8 @@
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Icon from "./Icon";
 import MenuButton from "./MenuButton";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const links = [
     {

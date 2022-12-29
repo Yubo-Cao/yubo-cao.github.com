@@ -1,31 +1,9 @@
-// @ts-check
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const { PHASE_PRODUCTION_BUILD } = require("next/dist/shared/lib/constants");
 
-/**
- *
- * @param {string} phase the current build phase, one of 'phase-production-build' | 'phase-development-server' | 'phase-export'
- * @returns {import('next').NextConfig}
- */
 module.exports = (phase) => {
-    if (phase === PHASE_DEVELOPMENT_SERVER) {
-        return {
-            reactStrictMode: true,
-            images: {
-                remotePatterns: [
-                    {
-                        protocol: "https",
-                        hostname: "avatars.githubusercontent.com",
-                        port: "",
-                        pathname: "**"
-                    }
-                ]
-            }
-        };
-    }
-
-    return {
+    const config = {
         reactStrictMode: true,
-        swcMinify: true,
         images: {
             remotePatterns: [
                 {
@@ -34,8 +12,14 @@ module.exports = (phase) => {
                     port: "",
                     pathname: "**"
                 }
-            ],
-            unoptimized: true
-        }
+            ]
+        },
     };
+
+    if (phase !== PHASE_DEVELOPMENT_SERVER && phase !== PHASE_PRODUCTION_BUILD) {
+        config.images.unoptimized = true;
+        config.swcMinify = true;
+    }
+
+    return config;
 };

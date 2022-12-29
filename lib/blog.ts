@@ -89,7 +89,28 @@ class Blog implements BlogPost {
             files
                 .filter((file) => /\.mdx$/.test(file))
                 .map((file) => new Blog(path.join(BLOG_DIRECTORY, file)))
+                .sort((a, b) => {
+                    let a_date = new Date(a.date),
+                        b_date = new Date(b.date);
+                    return b_date.getTime() - a_date.getTime();
+                })
         );
+    }
+    
+    private static _list: Blog[] | null = null;
+
+    static async next(id: string[]): Promise<Blog | null> {
+        if (!this._list) this._list = await this.list();
+        let index = this._list.findIndex((blog) => blog.id.join("/") === id.join("/"));
+        if (index === -1) return null;
+        return this._list[index - 1] || null;
+    }
+
+    static async prev(id: string[]): Promise<Blog | null> {
+        if (!this._list) this._list = await this.list();
+        let index = this._list.findIndex((blog) => blog.id.join("/") === id.join("/"));
+        if (index === -1) return null;
+        return this._list[index + 1] || null;
     }
 
     static async render(blog: Blog): Promise<MDXRemoteSerializeResult> {

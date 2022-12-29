@@ -1,6 +1,8 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import NavButton from "../../components/NavButton";
 import NavigationLayout from "../../components/NavigationLayout";
 import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
@@ -16,30 +18,36 @@ async function getStaticPaths() {
     };
 }
 
-async function getStaticProps({ params }: { params: { id: string[] } }) {
-    let post = await BlogManager.fromId(params.id);
+async function getStaticProps({ params: { id } }: { params: { id: string[] } }) {
+    const post = await BlogManager.fromId(id);
     return {
         props: {
             blog: post.json,
-            content: await BlogManager.render(post)
+            content: await BlogManager.render(post),
+            prev: (await BlogManager.prev(id))?.json || null,
+            next: (await BlogManager.next(id))?.json || null
         }
     };
 }
 
 export default function Blog({
     blog,
-    content
+    content,
+    prev,
+    next
 }: {
     blog: BlogPost;
     content: MDXRemoteSerializeResult;
+    prev?: BlogPost;
+    next?: BlogPost;
 }) {
+    const router = useRouter();
     return (
         <NavigationLayout
             active={"blog"}
             mainClassName={cls(
                 "prose",
                 "justify-self-end",
-                "mx-0",
                 "sm:mx-auto",
                 "md:mx-auto",
                 "xl:ml-0"
@@ -56,20 +64,41 @@ export default function Blog({
             />
             <h1>{blog.title}</h1>
             <MDXRemote {...content} components={{ SyntaxHighlighter }} />
-            <button
-                onClick={() => window.history.back()}
-                className={cls(
-                    "border",
-                    "border-primary-200",
-                    "hover:bg-primary-200",
-                    "px-2",
-                    "py-1",
-                    "rounded",
-                    "mt-4"
+            <hr className="my-0 mt-16" />
+            <div className={cls("flex", "justify-between")}>
+                {prev == null ? (
+                    <div />
+                ) : (
+                    <NavButton
+                        type="backward"
+                        content={
+                            <>
+                                <span className="font-medium">Previous: </span>
+                                <span className="text-slate-500 font-light">{prev.title}</span>
+                            </>
+                        }
+                        onClick={() => {
+                            router.push(`/blog/${prev.id}`);
+                        }}
+                    />
                 )}
-            >
-                Back
-            </button>
+                {next == null ? (
+                    <div />
+                ) : (
+                    <NavButton
+                        type="forward"
+                        content={
+                            <>
+                                <span className="font-medium">Next: </span>
+                                <span className="text-slate-500 font-light">{next.title}</span>
+                            </>
+                        }
+                        onClick={() => {
+                            router.push(`/blog/${next.id}`);
+                        }}
+                    />
+                )}
+            </div>
         </NavigationLayout>
     );
 }

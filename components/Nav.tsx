@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { cls } from "../lib/utils";
 import Icon from "./Icon";
 import MenuButton from "./MenuButton";
 
@@ -31,15 +32,22 @@ const links = [
     }
 ];
 
-function NavItem(props: {
+function NavButton({
+    name,
+    icon,
+    href,
+    description,
+    active,
+    size = 48
+}: {
     name: string;
     icon: string;
     href: string;
     description: string;
     active?: boolean;
+    size?: 48 | 64 | 72;
 }) {
-    const [entered, setEntered] = useState(false);
-    let { name, icon, href, description, active } = props,
+    const [entered, setEntered] = useState(false),
         router = useRouter();
 
     return (
@@ -57,8 +65,8 @@ function NavItem(props: {
                 name={icon}
                 grade={entered ? 200 : 0}
                 className={`transition-all rounded-full p-3`}
-                size={48}
-                iconSize={24}
+                size={size}
+                iconSize={size / 2}
                 type="rounded"
                 fill={entered}
             />
@@ -69,9 +77,14 @@ function NavItem(props: {
     );
 }
 
-export default function Nav(props: { active: string; height?: 48 | 64 }) {
+export default function Nav({
+    active,
+    height = 72
+}: {
+    active: string;
+    height?: 48 | 64 | 72;
+}) {
     const [open, setOpen] = useState(false);
-    let height = props.height || 64;
     useEffect(() => {
         const close = () => {
             if (open) setOpen(false);
@@ -107,22 +120,21 @@ export default function Nav(props: { active: string; height?: 48 | 64 }) {
                     }`}
             >
                 <div
-                    className={`${
-                        height === 64 ? "h-16" : "h-12"
-                    } items-center hidden max-xs:flex`}
+                    className={cls("items-center", "flex", "xs:hidden")}
+                    style={{ height: `${height}px` }}
                 >
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
                 </div>
                 {links.map((link, i) => {
                     return (
-                        <NavItem
-                            key={i}
+                        <NavButton
+                            key={link.name}
                             name={link.name}
                             icon={link.icon}
                             href={link.href}
                             description={link.description}
-                            active={link.name.toLowerCase() === props.active.toLowerCase()}
-                        ></NavItem>
+                            active={link.name.toLowerCase() === active.toLowerCase()}
+                        ></NavButton>
                     );
                 })}
             </nav>

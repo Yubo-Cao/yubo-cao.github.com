@@ -26,7 +26,7 @@ export default function NavigatioLayout({
                 }
                 style={{ maxWidth: `min(100%, ${maxWidth || 1444}px)` }}
             >
-                <main className={"mx-6 sm:mx-8 md:mx-16 xl:mr-0 " + (mainClassName || "")}>
+                <main className={"mx-3 sm:mx-8 md:mx-16 xl:mr-0 " + (mainClassName || "")}>
                     {children}
                 </main>
                 <StickyNavigation

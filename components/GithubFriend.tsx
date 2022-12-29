@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import { AlternatingCard } from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
 
@@ -21,11 +21,13 @@ export default function GithubFriend({ username, name }: { username: string; nam
     }, [username]);
 
     return (
-        <Card
+        <AlternatingCard
             onClick={() => window.open(`https://github.com/${username}`, "_blank")}
             className="flex flex-col gap-2 xs:flex-row xs:gap-4 xs:items-center"
             hoverType="elevated"
             activeType="elevated"
+            accent={"gray"}
+            alternateAccent={"primary"}
         >
             {image ? (
                 <img src={image} alt={username} className="w-20 h-20 rounded-full" />
@@ -42,6 +44,6 @@ export default function GithubFriend({ username, name }: { username: string; nam
                     )
                 ) : null}
             </div>
-        </Card>
+        </AlternatingCard>
     );
 }

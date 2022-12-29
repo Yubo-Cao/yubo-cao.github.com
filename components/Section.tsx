@@ -1,5 +1,23 @@
 import React, { useEffect } from "react";
 import Title from "./Title";
+import {
+    isEvenChild,
+    isFirstChild,
+    isOddChild,
+    isParentMain,
+    isParentRoot
+} from "../lib/elements";
+
+function findContainingSection(el: HTMLElement): HTMLElement | null {
+    while (el.tagName !== "SECTION" && el.parentElement) el = el.parentElement;
+    return el;
+}
+
+function isContainingSectionAlternating(el: HTMLElement): boolean {
+    let section = findContainingSection(el);
+    if (!section) return false;
+    return section.classList.contains("alternate");
+}
 
 export default function Section(props: {
     id?: string;
@@ -10,35 +28,18 @@ export default function Section(props: {
     level?: 1 | 2 | 3 | 4 | 5 | 6;
     children?: React.ReactNode;
     flow?: boolean;
+    alternate?: "even" | "odd" | "none";
 }) {
     let id = props.id || "",
         className = props.className || "",
         ref = React.useRef<HTMLDivElement>(null),
         hasTitle = props.title !== undefined || props.subtitle !== undefined,
-        flow = props.flow || false;
+        flow = props.flow || false,
+        alternate = props.alternate || "even",
+        level = props.level || 2;
 
-    useEffect(() => {
-        let section = ref?.current,
-            parent = section?.parentElement,
-            child = parent?.firstChild,
-            idx = 0;
-        if (!child) return;
-        if (parent?.tagName !== "MAIN") {
-            section!!.classList.remove("my-6", "py-8");
-            return;
-        }
-        while (true) {
-            if (child.nodeType === Node.ELEMENT_NODE) idx++;
-            if (child === section || !child.nextSibling) break;
-            child = child.nextSibling;
-        }
-        if (idx === 1) {
-            section!!.classList.remove("my-6");
-            section!!.classList.add("mb-6");
-        }
-        if (idx % 2 === 1) {
+    const addBackground = (section: HTMLElement) => {
             let background = document.createElement("div");
-            section!!.classList.add("relative");
             background.classList.add(
                 "absolute",
                 "-left-full",
@@ -50,28 +51,43 @@ export default function Section(props: {
                 "bg-primary-100/30",
                 "-z-10"
             );
-            section?.appendChild(background);
-            return () => {
-                section?.removeChild(background);
-            };
+            section.classList.add("relative", "alternate"); // tagging purpose only
+            section.appendChild(background);
+            return () => section?.removeChild(background);
+        },
+        flowClass = flow ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4 " : " ",
+        titleClass = hasTitle ? (level < 3 ? "mt-8 " : "mt-4 ") : " ";
+
+    useEffect(() => {
+        let section = ref.current;
+        if (!section) return;
+        if (!isParentMain(section)) {
+            section.classList.remove("my-6", "py-8");
+        }
+        if (isFirstChild(section)) {
+            section.classList.remove("my-6");
+            section.classList.add("mb-6");
+        }
+        if (isParentMain(section) || isParentRoot(section)) {
+            switch (alternate) {
+                case "even":
+                    isEvenChild(section) && addBackground(section);
+                    break;
+                case "odd":
+                    isOddChild(section) && addBackground(section);
+                    break;
+            }
         }
     });
-    let level = props.level || 2;
+
     return (
-        <section id={id} className={"my-6 py-8 " + className} ref={ref}>
+        <section id={id} className={"my-6 py-8 px-4 " + className} ref={ref}>
             {hasTitle && <Title title={props.title} subtitle={props.subtitle} level={level} />}
-            <div
-                className={
-                    (hasTitle ? (level < 3 ? "mt-8 " : "mt-4 ") : " ") +
-                    (flow
-                        ? "grid grid-cols-fit-96 md:grid-cols-fit-102 gap-2 sm:gap-4 "
-                        : " ") +
-                    " " +
-                    (props.contentClassName || "")
-                }
-            >
+            <div className={`${flowClass} ${titleClass} ${props.contentClassName || ""}`}>
                 {props.children}
             </div>
         </section>
     );
 }
+
+export { findContainingSection, isContainingSectionAlternating, Section };

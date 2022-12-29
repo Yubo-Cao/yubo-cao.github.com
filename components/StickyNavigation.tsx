@@ -17,6 +17,7 @@ function TOC(props: {
     const cls =
         "transition-all no-underline hover:underline text-slate-300 hover:text-slate-500 " +
         className;
+
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
         if (item.level === level) {
@@ -109,32 +110,32 @@ export default class extends React.Component {
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 let id = entry.target.id;
-                let nav = document.querySelector(`nav a[href="/#${id}"]`);
+                let nav = document.querySelector(`nav a[href$="#${id}"]`);
 
-                if (nav) {
-                    if (entry.intersectionRatio > 0) {
-                        nav.classList.remove("text-slate-300");
-                        nav.classList.add(
-                            "text-slate-500",
-                            "font-medium",
-                            "border-l-4",
-                            "border-slate-500",
-                            "pl-4",
-                            "-ml-4"
-                        );
-                        nav.parentElement!.classList.add("list-none");
-                    } else {
-                        nav.classList.add("text-slate-300");
-                        nav.classList.remove(
-                            "text-slate-500",
-                            "font-medium",
-                            "border-l-4",
-                            "border-slate-500",
-                            "pl-4",
-                            "-ml-4"
-                        );
-                        nav.parentElement!.classList.remove("list-none");
-                    }
+                if (!nav) return;
+
+                if (entry.intersectionRatio > 0) {
+                    nav.classList.remove("text-slate-300");
+                    nav.classList.add(
+                        "text-slate-500",
+                        "font-medium",
+                        "border-l-4",
+                        "border-slate-500",
+                        "pl-4",
+                        "-ml-4"
+                    );
+                    nav.parentElement!.classList.add("list-none");
+                } else {
+                    nav.classList.add("text-slate-300");
+                    nav.classList.remove(
+                        "text-slate-500",
+                        "font-medium",
+                        "border-l-4",
+                        "border-slate-500",
+                        "pl-4",
+                        "-ml-4"
+                    );
+                    nav.parentElement!.classList.remove("list-none");
                 }
             });
         });
@@ -148,7 +149,7 @@ export default class extends React.Component {
         return (
             <aside
                 className={
-                    "sticky top-2 mr-8 prose self-start hidden xl:block" + this.className
+                    "sticky top-2 mr-8 prose self-start hidden xl:block " + this.className
                 }
             >
                 <Title level={2} className="mb-4">

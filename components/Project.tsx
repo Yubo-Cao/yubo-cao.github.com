@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
-import Card from "./Card";
+import { AlternatingCard } from "./Card";
 import Icon from "./Icon";
+import { useRef } from "react";
 
 export default function Project(props: {
     title: string;
@@ -12,27 +13,28 @@ export default function Project(props: {
     children?: React.ReactNode;
 }) {
     let size = props.size || 64,
-        description = props.description || "";
-    if (typeof props.children === "string") description = props.children;
-
-    const router = useRouter();
+        description =
+            props.description || typeof props.children === "string" ? props.children : "",
+        ref = useRef(null),
+        router = useRouter();
 
     return (
-        <Card
+        <AlternatingCard
             className="flex flex-row gap-4 items-start justify-start flex-wrap"
-            onClick={() => {
-                router.push(props.url);
-            }}
-            accent="gray"
+            onClick={() => router.push(props.url)}
+            accent={"gray"}
+            alternateAccent={"primary"}
             hoverType="elevated"
             activeType="elevated"
         >
             {/* 
-                - border-gray-300
-                - hover:shadow-gray-400/30
-                - active:shadow-gray-500/30
+                - border-gray-200
+                - hover:shadow-gray-300/30
+                - active:shadow-gray-400/30
+                - border-primary-200
+                - hover:shadow-primary-300/30
+                - active:shadow-primary-400/30
             */}
-
             <Icon
                 name={props.name}
                 size={size}
@@ -41,13 +43,13 @@ export default function Project(props: {
                 grade={200}
                 iconSize={props.iconSize}
             />
-            <div className="flex-1 basis-64 prose">
+            <div className="flex-1 basis-64 prose" ref={ref}>
                 <h3>{props.title}</h3>
                 <div className="flex-1">
                     {description && <p>{description}</p>}
                     {typeof props.children === "object" && props.children}
                 </div>
             </div>
-        </Card>
+        </AlternatingCard>
     );
 }

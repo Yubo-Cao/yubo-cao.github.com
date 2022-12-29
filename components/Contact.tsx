@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Card from "./Card";
+import { AlternatingCard } from "./Card";
 import ClickCopy from "./ClickCopy";
 import Icon from "./Icon";
 import Modal from "./Modal";
@@ -34,14 +34,15 @@ export default function Contact(props: {
         }
     }[type];
     return (
-        <Card
+        <AlternatingCard
             onClick={action}
             className="p-4"
             activeType="elevated"
             hoverType="elevated"
-            accent="primary"
+            accent="gray"
+            alternateAccent="primary"
         >
-            {/* 
+            {/*
                 - border-primary-300
                 - hover:shadow-primary-400/30
                 - active:shadow-primary-500/30
@@ -73,6 +74,6 @@ export default function Contact(props: {
                     </p>
                 </Modal>
             )}
-        </Card>
+        </AlternatingCard>
     );
 }

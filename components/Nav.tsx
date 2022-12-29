@@ -23,10 +23,10 @@ const links = [
         description: "What Yubo has done"
     },
     {
-        name: "Resume",
-        icon: "description",
-        href: "/resume",
-        description: "Yubo's resume"
+        name: "About",
+        icon: "info",
+        href: "/about",
+        description: "About Yubo"
     }
 ];
 

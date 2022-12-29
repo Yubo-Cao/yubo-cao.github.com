@@ -4,7 +4,7 @@ import Image from "next/image";
 const materialSymbolsRounded = localFont({
     src: "./fonts/MaterialSymbolsRounded.woff2",
     variable: "--font-material-symbols-rounded",
-    fallback: []
+    display: "swap",
 });
 
 function to_nearest(value: number, valids: number[]) {

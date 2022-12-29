@@ -69,7 +69,7 @@ function NavButton({
                 iconSize={size / 2}
                 fill={entered}
             />
-            <Link href={href} className="mr-4 xs:max-sm:hidden">
+            <Link href={href} className="mr-4 xs:max-lg:hidden">
                 {name}
             </Link>
         </div>

@@ -7,7 +7,7 @@ export default function Index() {
     return (
         <HeaderLayout active={"Home"}>
             <Section
-                className="pb-0 max-md:pb-4 mx-auto max-w-3xl"
+                className="pb-0 max-md:pb-4 mx-auto max-w-4xl"
                 contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4"
                 alternate="none"
             >
@@ -20,7 +20,7 @@ export default function Index() {
                     style={{ flexGrow: 1 }}
                 />
                 <div
-                    className="flex flex-col gap-2 basis-96 flex-1 md:mx-16 max-md:basis-16  prose"
+                    className="flex flex-col gap-2 basis-96 flex-1 md:mx-16 max-md:basis-16 prose "
                     style={{ flexGrow: 3 }}
                 >
                     <Title level={1}>Yubo Cao</Title>

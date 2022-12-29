@@ -1,12 +1,12 @@
-import {Blog as BlogManager, BlogPost} from "../../lib/blog";
+import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import Section from "../../components/Section";
 import Card from "../../components/Card";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import Title from "../../components/Title";
-import {Chip} from "../../components/Chip";
+import { Chip } from "../../components/Chip";
 import Icon from "../../components/Icon";
 import HeaderLayout from "../../components/HeaderLayout";
-import {cls} from "../../lib/utils";
+import { cls } from "../../lib/utils";
 import Image from "next/image";
 
 export default function Index({ blogs }: { blogs: BlogPost[] }) {

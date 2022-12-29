@@ -62,7 +62,7 @@ module.exports = {
                 ]
             },
             maxWidth: {
-                "1/2": "50%",
+                "1/2": "50%"
             },
             backgroundColor: (theme) => ({
                 ...theme("colors"),

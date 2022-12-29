@@ -18,21 +18,21 @@ export default function Home() {
             >
                 <Image
                     src="/images/about/yubo.png"
-                    alt="Yubo's Figure"
+                    alt="Yubo’s Figure"
                     width={200}
                     height={300}
                     className="grayscale basis-12 flex-auto max-h-96 object-contain object-left drop-shadow-2xl"
-                    style={{ flexGrow: 1 }}
+                    style={{flexGrow: 1}}
                 />
                 <div
                     className="flex flex-col gap-2 basis-96 flex-1 md:mx-16 max-md:basis-16  prose"
-                    style={{ flexGrow: 3 }}
+                    style={{flexGrow: 3}}
                 >
                     <Title level={1}>Yubo Cao</Title>
                     <p className="text-lg mt-2">
                         I am a highly motivated and ambitious sophomore with a passion for
                         programming and artificial intelligence. I am excited to continue
-                        exploring and learning about these fields, and I am commited to strive
+                        exploring and learning about these fields, and I am committed to strive
                         for excellence in all of my endeavors.
                     </p>
                 </div>
@@ -96,7 +96,7 @@ export default function Home() {
                         </li>
                         <li>
                             Participate in initiatives including internet, machine learning, and
-                            cybersecurity.
+                            cyber security.
                         </li>
                         <li>Assisting members of the computer science club</li>
                     </ul>
@@ -149,7 +149,7 @@ export default function Home() {
                 >
                     Utilize Microsoft Office to generate and modify documents, spreadsheets, and
                     presentations while exhibiting a proficient understanding of design and
-                    layout principles, including the concept of reusability, in order to produce
+                    layout principles, including the concept of usability, in order to produce
                     visually appealing and easily editable documents. I am also familiar with
                     LaTeX.
                 </Skill>
@@ -169,7 +169,7 @@ export default function Home() {
                     also familiar with machine learning frameworks such as PyTorch and
                     TensorFlow. I also understand version control with Git and GitHub.
                 </Skill>
-                <Skill title="Cybersecurity" type="brand" icons="ubuntu centos redhat fedora">
+                <Skill title="Cyber-security" type="brand" icons="ubuntu centos redhat fedora">
                     I have experience with Linux administration, including installing and
                     configuring Linux distributions, managing users and groups, and using the
                     command line to perform various tasks. I am OK with both Debian-based and
@@ -189,15 +189,15 @@ export default function Home() {
                 </Skill>
             </Section>
             <Section title="Friends" subtitle="I have worked with…" flow={true}>
-                <GithubFriend username="anishgoyal1108" name="Anish G." />
-                <GithubFriend username="ModAegis" name="Sean L." />
-                <GithubFriend username="CelineCherry" name="Celine C." />
+                <GithubFriend username="anishgoyal1108" name="Anish G."/>
+                <GithubFriend username="ModAegis" name="Sean L."/>
+                <GithubFriend username="CelineCherry" name="Celine C."/>
             </Section>
             <Section title="Contact" subtitle="You can reach me at…" flow={true}>
-                <Contact type="email" value="cao2006721@gmail.com" />
-                <Contact type="discord" value="yubo#6746" />
-                <Contact type="github" value="yubo-cao" />
-                <Contact type="tel" value="4709549826" />
+                <Contact type="email" value="cao2006721@gmail.com"/>
+                <Contact type="discord" value="yubo#6746"/>
+                <Contact type="github" value="yubo-cao"/>
+                <Contact type="tel" value="4709549826"/>
             </Section>
         </NavigationLayout>
     );

@@ -38,40 +38,74 @@ function NavButton({
     href,
     description,
     active,
-    size = 48
+    height: h = 48
 }: {
     name: string;
     icon: string;
     href: string;
     description: string;
     active?: boolean;
-    size?: 48 | 64 | 72;
+    height?: 48 | 64 | 72;
 }) {
     const [entered, setEntered] = useState(false),
-        router = useRouter();
+        router = useRouter(),
+        height = h,
+        size = {
+            48: 24,
+            64: 32,
+            72: 40
+        }[h];
 
     return (
         <div
             title={description}
-            className={`transition-all flex items-center rounded-full cursor-pointer ${
-                active ? "bg-primary-100" : ""
-            } ${entered ? (active ? "bg-primary-200" : "bg-neutral-100") : ""}`}
+            className={cls(
+                "transition-all",
+                "cursor-pointer",
+                "flex",
+                "items-center",
+                "px-4",
+                active ? "border-b-4 border-primary-200" : "",
+                active ? "max-xs:bg-primary-100" : "",
+                entered
+                    ? active
+                        ? "border-primary-400 bg-primary-100"
+                        : "border-b-4 border-neutral-400 bg-neutral-100"
+                    : "",
+                "max-xs:border-b-0"
+            )}
+            style={{ height: `${height}px` }}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
             onClick={() => router.push(href)}
         >
-            <Icon
-                from="md"
-                name={icon}
-                grade={entered ? 200 : 0}
-                className={`transition-all rounded-full p-3`}
-                size={size}
-                iconSize={size / 2}
-                fill={entered}
-            />
-            <Link href={href} className="mr-4 xs:max-lg:hidden">
-                {name}
-            </Link>
+            <div className="flex items-center gap-2">
+                <Icon
+                    from="md"
+                    name={icon}
+                    className={cls(
+                        "transition-all",
+                        entered && active ? "text-primary-500" : "text-black"
+                    )}
+                    grade={entered ? 200 : 0}
+                    size={size}
+                    fill={entered}
+                />
+                <Link
+                    href={href}
+                    className={cls(
+                        "xs:max-lg:hidden",
+                        {
+                            48: "text-base",
+                            64: "text-lg",
+                            72: "text-2xl"
+                        }[h],
+                        entered && active ? "text-primary-500" : "text-black"
+                    )}
+                >
+                    {name}
+                </Link>
+            </div>
         </div>
     );
 }
@@ -108,8 +142,7 @@ export default function Nav({
                 }`}
             />
             <nav
-                className={`transition-all flex gap-4 bg-slate-50 z-10
-                    max-xs:px-2
+                className={`transition-all flex bg-slate-50 z-10
                     max-xs:gap-0 max-xs:flex-col max-xs:rounded-r-2xl
                     max-xs:fixed max-xs:top-0 max-xs:left-0 max-xs:w-64 max-xs:h-full max-xs:z-10
                     ${
@@ -119,7 +152,7 @@ export default function Nav({
                     }`}
             >
                 <div
-                    className={cls("items-center", "flex", "xs:hidden")}
+                    className={cls("items-center", "flex", "xs:hidden", "ml-2")}
                     style={{ height: `${height}px` }}
                 >
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
@@ -133,6 +166,7 @@ export default function Nav({
                             href={link.href}
                             description={link.description}
                             active={link.name.toLowerCase() === active.toLowerCase()}
+                            height={height}
                         ></NavButton>
                     );
                 })}

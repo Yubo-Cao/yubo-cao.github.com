@@ -26,10 +26,10 @@ export default function Logo({
                         40: "text-2xl",
                         48: "text-3xl"
                     }[size],
-                    "font-mono"
+                    "font-mono",
                 )}
             >
-                Yubo Cao
+                YUBO CAO
             </p>
         </Link>
     );

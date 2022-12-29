@@ -40,6 +40,17 @@ function to_px(length: string | number): number {
     );
 }
 
+interface InnerIcon {
+    name: string;
+    from?: "md" | "fa" | "mdi";
+    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
+    weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
+    grade?: -25 | 0 | 200;
+    size?: number;
+    fill?: boolean;
+    className?: string;
+}
+
 function _icon({
     name,
     from = "md",
@@ -49,16 +60,7 @@ function _icon({
     size = 24,
     fill = false,
     className = ""
-}: {
-    name: string;
-    from?: "md" | "fa" | "mdi";
-    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
-    weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
-    grade?: -25 | 0 | 200;
-    size?: number;
-    fill?: boolean;
-    className?: string;
-}) {
+}: InnerIcon) {
     if (from === "md") {
         const supported = ["rounded", "sharp", "outlined"];
         if (!supported.includes(type)) {
@@ -141,6 +143,17 @@ function _icon({
     }
 }
 
+// @ts-ignore
+interface IconProps extends InnerIcon {
+    from?: "md" | "fa" | "mdi" | "image";
+    iconSize?: number;
+    wrap?: boolean;
+    fill?: boolean;
+    className?: string;
+    wrapClassName?: string;
+    alt?: string;
+}
+
 export default function Icon({
     name,
     from = name.startsWith("/") ? "image" : "md",
@@ -154,20 +167,7 @@ export default function Icon({
     className = "",
     wrapClassName = "",
     alt = `${from} icon ${name}`
-}: {
-    name: string;
-    from?: "md" | "fa" | "mdi" | "image";
-    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
-    weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
-    grade?: -25 | 0 | 200;
-    size?: number;
-    iconSize?: number;
-    wrap?: boolean;
-    fill?: boolean;
-    className?: string;
-    wrapClassName?: string;
-    alt?: string;
-}) {
+}: IconProps) {
     const cp = { ...{ name, from, type, weight, grade, fill, className }, size: iconSize };
     const icon =
         from === "image" ? (
@@ -192,3 +192,6 @@ export default function Icon({
         icon
     );
 }
+
+export type { IconProps };
+export { Icon };

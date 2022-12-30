@@ -1,11 +1,42 @@
 import localFont from "@next/font/local";
 import Image from "next/image";
+import { cls } from "../lib/utils";
 
 const materialSymbolsRounded = localFont({
     src: "./fonts/MaterialSymbolsRounded.woff2",
     variable: "--font-material-symbols-rounded",
-    display: "swap",
+    display: "block"
 });
+
+const faBrand = localFont({
+    src: "./fonts/fa-brands-400.woff2",
+    variable: "--font-fa-brand",
+    display: "block"
+});
+
+const faBrandCodepoints: { [key: string]: string } = {
+    github: "\\f09b",
+    redhat: "\\f7bc",
+    java: "\\f4e4",
+    ubuntu: "\\f7df",
+    git: "\\f1d3",
+    centos: "\\f789",
+    python: "\\f3e2",
+    fedora: "\\f798"
+};
+
+const faSolid = localFont({
+    src: "./fonts/fa-solid-900.woff2",
+    variable: "--font-fa-solid",
+    display: "block"
+});
+
+const faSolidCodepoints: { [key: string]: string } = {
+    "file-powerpoint": "\\f1c4",
+    "file-word": "\\f1c2",
+    "file-excel": "\\f1c3",
+    "file-pdf": "\\f1c1"
+};
 
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];
@@ -35,8 +66,8 @@ function to_px(length: string | number): number {
 
 interface InnerIcon {
     name: string;
-    from?: "md" | "fa" | "mdi";
-    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
+    from?: "md" | "fa";
+    type?: "rounded" | "brand" | "solid";
     weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
     grade?: -25 | 0 | 200;
     size?: number;
@@ -54,34 +85,39 @@ function _icon({
     fill = false,
     className = ""
 }: InnerIcon) {
+    const ligaStyle = {
+        WebkitFontFeatureSettings: "liga",
+        MozFontFeatureSettings: "'liga'"
+    };
+    const antiAliasStyle = {
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale"
+    };
+    const iconStyle: any = {
+        fontSize: size,
+        fontWeight: "normal",
+        fontStyle: "normal",
+        lineHeight: 1,
+        letterSpacing: "normal",
+        textTransform: "none",
+        whiteSpace: "nowrap",
+        wordWrap: "normal",
+        direction: "ltr",
+        textRendering: "optimizeLegibility"
+    };
+
     if (from === "md") {
-        const supported = ["rounded", "sharp", "outlined"];
-        if (!supported.includes(type)) {
-            throw new Error(
-                `Material Design Icons only support ${supported.join(", ")}. Got ${type}.`
-            );
-        }
-        type = type as "rounded" | "sharp" | "outlined";
         if (type !== "rounded") {
-            throw new Error(`Material Design Icons only support rounded icons. Got ${type}.`);
+            throw new Error(`Material Design only support rounded icons. Got ${type}.`);
         }
         return (
             <i
-                className={materialSymbolsRounded.className + ` ${className}`}
+                className={cls(materialSymbolsRounded.className, className)}
                 style={{
+                    ...iconStyle,
+                    ...ligaStyle,
+                    ...antiAliasStyle,
                     fontSize: size,
-                    fontWeight: "normal",
-                    fontStyle: "normal",
-                    lineHeight: 1,
-                    letterSpacing: "normal",
-                    textTransform: "none",
-                    whiteSpace: "nowrap",
-                    wordWrap: "normal",
-                    direction: "ltr",
-                    MozFontFeatureSettings: "liga",
-                    MozOsxFontSmoothing: "grayscale",
-                    WebkitFontFeatureSettings: "liga",
-                    WebkitFontSmoothing: "antialiased",
                     fontVariationSettings: `'wght' ${weight}, 'GRAD' ${grade}, 'FILL' ${
                         fill ? 1 : 0
                     }, 'opsz' ${to_nearest(to_px(size), [20, 24, 40, 48])}`
@@ -91,50 +127,47 @@ function _icon({
             </i>
         );
     } else if (from === "fa") {
-        const supported = ["brand", "classic", "regular", "sharp", "solid", "outlined"];
-        if (!supported.includes(type)) {
-            throw new Error(`Font Awesome only support ${supported.join(", ")}. Got ${type}.`);
+        const optimized = ["brand", "solid"];
+        if (!optimized.includes(type)) {
+            throw new Error(`Font Awesome only support ${optimized.join(", ")}. Got ${type}.`);
         }
-        type = type as "brand" | "classic" | "regular" | "sharp" | "solid" | "outlined";
-        let cls = {
-            brand: "fab",
-            classic: "fas",
-            regular: "far",
-            sharp: "fas",
-            solid: "fas",
-            outlined: "far"
-        }[type];
-
+        type = type as "brand" | "solid";
+        let icon = {
+            brand: faBrandCodepoints,
+            solid: faSolidCodepoints
+        }[type][name];
         return (
             <i
-                className={`fa ${cls} fa-${name} ${className}`}
+                className={cls(
+                    {
+                        brand: faBrand.className,
+                        solid: faSolid.className
+                    }[type],
+                    className
+                )}
                 style={{
-                    fontSize: size
-                    // fa doesn't support font weight
-                }}
-            ></i>
-        );
-    } else if (from === "mdi") {
-        if (type !== "solid") {
-            throw new Error(`Material Design Icons only support solid icons. Got ${type}.`);
-        }
-        return (
-            <i
-                className={`mdi mdi-${name} ${className}`}
-                style={{
+                    ...iconStyle,
+                    ...antiAliasStyle,
                     fontSize: size,
-                    fontWeight: weight
+                    fontWeight: {
+                        brand: 400,
+                        solid: 900
+                    }[type]
                 }}
-            ></i>
+            >
+                <style jsx>{`
+                    i::before {
+                        content: "${icon}";
+                    }
+                `}</style>
+            </i>
         );
-    } else {
-        throw new Error(`Unknown icon source: ${from}`);
     }
 }
 
 // @ts-ignore
 interface IconProps extends InnerIcon {
-    from?: "md" | "fa" | "mdi" | "image";
+    from?: "md" | "mdi" | "image";
     iconSize?: number;
     wrap?: boolean;
     fill?: boolean;

@@ -1,0 +1,29 @@
+MaterialSymbolsRounded:
+  - list
+  - email
+  - science
+  - home
+  - public
+  - discord
+  - code
+  - help
+  - phone
+  - info
+  - close
+  - tag
+  - menu
+  - pages
+fa-solid-900:
+  - file-powerpoint
+  - file-word
+  - file-excel
+  - file-pdf
+fa-brands-400:
+  - github
+  - redhat
+  - java
+  - ubuntu
+  - git
+  - centos
+  - python
+  - fedora

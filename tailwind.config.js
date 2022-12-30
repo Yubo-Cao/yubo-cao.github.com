@@ -15,6 +15,27 @@ const primaryColors = Object.entries(primary).reduce((acc, [key, value]) => {
     acc[`primary-${key}`] = value;
     return acc;
 });
+// indigo
+const secondary = {
+    50: "#eef2ff",
+    100: "#e0e7ff",
+    200: "#c7d2fe",
+    300: "#a5b4fc",
+    400: "#818cf8",
+    500: "#6366f1",
+    600: "#4f46e5",
+    700: "#4338ca",
+    800: "#3730a3",
+    900: "#312e81"
+};
+const secondaryColors = Object.entries(secondary).reduce((acc, [key, value]) => {
+    acc[`secondary-${key}`] = value;
+    return acc;
+});
+const colors = {
+    ...primaryColors,
+    ...secondaryColors,
+};
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -66,23 +87,23 @@ module.exports = {
             },
             backgroundColor: (theme) => ({
                 ...theme("colors"),
-                ...primaryColors
+                ...colors
             }),
             textColor: (theme) => ({
                 ...theme("colors"),
-                ...primaryColors
+                ...colors
             }),
             borderColor: (theme) => ({
                 ...theme("colors"),
-                ...primaryColors
+                ...colors
             }),
             boxShadowColor: (theme) => ({
                 ...theme("colors"),
-                ...primaryColors
+                ...colors
             }),
             gradientColorStops: (theme) => ({
                 ...theme("colors"),
-                ...primaryColors
+                ...colors
             }),
             gridTemplateColumns: (theme) => {
                 const spacing = theme("spacing");

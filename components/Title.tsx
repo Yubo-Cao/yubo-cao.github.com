@@ -27,8 +27,8 @@ export default function Title(props: {
     if (title === "" && subtitle !== "") throw new Error("Subtitle must have a title.");
 
     const styles: { [key: string]: string } = {
-        h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-indigo-500",
-        h2: "text-4xl font-extrabold text-primary-400",
+        h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500",
+        h2: "text-4xl font-extrabold text-primary-500",
         h3: "text-2xl font-bold",
         h4: "text-xl font-semibold",
         h5: "text-lg font-medium",

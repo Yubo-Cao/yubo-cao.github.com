@@ -34,6 +34,7 @@ export default function Card(props: {
         "p-4",
         "transition-all",
         "cursor-pointer",
+        "bg-white",
         rounded ? "rounded-lg" : "",
         {
             outlined: `border border-${color}-200`,

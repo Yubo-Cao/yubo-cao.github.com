@@ -49,7 +49,7 @@ function NavButton({
         router = useRouter();
 
     return (
-        <div
+        <button
             title={description}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
@@ -64,8 +64,12 @@ function NavButton({
                 "rounded-full",
                 "transition-all",
                 active
-                    ? cls("bg-primary-100", "hover:bg-primary-200", "active:bg-primary-300")
-                    : cls("hover:bg-slate-100", "active:bg-slate-200")
+                    ? cls(
+                          "bg-primary-100",
+                          entered ? "bg-primary-200" : "",
+                          "active:bg-primary-300"
+                      )
+                    : cls(entered ? "bg-slate-100" : "", "active:bg-slate-200")
             )}
         >
             <Icon
@@ -76,10 +80,10 @@ function NavButton({
                 iconSize={24}
                 fill={entered}
             />
-            <Link href={href} className={cls("xs:max-lg:hidden")}>
+            <Link href={href} className={cls("xs:max-md:hidden")}>
                 {name}
             </Link>
-        </div>
+        </button>
     );
 }
 
@@ -116,6 +120,7 @@ export default function Nav({ active }: { active: string }) {
             />
             <nav
                 className={cls(
+                    // common
                     "transition-all",
                     "bg-white",
                     // sidebar
@@ -133,13 +138,15 @@ export default function Nav({ active }: { active: string }) {
                     "xs:h-auto",
                     "xs:w-auto",
                     "xs:translate-x-0",
-                    "xs:divide-y-0"
+                    "xs:divide-y-0",
+                    "xs:rounded-none",
+                    "xs:shadow-none"
                 )}
             >
                 <div className={cls("items-center", "flex", "xs:hidden", "my-1")}>
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
                 </div>
-                <div className={cls("flex", "flex-col", "xs:flex-row", "xs:space-y-0")}>
+                <div className={cls("flex", "flex-col", "xs:flex-row", "xs:gap-2")}>
                     {links.map((link, i) => {
                         return (
                             <NavButton

@@ -61,8 +61,8 @@ export default function Section({
             "rounded-lg",
             "bottom-0",
             "bg-gradient-to-r",
-            "from-primary-100/20",
-            "to-secondary-100/20",
+            "from-primary-100",
+            "to-secondary-100",
             "-z-10"
         );
         if (avoidTOC) {

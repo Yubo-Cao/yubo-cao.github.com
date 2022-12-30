@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cls } from "../lib/utils";
 import Title from "./Title";
 
 export default function Achievement(props: {
@@ -10,8 +11,7 @@ export default function Achievement(props: {
     height?: number;
 }) {
     let height = props.height || 144,
-        width = Math.round(height * 0.5),
-        compression = Math.round(height * 0);
+        width = Math.round(height * 0.5);
     return (
         <div className="flex items-center">
             <Image
@@ -19,19 +19,24 @@ export default function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                style={{ marginRight: `-${compression}px` }}
+                className="-mr-10"
             />
-            <div className="flex-1 text-center">
+            <div className={cls(
+                "flex-1",
+                "text-center",
+                "rounded-full",
+                "p-3",
+                "px-6",
+            )}>
                 {
                     <Title
                         title={props.title}
                         subtitle={props.subtitle}
                         level={props.level || 3}
-                        className="text-primary-400"
-                        subtitleClassName="text-primary-400 -mt-2"
+                        subtitleClassName={cls("-mt-4", "mb-2")}
                     />
                 }
-                <p className="font-light prose">
+                <p className={cls("text-sm", "font-light", "text-slate-500", "prose")}>
                     {props.description}
                     {props.children}
                 </p>
@@ -41,7 +46,7 @@ export default function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                style={{ marginLeft: `-${compression}px` }}
+                className={cls("-ml-10")}
             />
         </div>
     );

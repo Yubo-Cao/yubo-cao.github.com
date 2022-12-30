@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { cls } from "../lib/utils";
 
 export default function Title(props: {
     title?: string | ReactNode;
@@ -28,7 +29,20 @@ export default function Title(props: {
 
     const styles: { [key: string]: string } = {
         h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500",
-        h2: "text-4xl font-extrabold text-primary-500",
+        h2: cls(
+            "text-5xl",
+            "font-bold",
+            "after:content-['']",
+            "after:block",
+            "after:w-32",
+            "after:h-1",
+            "after:mb-4",
+            "after:mt-2",
+            "after:rounded-full",
+            "after:bg-gradient-to-r",
+            "after:from-primary-500",
+            "after:to-secondary-500"
+        ),
         h3: "text-2xl font-bold",
         h4: "text-xl font-semibold",
         h5: "text-lg font-medium",

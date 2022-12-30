@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Achievement from "../components/Achievement";
 import Contact from "../components/Contact";
 import Experience from "../components/Experience";
@@ -10,7 +11,11 @@ import Title from "../components/Title";
 
 export default function Home() {
     return (
-        <NavigationLayout active="About" navigationClassName="mt-20">
+        <NavigationLayout active="About" navigationClassName="mt-32">
+            <Head>
+                <title>Yubo Cao - About</title>
+                <meta name="description" content="About Yubo Cao" />
+            </Head>
             <Title level={1}>About me</Title>
             <Section title="Projects" subtitle="My hobby, passion, and dream" flow={true}>
                 <Project title="My Website" name="public" url="https://yubo-cao.github.io">

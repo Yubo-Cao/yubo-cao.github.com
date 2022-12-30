@@ -154,9 +154,9 @@ export default class StickyNavigation extends React.Component<
 
     render(): React.ReactNode {
         return (
-            <aside className={"sticky top-2 mr-8 prose self-start " + this.className}>
+            <aside className={"sticky top-2 mr-6 prose self-start " + this.className}>
                 <Title level={2} className="my-2 mb-4">
-                    Table of Content
+                    Catalogue
                 </Title>
                 <nav ref={this.nav}>
                     <TOC items={this.state.toc} ordered={this.ordered} />

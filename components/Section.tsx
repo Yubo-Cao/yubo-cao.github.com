@@ -49,7 +49,7 @@ export default function Section({
             ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4".split(/\s+/)
             : [],
         titleClass = hasTitle ? (level < 3 ? "mt-8" : "mt-4") : "",
-        spacingClass = ["my-6", "py-2", "sm:py-8"];
+        spacingClass = ["my-6", "py-4", "sm:py-8"];
 
     function addBackground(section: HTMLElement) {
         let background = document.createElement("div");

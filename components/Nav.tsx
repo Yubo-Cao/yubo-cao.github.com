@@ -125,11 +125,11 @@ export default function Nav({ active }: { active: string }) {
                     "transition-all",
                     "bg-white",
                     // sidebar
-                    "absolute",
+                    "fixed",
                     "left-0",
                     "top-0",
+                    "bottom-0",
                     "p-2",
-                    "h-full",
                     "w-64",
                     "rounded-r-xl",
                     "z-10",

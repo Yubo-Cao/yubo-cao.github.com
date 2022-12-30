@@ -13,6 +13,7 @@ MaterialSymbolsRounded:
   - tag
   - menu
   - pages
+  - menu_open
 fa-solid-900:
   - file-powerpoint
   - file-word

@@ -13,9 +13,9 @@ export default function Contact(props: {
         value = props.value,
         size = 48;
     let icon = {
-        email: <Icon name="email" size={size} from="md" fill={true} />,
-        tel: <Icon name="phone" size={size} from="md" fill={true} />,
-        discord: <Icon name="discord" size={size} from="fa" type="brand" />,
+        email: <Icon name="email" size={size} fill={true} />,
+        tel: <Icon name="phone" size={size} fill={true} />,
+        discord: <Icon name="discord" size={size} iconSize={38.4} from="fa" type="brand" />,
         github: <Icon name="github" size={size} from="fa" type="brand" />
     }[type];
     const [open, setOpen] = React.useState(false);

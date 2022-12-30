@@ -22,7 +22,8 @@ const faBrandCodepoints: { [key: string]: string } = {
     git: "\\f1d3",
     centos: "\\f789",
     python: "\\f3e2",
-    fedora: "\\f798"
+    fedora: "\\f798",
+    discord: "\\f392"
 };
 
 const faSolid = localFont({
@@ -126,7 +127,8 @@ function _icon({
                 {name}
             </i>
         );
-    } else if (from === "fa") {
+    }
+    if (from === "fa") {
         const optimized = ["brand", "solid"];
         if (!optimized.includes(type)) {
             throw new Error(`Font Awesome only support ${optimized.join(", ")}. Got ${type}.`);
@@ -136,6 +138,9 @@ function _icon({
             brand: faBrandCodepoints,
             solid: faSolidCodepoints
         }[type][name];
+        if (icon == null) {
+            throw new Error(`Font Awesome doesn't have icon ${name}.`);
+        }
         return (
             <i
                 className={cls(
@@ -163,11 +168,12 @@ function _icon({
             </i>
         );
     }
+    throw new Error(`Unknown icon source: ${from}.`);
 }
 
 // @ts-ignore
 interface IconProps extends InnerIcon {
-    from?: "md" | "mdi" | "image";
+    from?: "md" | "fa" | "image";
     iconSize?: number;
     wrap?: boolean;
     fill?: boolean;
@@ -178,7 +184,7 @@ interface IconProps extends InnerIcon {
 
 export default function Icon({
     name,
-    from,
+    from = "md",
     type,
     weight,
     grade,

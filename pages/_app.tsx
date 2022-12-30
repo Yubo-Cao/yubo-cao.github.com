@@ -5,7 +5,8 @@ import "../styles/globals.css";
 
 const inter = Inter({
     subsets: ["latin"],
-    variable: "--font-inter"
+    variable: "--font-inter",
+    display: "block",
 });
 
 interface AppProps {

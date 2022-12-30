@@ -21,13 +21,7 @@ export default function Achievement(props: {
                 height={height}
                 className="-mr-10"
             />
-            <div className={cls(
-                "flex-1",
-                "text-center",
-                "rounded-full",
-                "p-3",
-                "px-6",
-            )}>
+            <div className={cls("flex-1", "text-center", "rounded-full", "p-3", "px-6")}>
                 {
                     <Title
                         title={props.title}

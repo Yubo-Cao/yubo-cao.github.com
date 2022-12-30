@@ -49,7 +49,7 @@ function NavButton({
         router = useRouter();
 
     return (
-        <button
+        <div
             title={description}
             onMouseEnter={() => setEntered(true)}
             onMouseLeave={() => setEntered(false)}
@@ -69,7 +69,8 @@ function NavButton({
                           entered ? "bg-primary-200" : "",
                           "active:bg-primary-300"
                       )
-                    : cls(entered ? "bg-slate-100" : "", "active:bg-slate-200")
+                    : cls(entered ? "bg-slate-100" : "", "active:bg-slate-200"),
+                "sm:gap-2",
             )}
         >
             <Icon
@@ -80,10 +81,10 @@ function NavButton({
                 iconSize={24}
                 fill={entered}
             />
-            <Link href={href} className={cls("xs:max-md:hidden")}>
+            <Link href={href} className={cls("sm:max-md:hidden")}>
                 {name}
             </Link>
-        </button>
+        </div>
     );
 }
 
@@ -102,7 +103,7 @@ export default function Nav({ active }: { active: string }) {
     }, [open]);
     return (
         <>
-            <MenuButton open={open} onClick={() => setOpen(!open)} className="flex xs:hidden" />
+            <MenuButton open={open} onClick={() => setOpen(!open)} className="flex sm:hidden" />
             {/* shade */}
             <div
                 className={cls(
@@ -115,7 +116,7 @@ export default function Nav({ active }: { active: string }) {
                     "w-full",
                     "backdrop-blur-sm",
                     open ? "z-10 opacity-40" : "-z-10 opacity-0",
-                    "xs:hidden"
+                    "sm:hidden"
                 )}
             />
             <nav
@@ -134,19 +135,19 @@ export default function Nav({ active }: { active: string }) {
                     "z-10",
                     open ? cls("translate-x-0") : cls("-translate-x-full"),
                     // navbar
-                    "xs:static",
-                    "xs:h-auto",
-                    "xs:w-auto",
-                    "xs:translate-x-0",
-                    "xs:divide-y-0",
-                    "xs:rounded-none",
-                    "xs:shadow-none"
+                    "sm:static",
+                    "sm:h-auto",
+                    "sm:w-auto",
+                    "sm:translate-x-0",
+                    "sm:divide-y-0",
+                    "sm:rounded-none",
+                    "sm:shadow-none"
                 )}
             >
-                <div className={cls("items-center", "flex", "xs:hidden", "my-1")}>
+                <div className={cls("items-center", "flex", "sm:hidden", "my-1")}>
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
                 </div>
-                <div className={cls("flex", "flex-col", "xs:flex-row", "xs:gap-2")}>
+                <div className={cls("flex", "flex-col", "sm:flex-row", "sm:gap-2")}>
                     {links.map((link, i) => {
                         return (
                             <NavButton

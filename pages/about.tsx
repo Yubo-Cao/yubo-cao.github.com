@@ -14,7 +14,10 @@ export default function Home() {
         <NavigationLayout active="About" navigationClassName="mt-32">
             <Head>
                 <title>Yubo Cao - About</title>
-                <meta name="description" content="About Yubo Cao" />
+                <meta
+                    name="description"
+                    content="About Yubo Cao: a highly motivated and ambitious sophomore with a passion for programming and artificial intelligence."
+                />
             </Head>
             <Title level={1}>About me</Title>
             <Section title="Projects" subtitle="My hobby, passion, and dream" flow={true}>

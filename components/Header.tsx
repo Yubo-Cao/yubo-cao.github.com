@@ -13,11 +13,11 @@ export default function Header({ active }: { active: string }) {
                 "bg-white",
                 "p-3",
                 "px-2",
-                "xs:flex-row",
-                "xs:justify-between",
+                "sm:flex-row",
+                "sm:justify-between",
                 "sm:px-8",
                 "md:px-16",
-                "max-xs:gap-2",
+                "max-sm:gap-1",
                 "shadow"
             )}
             style={{ height: "64px" }}

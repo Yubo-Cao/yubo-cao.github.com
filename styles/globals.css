@@ -5,6 +5,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-width: none;
+    text-size-adjust: 100%;
 }
 
 /* https://codepen.io/sosuke/pen/Pjoqqp */

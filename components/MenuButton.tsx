@@ -5,7 +5,8 @@ import Icon from "./Icon";
 export default function MenuButton({
     open,
     onClick,
-    size = 24
+    size = 24,
+    className = ""
 }: {
     open: boolean;
     onClick: () => void;
@@ -30,7 +31,8 @@ export default function MenuButton({
                 "justify-center",
                 "items-center",
                 "w-12",
-                "h-12"
+                "h-12",
+                className
             )}
         >
             <Icon

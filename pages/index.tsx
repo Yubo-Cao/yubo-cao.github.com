@@ -7,8 +7,8 @@ export default function Index() {
     return (
         <HeaderLayout active={"Home"}>
             <Section
-                className="pb-0 max-md:pb-4 mx-auto max-w-4xl"
-                contentClassName="flex gap-4 items-center justify-center max-md:flex-col p-4 py-0 max-md:py-4"
+                className="mx-auto max-w-4xl"
+                contentClassName="flex gap-4 items-center justify-center max-md:flex-col"
                 alternate="none"
             >
                 <Image

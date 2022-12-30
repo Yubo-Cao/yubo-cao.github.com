@@ -2,34 +2,28 @@ import { cls } from "../lib/utils";
 import Logo from "./Logo";
 import Nav from "./Nav";
 
-export default function Header({
-    active,
-    height = 64
-}: {
-    active: string;
-    height?: 48 | 64 | 72;
-}) {
+export default function Header({ active }: { active: string }) {
     return (
         <header
             className={cls(
                 "flex",
+                "flex-row-reverse",
                 "items-center",
-                "justify-between",
-                "bg-slate-50",
+                "justify-end",
+                "bg-white",
                 "p-3",
-                "px-8",
-                "sm:px-16",
-                "md:px-24",
+                "px-2",
+                "xs:flex-row",
+                "xs:justify-between",
+                "sm:px-8",
+                "md:px-16",
                 "max-xs:gap-2",
-                "shadow-md"
+                "shadow"
             )}
-            style={{ height: `${height}px` }}
+            style={{ height: "64px" }}
         >
-            <Logo
-                size={{ 48: 24, 64: 40, 72: 40 }[height] as any}
-                className={"xs:max-sm:hidden"}
-            />
-            <Nav active={active} height={height} />
+            <Logo />
+            <Nav active={active} />
         </header>
     );
 }

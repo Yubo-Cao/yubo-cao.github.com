@@ -49,7 +49,7 @@ export default function Section({
             ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4".split(/\s+/)
             : [],
         titleClass = hasTitle ? (level < 3 ? "mt-8" : "mt-4") : "",
-        spacingClass = ["my-6", "px-2", "py-4", "sm:py-8", "sm:px-4"];
+        spacingClass = ["my-6", "py-2", "sm:py-8"];
 
     function addBackground(section: HTMLElement) {
         let background = document.createElement("div");
@@ -68,11 +68,11 @@ export default function Section({
         section.appendChild(background);
         return () => section?.removeChild(background);
     }
-    
+
     useEffect(() => {
         let section = ref.current;
         if (!section) return;
-        if (!isParentMain(section)) {
+        if (!isParentMain(section) && !isParentRoot(section)) {
             section.classList.remove(...spacingClass);
         }
         if (isFirstChild(section)) {

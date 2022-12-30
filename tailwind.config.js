@@ -34,7 +34,7 @@ const secondaryColors = Object.entries(secondary).reduce((acc, [key, value]) => 
 });
 const colors = {
     ...primaryColors,
-    ...secondaryColors,
+    ...secondaryColors
 };
 
 /** @type {import('tailwindcss').Config} */

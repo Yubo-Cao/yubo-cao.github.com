@@ -96,7 +96,7 @@ class Blog implements BlogPost {
                 })
         );
     }
-    
+
     private static _list: Blog[] | null = null;
 
     static async next(id: string[]): Promise<Blog | null> {

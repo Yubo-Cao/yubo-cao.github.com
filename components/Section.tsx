@@ -63,7 +63,10 @@ export default function Section({
             "bg-primary-100/30",
             "-z-10"
         );
-        if (avoidTOC) background.classList.add("xl:right-0");
+        if (avoidTOC) {
+            background.classList.add("xl:-right-4");
+            section.classList.add("xl:mr-4");
+        }
         section.classList.add("relative", "alternate"); // tagging purpose only
         section.appendChild(background);
         return () => section?.removeChild(background);

@@ -1,0 +1,14 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "plaintext",
+            "scheme": "file",
+            "pattern": "content/blog/2023-new-year.mdx"
+        },
+        {
+            "language": "mdx",
+            "scheme": "file",
+            "pattern": "content/blog/2023-new-year.mdx"
+        }
+    ]
+}

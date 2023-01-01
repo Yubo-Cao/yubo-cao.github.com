@@ -12,7 +12,9 @@ interface IconsProps extends IconProps {
 export default function Icons(props: IconsProps) {
     let {
         children,
-        names = children?.split(/(\s+|,)/)?.filter((v) => v !== "" && v !== " " && v !== ","),
+        names = children
+            ?.split(/(\s+|,)/)
+            ?.filter((v) => v !== "" && v !== " " && v !== ","),
         className,
         iconClassName
     } = props;

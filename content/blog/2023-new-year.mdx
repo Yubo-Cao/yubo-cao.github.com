@@ -1,0 +1,218 @@
+---
+date: 2022-12-31
+last_modified: 2022-12-31
+title: Happy New Year!
+author: Yubo-Cao
+tags: [life]
+cover: /images/blog/2023-new-year/cover.jpg
+abstract: Reflect upon the past year and look forward to the next year.
+---
+
+First of all, for everyone who is reading this, I wish you a happy new year! I
+hope you have a great year with goals achieved and dreams fulfilled. Most
+importantly, I hope you are **free from COVID-19**.
+
+## Reflect
+
+### 2nd semester of my freshman year
+
+2022 is a very fast year for me. I transition from a freshman to a sophomore
+now, and I completed my AP CSP with a 5, which is kinda expected. Unfortunately,
+I didn't get a 100 on the exam, so unlike Andrew, I don't get an award. But
+overall, my freshman year is a success for me, as I pretty much get a high A in
+all my courses, except Language Arts. The second semester of my freshman year
+doesn't teach me a lot of new things, and the pressure seems to be significantly
+reduced compared to the first semester as if the first semester is a test to see
+if I am competent and motivated enough to continue my study in the school.
+
+### Summer vacation
+
+Over the summer, I play around with GUI, Python, and Spiders.
+
+-   [Quizlet Helper](https://github.com/Yubo-Cao/quizlet_helper) I use
+    Playwright to automate the process of creating and editing Quizlet sets.
+-   [Grade Checker](https://github.com/Yubo-Cao/grade_checker) Use `requests`,
+    `aiohttp`, and `lxml` to check my grades on the school website. This
+    calculates the grade into 5 significant digits and alarms me when the grade
+    is dropped. The GUI is made with the `Tkinter` and `sun-valley-ttk` themes.
+    Due to the limitation of `Tkinter`, it's not responsive and the GUI looks
+    outdated.
+
+    ![Grade Checker](/images/blog/2023-new-year/grade_checker.png)
+
+-   [Todo List](https://github.com/Yubo-Cao/todo_list) YES! I finally made a
+    to-do list! I use `PyQt5` to make a GUI for the to-do list. This project
+    integrates our old grade checker as an extension, so we can modify the
+    priority of the to-do list based on the grades. It uses plain `YAML` with a
+    huge amount of meta-class and operator overloading to make the code looks
+    nice and accurate---not really---it just ends up being a mess of
+    higher-order functions and meta-programming that nobody could debug or
+    figure out what was going on. I am currently rewriting this with `Tauri` and
+    `React` stuff that I learned, as the modern web development and frontend the
+    frameworks seem to far surpass the old OOP-styled, imperative programming I
+    used to do.
+
+    ![Todo List](/images/blog/2023-new-year/grade_todo.png)
+
+Beyond that, I also read about deep learning. And it turns out that they are not
+as hard as one would expect---at least, one just needs to understand how to call
+the functions and piece them up, with a high-level understanding of math would
+suffice. I also read about the _A history of the world in 6 Glasses_ by Tom
+Standage, as required by my Language Arts class. It's a very interesting book
+that tells the history of the world through the development of different drinks.
+I spasmodically hang out with my friends as shown in
+[my about page](/about#friends). Beyond that, I spend a lot of time in edX and
+self-studied the majority of AP Calculus. And honestly, that's my summer
+vacation, a not very productive yet entertaining one.
+
+### Back to school
+
+#### Class
+
+So I get a sufficient amount of break, and now I am back to school. As always, I
+get a high A on the majority of my courses, except Language Arts (92). I am
+extremely surprised by my AP World History course as my teacher gave me a 100 on
+the first exam and I ended up having a 98 in this course. I would like to
+express my heartfelt gratitude to my teacher, Ms. NT and Ms. Calhoun for their
+support and guidance on my science fair course, for otherwise, I would not have
+been able to finish my project and get an A in her class---I started my semester
+with an 85.
+
+But in short, that's nothing to be proud of, it's just a ground truth that
+everyone in GSMST gets 100 regardless.
+
+#### Extra-curricular activities
+
+##### CyberPatriot
+
+I am proud to announce that I serve as an officer at the cyber-security
+Department of the CS club, especially in light of the extraordinary results of
+our team in the CyberPatriot competition achieved: Lambda (my team) is the first
+team in silver, Mu and Phi being the first and second in the gold tier, and Psi
+had advanced to platinum. All those are achieved through self-paced courses,
+several lectures, and most importantly, the innovative ideas brought by
+brilliant Anish. I am proud to be a part of this team, and I am looking forward
+to the next competition.
+
+##### Algorithm
+
+I just crammed the algorithm course in the last few weeks of the semester. So,
+no surprise, I joined USACO and stuck at the bronze level. For certain, I will
+try again next year. I will learn a lot more about algorithms and data
+structures (hopefully).
+
+##### FTC Robotics
+
+Robotics is such a fun activity full of engineering and programming---imagine,
+having a robot that simply won't respond to any of your commands nor are you
+able to connect to it wirelessly, simply because of unmatched firmware and
+software versions. I am unjust to say it's a totally fun activity, but the joy
+when you finally get it to work is just unparalleled. I worked on coding aspects
+of the projects:
+
+-   [FTC Document](https://github.com/Yubo-Cao/FTC) A continuous integration
+    system for FTC projects. It uses `GitHub Actions` to build and logbook from
+    the logbook entries written in `YAML`, and rendered to `TeX` using `jinja2`
+    ad custom Python scripts.
+
+-   [FTC Controller](https://github.com/Yubo-Cao/RedFtcController) A fork of the
+    official FTC controller, with our code added. It's written in `Kotlin`. We
+    abandoned it eventually and resort to OnBotJava.
+
+There isn't much success in the competition, but I am proud of the work we did.
+With new fixes and improvements conducted over the winter break, I am looking
+forward to the next competition.
+
+![FTC](/images/blog/2023-new-year/ftc.jpg)
+
+##### React and website
+
+The website you are currently reading is made with React. It underwent 3
+iterations before I settled on the current one.
+
+1. I started with hand-crafted HTML/CSS/JS. It's a hand-written static website
+   and copy-paste is the only way to update the website. It's not responsive and
+   the code is a mess.
+
+    ![Version 1 website](/images/blog/2023-new-year/website_version_1.png)
+
+2. Quickly, I write this website with a bit more knowledge of HTML/CSS/JS. Since
+   I learned more about the importance of responsive design and fitting smaller
+   screen devices, an unbearable amount of media queries is added to the CSS
+   file, as I was ignorant about the existence of `flex-wrap` and
+   `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));`. And just to
+   over-complicate things, I used `jinja2` and a custom Python script to
+   generate the HTML file with server-side injection, etc. At that time, I don't
+   realize that GitHub Action could run any code I want, so I manually run that
+   script and let it mess up my local repository will all kinds of files. I also
+   started to think about reusability and modularity, so I started to break the
+   website into components:
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            ...
+            <link rel="stylesheet" href="nav.css" />
+            <link rel="stylesheet" href="header.css" />
+            <link rel="stylesheet" href="logo.css" />
+            ...
+            <script src="nav.js" defer></script>
+            <script src="header.js" defer></script>
+            <script src="logo.js" defer></script>
+        </head>
+        <body>
+            ...
+            <header>
+                <div class="logo">...</div>
+                <nav>...</nav>
+            </header>
+        </body>
+    </html>
+    ```
+
+    The result is I have to write that kind of stuff for every single page.
+    That's not elegant nor maintainable. We also find patterns in the code,
+    where it's literally `div` nested with `div` with all the crazy class names
+    and IDs. One important note is that I started to use `SASS` to write `CSS`,
+    and I defined a lot of `mixin` following the Tailwind CSS convention:
+
+    ```sass
+    @mixin text-2xl
+        font-size: 1.5rem
+        line-height: 2rem
+    ```
+
+    It's sweet when you write `@include text-2xl` in your `CSS` file. The mobile
+    support is still in progress, but it's much better than the previous
+    version.
+
+    ![Version 2 website](/images/blog/2023-new-year/website_version_2.png)
+
+3. I finally decided to use `Next.js`. I get rid of my old friend, SASS, and
+   started to use Tailwind CSS instead. I also started to use `TypeScript` and
+   `React` to write the website. Since `Next.js` comes with server-side
+   generation, I no longer need to build a custom script to generate the HTML
+   file and it will automatically generate a static website into the `out/`
+   folder. Following the guidelines of `Tailwind CSS` is pretty good, although
+   it makes my HTML looks like a mess:
+
+    ```html
+    <div
+        class="p-4 transition-all cursor-pointer bg-white rounded-lg border border-primary-200 hover:shadow-md hover:shadow-primary-300/30 active:shadow-lg active:shadow-primary-400/30 flex flex-row gap-4 items-start justify-start flex-wrap"
+    >
+        ...
+    </div>
+    ```
+
+    But since in code, I just write components like
+
+    ```tsx
+    <Card></Card>
+    ```
+
+    it's not that bad. I am proud to declare that mobile support is complete,
+    and the website is responsive to all kinds of devices. And as you might
+    guess, that's how I spent my winter break.
+
+    ![Version 3 website](/images/blog/2023-new-year/website_version_3.png)

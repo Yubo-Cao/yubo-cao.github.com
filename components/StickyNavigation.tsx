@@ -34,7 +34,11 @@ function TOC(props: {
                         <Link href={`#${item.id}`} className={cls}>
                             {item.title}
                         </Link>
-                        <TOC items={children} level={level + 1} ordered={ordered} />
+                        <TOC
+                            items={children}
+                            level={level + 1}
+                            ordered={ordered}
+                        />
                     </li>
                 );
             } else {
@@ -61,9 +65,15 @@ type StickyNavigationState = {
         title: string;
         level: number;
     }[];
+    top: number;
 };
 
-type StickyNavigationProps = { level?: number; ordered?: boolean; className?: string };
+type StickyNavigationProps = {
+    level?: number;
+    ordered?: boolean;
+    className?: string;
+    top?: number;
+};
 
 export default class StickyNavigation extends React.Component<
     StickyNavigationProps,
@@ -73,12 +83,14 @@ export default class StickyNavigation extends React.Component<
     ordered: boolean;
     nav: React.RefObject<HTMLDivElement>;
     className: string;
+    scrollY: number = 0;
     state: StickyNavigationState;
 
     constructor(props: StickyNavigationProps) {
         super(props);
         this.state = {
-            toc: []
+            toc: [],
+            top: 0
         };
 
         this.nav = React.createRef();
@@ -91,7 +103,9 @@ export default class StickyNavigation extends React.Component<
         let root = document.querySelector("main") || document.body;
         let headings: HTMLElement[] = Array.from(
             root.querySelector("main")
-                ? root.querySelector("main")!.querySelectorAll("h1, h2, h3, h4, h5, h6")
+                ? root
+                      .querySelector("main")!
+                      .querySelectorAll("h1, h2, h3, h4, h5, h6")
                 : root.querySelectorAll("h1, h2, h3, h4, h5, h6")
         );
 
@@ -150,11 +164,36 @@ export default class StickyNavigation extends React.Component<
         headings.forEach((e: HTMLElement) => {
             observer.observe(e);
         });
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                this.scroll(window.scrollY);
+            },
+            { passive: true }
+        );
+
+        window.removeEventListener("scroll", () => {
+            this.scroll(window.scrollY);
+        });
+    }
+
+    scroll(newScrollY: number) {
+        const { scrollY } = this;
+        if (scrollY === newScrollY) return;
+        this.setState({ top: scrollY > newScrollY ? 64 : 0 });
+        this.scrollY = newScrollY;
     }
 
     render(): React.ReactNode {
         return (
-            <aside className={"sticky top-16 mr-6 prose self-start " + this.className}>
+            <aside
+                className={
+                    "transition-all sticky mr-6 prose self-start " +
+                    this.className
+                }
+                style={{ top: `${(this.props.top || 0) + this.state.top}px` }}
+            >
                 <Title level={2} className="my-2 mb-4">
                     Catalogue
                 </Title>

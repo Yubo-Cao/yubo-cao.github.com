@@ -1,6 +1,11 @@
 import { css, keyframes } from "@emotion/react";
 
-function LoadText(width: number, height: number, lineheight?: number, className?: string) {
+function LoadText(
+    width: number,
+    height: number,
+    lineheight?: number,
+    className?: string
+) {
     let lineHeight = lineheight || 16,
         lineCount = Math.ceil(height / lineHeight);
     return (
@@ -86,7 +91,8 @@ function LoadIcon(size: number, className?: string) {
                         width: ${size}px;
                         border-radius: 50%;
                         clip: rect(0, ${size}px, ${size}px, ${size / 2}px);
-                        animation: ${backandforth} 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+                        animation: ${backandforth} 1.2s
+                            cubic-bezier(0.77, 0, 0.175, 1) infinite;
                     }
                 `}
                 className={`after:border-gray-300 after:border-4 after:border-solid after:rounded-full`}
@@ -97,7 +103,10 @@ function LoadIcon(size: number, className?: string) {
 
 function LoadImage(width: number, height: number, className?: string) {
     return (
-        <div style={{ width: width, height: height }} className={className || ""}>
+        <div
+            style={{ width: width, height: height }}
+            className={className || ""}
+        >
             <div className="w-full h-full bg-gray-300 rounded"></div>
         </div>
     );

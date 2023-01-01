@@ -109,7 +109,9 @@ function _icon({
 
     if (from === "md") {
         if (type !== "rounded") {
-            throw new Error(`Material Design only support rounded icons. Got ${type}.`);
+            throw new Error(
+                `Material Design only support rounded icons. Got ${type}.`
+            );
         }
         return (
             <i
@@ -131,7 +133,11 @@ function _icon({
     if (from === "fa") {
         const optimized = ["brand", "solid"];
         if (!optimized.includes(type)) {
-            throw new Error(`Font Awesome only support ${optimized.join(", ")}. Got ${type}.`);
+            throw new Error(
+                `Font Awesome only support ${optimized.join(
+                    ", "
+                )}. Got ${type}.`
+            );
         }
         type = type as "brand" | "solid";
         let icon = {
@@ -214,7 +220,9 @@ export default function Icon({
         );
     return wrap ? (
         <div
-            className={`flex justify-center items-center ${wrapClassName || ""}`}
+            className={`flex justify-center items-center ${
+                wrapClassName || ""
+            }`}
             style={{ width: size, height: size }}
         >
             {icon}

@@ -70,7 +70,7 @@ function NavButton({
                           "active:bg-primary-300"
                       )
                     : cls(entered ? "bg-slate-100" : "", "active:bg-slate-200"),
-                "sm:gap-2",
+                "sm:gap-2"
             )}
         >
             <Icon
@@ -103,7 +103,11 @@ export default function Nav({ active }: { active: string }) {
     }, [open]);
     return (
         <>
-            <MenuButton open={open} onClick={() => setOpen(!open)} className="flex sm:hidden" />
+            <MenuButton
+                open={open}
+                onClick={() => setOpen(!open)}
+                className="flex sm:hidden"
+            />
             {/* shade */}
             <div
                 className={cls(
@@ -115,7 +119,7 @@ export default function Nav({ active }: { active: string }) {
                     "h-full",
                     "w-full",
                     "backdrop-blur-sm",
-                    open ? "z-10 opacity-40 block" : "-z-10 opacity-0 hidden",
+                    open ? "z-10 opacity-40 block" : "-z-10 opacity-0 hidden"
                 )}
             />
             <nav
@@ -143,10 +147,19 @@ export default function Nav({ active }: { active: string }) {
                     "sm:shadow-none"
                 )}
             >
-                <div className={cls("items-center", "flex", "sm:hidden", "my-1")}>
+                <div
+                    className={cls("items-center", "flex", "sm:hidden", "my-1")}
+                >
                     <MenuButton open={open} onClick={() => setOpen(!open)} />
                 </div>
-                <div className={cls("flex", "flex-col", "sm:flex-row", "sm:gap-2")}>
+                <div
+                    className={cls(
+                        "flex",
+                        "flex-col",
+                        "sm:flex-row",
+                        "sm:gap-2"
+                    )}
+                >
                     {links.map((link, i) => {
                         return (
                             <NavButton
@@ -155,7 +168,10 @@ export default function Nav({ active }: { active: string }) {
                                 icon={link.icon}
                                 href={link.href}
                                 description={link.description}
-                                active={link.name.toLowerCase() === active.toLowerCase()}
+                                active={
+                                    link.name.toLowerCase() ===
+                                    active.toLowerCase()
+                                }
                             ></NavButton>
                         );
                     })}

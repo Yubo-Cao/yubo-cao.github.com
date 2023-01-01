@@ -29,7 +29,14 @@ function BlogCard(props: { blog: BlogPost }) {
                     "md:gap-4"
                 )}
             >
-                <div className={cls("overflow-hidden", "md:h-full", "md:w-1/2", "lg:w-1/3")}>
+                <div
+                    className={cls(
+                        "overflow-hidden",
+                        "md:h-full",
+                        "md:w-1/2",
+                        "lg:w-1/3"
+                    )}
+                >
                     <Image
                         src={blog.cover}
                         width={300}
@@ -60,13 +67,23 @@ function BlogCard(props: { blog: BlogPost }) {
                         level={3}
                         title={blog.title}
                         subtitle={blog.abstract}
-                        subtitleClassName={cls("text-slate-500", "text-lg", "font-semibold")}
+                        subtitleClassName={cls(
+                            "text-slate-500",
+                            "text-lg",
+                            "font-semibold"
+                        )}
                         className={cls("mb-0")}
                     />
                     <div className={cls("mt-4", "space-y-2")}>
-                        <p className={cls("text-sm", "text-gray-500")}>{blog.date}</p>
+                        <p className={cls("text-sm", "text-gray-500")}>
+                            {blog.date}
+                        </p>
                         <div className={cls("flex", "flex-row", "gap-2")}>
-                            <Icon name={"tag"} className={cls("text-gray-500")} size={24} />
+                            <Icon
+                                name={"tag"}
+                                className={cls("text-gray-500")}
+                                size={24}
+                            />
                             <div className={`space-x-2`}>
                                 {blog.tags.map((tag) => (
                                     <Chip key={tag}>{tag}</Chip>
@@ -83,11 +100,20 @@ function BlogCard(props: { blog: BlogPost }) {
 export default function Index({ blogs }: { blogs: BlogPost[] }) {
     return (
         <HeaderLayout active={"blog"}>
-            <Section title={"Recent"} flow={true} alternate={"this"} avoidTOC={false}>
+            <Section
+                title={"Recent"}
+                flow={true}
+                alternate={"this"}
+                avoidTOC={false}
+            >
                 {blogs
                     .filter(
                         (blog) =>
-                            (Date.now() - new Date(blog.date).getTime()) / 1000 / 60 / 60 / 24 <
+                            (Date.now() - new Date(blog.date).getTime()) /
+                                1000 /
+                                60 /
+                                60 /
+                                24 <
                             7
                     )
                     .map((blog) => (

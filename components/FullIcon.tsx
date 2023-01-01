@@ -30,7 +30,14 @@ function to_px(length: string | number): number {
 interface InnerIcon {
     name: string;
     from?: "md" | "fa" | "mdi";
-    type?: "rounded" | "sharp" | "outlined" | "brand" | "classic" | "regular" | "solid";
+    type?:
+        | "rounded"
+        | "sharp"
+        | "outlined"
+        | "brand"
+        | "classic"
+        | "regular"
+        | "solid";
     weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
     grade?: -25 | 0 | 200;
     size?: number;
@@ -53,7 +60,9 @@ function _icon({
         const supported = ["rounded", "sharp", "outlined"];
         if (!supported.includes(type)) {
             throw new Error(
-                `Material Design Icons only support ${supported.join(", ")}. Got ${type}.`
+                `Material Design Icons only support ${supported.join(
+                    ", "
+                )}. Got ${type}.`
             );
         }
         type = type as "rounded" | "sharp" | "outlined";
@@ -99,11 +108,28 @@ function _icon({
             </>
         );
     } else if (from === "fa") {
-        const supported = ["brand", "classic", "regular", "sharp", "solid", "outlined"];
+        const supported = [
+            "brand",
+            "classic",
+            "regular",
+            "sharp",
+            "solid",
+            "outlined"
+        ];
         if (!supported.includes(type)) {
-            throw new Error(`Font Awesome only support ${supported.join(", ")}. Got ${type}.`);
+            throw new Error(
+                `Font Awesome only support ${supported.join(
+                    ", "
+                )}. Got ${type}.`
+            );
         }
-        type = type as "brand" | "classic" | "regular" | "sharp" | "solid" | "outlined";
+        type = type as
+            | "brand"
+            | "classic"
+            | "regular"
+            | "sharp"
+            | "solid"
+            | "outlined";
 
         let cls = {
             brand: "fab",
@@ -130,7 +156,9 @@ function _icon({
         );
     } else if (from === "mdi") {
         if (type !== "solid") {
-            throw new Error(`Material Design Icons only support solid icons. Got ${type}.`);
+            throw new Error(
+                `Material Design Icons only support solid icons. Got ${type}.`
+            );
         }
         return (
             <>
@@ -192,7 +220,9 @@ export default function Icon({
         );
     return wrap ? (
         <div
-            className={`flex justify-center items-center ${wrapClassName || ""}`}
+            className={`flex justify-center items-center ${
+                wrapClassName || ""
+            }`}
             style={{ width: size, height: size }}
         >
             {icon}

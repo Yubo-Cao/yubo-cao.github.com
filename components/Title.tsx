@@ -23,21 +23,33 @@ export default function Title(props: {
         className = props.className || "",
         subtitleClassName = props.subtitleClassName || "";
 
-    if (props.children !== undefined && props.title === undefined) title = props.children;
+    if (props.children !== undefined && props.title === undefined)
+        title = props.children;
     if (title === undefined) throw new Error("Title must have a title.");
-    if (title === "" && subtitle !== "") throw new Error("Subtitle must have a title.");
+    if (title === "" && subtitle !== "")
+        throw new Error("Subtitle must have a title.");
 
     const styles: { [key: string]: string } = {
-        h1: "text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500",
+        h1: cls(
+            "text-7xl",
+            "font-black",
+            "bg-clip-text",
+            "text-transparent",
+            "bg-gradient-to-r",
+            "from-primary-500",
+            "to-secondary-500",
+            "leading-tight",
+            "mb-2"
+        ),
         h2: cls(
             "text-5xl",
-            "font-bold",
+            "font-extrabold",
             "after:content-['']",
             "after:block",
             "after:w-32",
             "after:h-1",
             "after:mb-4",
-            "after:mt-2",
+            "after:mt-1",
             "after:rounded-full",
             "after:bg-gradient-to-r",
             "after:from-primary-500",
@@ -49,11 +61,13 @@ export default function Title(props: {
         h6: "text-base font-medium"
     };
     return (
-        <div>
+        <div className={level < 3 ? "mb-8" : "mb-4"}>
             {React.createElement(
                 "h" + level,
                 {
-                    className: `${styles[("h" + level) as string]} mb-1.5 ${className}`
+                    className: `${
+                        styles[("h" + level) as string]
+                    } mb-1.5 ${className}`
                 },
                 title,
                 []

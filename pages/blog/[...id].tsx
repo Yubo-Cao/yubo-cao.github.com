@@ -1,9 +1,12 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import Banner from "../../components/Banner";
+import Highlighter from "../../components/Highlighter";
+import Icon from "../../components/Icon";
 import NavButton from "../../components/NavButton";
 import NavigationLayout from "../../components/NavigationLayout";
+import Title from "../../components/Title";
 import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
 
@@ -18,7 +21,11 @@ async function getStaticPaths() {
     };
 }
 
-async function getStaticProps({ params: { id } }: { params: { id: string[] } }) {
+async function getStaticProps({
+    params: { id }
+}: {
+    params: { id: string[] };
+}) {
     const post = await BlogManager.fromId(id);
     return {
         props: {
@@ -29,6 +36,19 @@ async function getStaticProps({ params: { id } }: { params: { id: string[] } }) 
         }
     };
 }
+
+export const components = {
+    pre: (props: any) => <Highlighter {...props} />,
+    h1: (props: any) => <Title level={1} {...props} />,
+    h2: (props: any) => <Title level={2} {...props} />,
+    h3: (props: any) => <Title level={3} {...props} />,
+    h4: (props: any) => <Title level={4} {...props} />,
+    h5: (props: any) => <Title level={5} {...props} />,
+    h6: (props: any) => <Title level={6} {...props} />,
+    img: (props: any) => <img {...props} className={cls("rounded-lg")} />,
+    Banner,
+    Icon
+};
 
 export default function Blog({
     blog,
@@ -62,8 +82,8 @@ export default function Blog({
                 height={512}
                 className={"rounded-xl"}
             />
-            <h1>{blog.title}</h1>
-            <MDXRemote {...content} components={{ SyntaxHighlighter }} />
+            <Title level={1}>{blog.title}</Title>
+            <MDXRemote {...content} components={components} />
             <hr className="my-0 mt-16" />
             <div className={cls("flex", "justify-between")}>
                 {prev == null ? (
@@ -74,7 +94,9 @@ export default function Blog({
                         content={
                             <>
                                 <span className="font-medium">Previous: </span>
-                                <span className="text-slate-500 font-light">{prev.title}</span>
+                                <span className="text-slate-500 font-light">
+                                    {prev.title}
+                                </span>
                             </>
                         }
                         onClick={() => {
@@ -90,7 +112,9 @@ export default function Blog({
                         content={
                             <>
                                 <span className="font-medium">Next: </span>
-                                <span className="text-slate-500 font-light">{next.title}</span>
+                                <span className="text-slate-500 font-light">
+                                    {next.title}
+                                </span>
                             </>
                         }
                         onClick={() => {

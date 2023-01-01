@@ -5,7 +5,13 @@ import Card from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
 
-export default function GithubFriend({ username, name }: { username: string; name?: string }) {
+export default function GithubFriend({
+    username,
+    name
+}: {
+    username: string;
+    name?: string;
+}) {
     const [image, setImage] = useState<string>(""),
         [description, setDescription] = useState<string>("");
 
@@ -14,7 +20,7 @@ export default function GithubFriend({ username, name }: { username: string; nam
             .then((res) => res.json())
             .then((data) => {
                 setImage(data.avatar_url);
-                setDescription(data.bio || "");
+                setDescription(data.bio || "NULL");
             })
             .catch((err) => {
                 setImage("/images/error.png");
@@ -24,10 +30,12 @@ export default function GithubFriend({ username, name }: { username: string; nam
 
     return (
         <Card
-            onClick={() => window.open(`https://github.com/${username}`, "_blank")}
+            onClick={() =>
+                window.open(`https://github.com/${username}`, "_blank")
+            }
             className={cls(
                 "flex flex-col gap-4 text-center items-center",
-                "md:flex-row md:text-left"
+                "md:flex-row md:text-left md:p-0"
             )}
             hoverType="elevated"
             activeType="elevated"
@@ -48,13 +56,15 @@ export default function GithubFriend({ username, name }: { username: string; nam
             ) : (
                 <Loading type="icon" size={80} />
             )}
-            <div className="space-y-0">
+            <div className="space-y-0 md:m-4">
                 <Title level={3}>{name || username}</Title>
-                {description ? (
-                    <p>{description}</p>
-                ) : (
-                    <Loading type="text" width={300} height={45} />
-                )}
+                {description !== "NULL" ? (
+                    description ? (
+                        <p>{description}</p>
+                    ) : (
+                        <Loading type="text" width={300} height={45} />
+                    )
+                ) : null}
             </div>
         </Card>
     );

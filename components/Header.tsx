@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { Component } from "react";
 import { cls } from "../lib/utils";
 import Logo from "./Logo";
 import Nav from "./Nav";
@@ -12,7 +12,6 @@ interface HeaderState {
 }
 
 class Header extends Component<HeaderProps, HeaderState> {
-    ref: React.RefObject<HTMLDivElement>;
     scrollY: number = 0;
     state: HeaderState = {
         top: 0
@@ -20,27 +19,13 @@ class Header extends Component<HeaderProps, HeaderState> {
 
     constructor(props: HeaderProps) {
         super(props);
-        this.ref = createRef();
         this.scroll = this.scroll.bind(this);
     }
 
     scroll(newScrollY: number) {
-        const { current } = this.ref;
-        if (!current) return;
-
-        const { scrollY } = this,
-            { top } = this.state;
-
+        const { scrollY } = this;
         if (scrollY === newScrollY) return;
-
-        if (scrollY > newScrollY) {
-            current.classList.add("top-0");
-            this.setState({ top: 0 });
-        } else {
-            current.classList.remove("top-0");
-            this.setState({ top: top + (scrollY - newScrollY) });
-        }
-
+        this.setState({ top: scrollY > newScrollY ? 0 : -64 });
         this.scrollY = newScrollY;
     }
 
@@ -87,8 +72,7 @@ class Header extends Component<HeaderProps, HeaderState> {
                     "sm:px-8",
                     "md:px-16"
                 )}
-                style={{ height: "64px", top: `${this.state.top}pt` }}
-                ref={this.ref}
+                style={{ height: "64px", top: this.state.top }}
             >
                 <Logo />
                 <Nav active={active} />

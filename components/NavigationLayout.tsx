@@ -21,15 +21,19 @@ export default function NavigatioLayout({
             <Header active={active} />
             <div
                 className={
-                    "xl:grid xl:grid-cols-nav xl:gap-4 mt-4 mx-auto max-xl:overflow-x-hidden " +
+                    "xl:grid xl:grid-cols-nav xl:gap-12 mt-4 mx-auto max-xl:overflow-x-hidden " +
                     className
                 }
                 style={{ maxWidth: `min(100%, ${maxWidth}px)` }}
             >
-                <main className={"mx-6 sm:mx-8 md:mx-16 xl:mr-0 " + mainClassName}>
+                <main
+                    className={"mx-6 sm:mx-8 md:mx-16 xl:mr-0 " + mainClassName}
+                >
                     {children}
                 </main>
-                <StickyNavigation className={"hidden xl:block " + navigationClassName} />
+                <StickyNavigation
+                    className={"hidden xl:block " + navigationClassName}
+                />
             </div>
         </>
     );

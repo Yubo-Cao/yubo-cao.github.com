@@ -15,7 +15,15 @@ export default function Contact(props: {
     let icon = {
         email: <Icon name="email" size={size} fill={true} />,
         tel: <Icon name="phone" size={size} fill={true} />,
-        discord: <Icon name="discord" size={size} iconSize={38.4} from="fa" type="brand" />,
+        discord: (
+            <Icon
+                name="discord"
+                size={size}
+                iconSize={38.4}
+                from="fa"
+                type="brand"
+            />
+        ),
         github: <Icon name="github" size={size} from="fa" type="brand" />
     }[type];
     const [open, setOpen] = React.useState(false);
@@ -63,7 +71,10 @@ export default function Contact(props: {
                     <p className="text-2xl font-bold mb-2">Discord</p>
                     <p className="prose">
                         Click my discord username{" "}
-                        <ClickCopy content={value} className="text-blue-500 hover:underline">
+                        <ClickCopy
+                            content={value}
+                            className="text-blue-500 hover:underline"
+                        >
                             <code>{value}</code>
                         </ClickCopy>
                         You will be sent to{" "}

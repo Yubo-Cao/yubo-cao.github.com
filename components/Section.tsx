@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { currentBreakpoint } from "../lib/breakpoints";
 import {
     isEvenChild,
     isFirstChild,
@@ -7,6 +8,7 @@ import {
     isParentRoot
 } from "../lib/elements";
 import { cls } from "../lib/utils";
+import Banner from "./Banner";
 import Title from "./Title";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
@@ -20,21 +22,8 @@ function isContainingSectionAlternating(el: HTMLElement): boolean {
     return section.classList.contains("alternate");
 }
 
-export default function Section({
-    id = "",
-    className = "",
-    contentClassName = "",
-    title = "",
-    subtitle = "",
-    level = 2,
-    children = null,
-    flow = false,
-    alternate = "even",
-    avoidTOC = true
-}: {
+export type SectionProps = {
     id?: string;
-    className?: string;
-    contentClassName?: string;
     title?: string | React.ReactNode;
     subtitle?: string | React.ReactNode;
     level?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -42,37 +31,31 @@ export default function Section({
     flow?: boolean;
     alternate?: "even" | "odd" | "none" | "this";
     avoidTOC?: boolean;
-}) {
-    let ref = React.useRef<HTMLDivElement>(null),
-        hasTitle = title || subtitle,
-        flowClass = flow
-            ? "grid grid-cols-fit-72 md:grid-cols-fit-102 gap-2 sm:gap-4".split(/\s+/)
-            : [],
-        titleClass = hasTitle ? (level < 3 ? "mt-8" : "mt-4") : "",
-        spacingClass = ["my-6", "py-4", "sm:py-8"];
+    className?: string;
+    style?: React.CSSProperties;
+    contentClassName?: string;
+    contentStyle?: React.CSSProperties;
+};
 
-    function addBackground(section: HTMLElement) {
-        let background = document.createElement("div");
-        background.classList.add(
-            "absolute",
-            "-left-full",
-            "-right-full",
-            "top-0",
-            "rounded-lg",
-            "bottom-0",
-            "bg-gradient-to-r",
-            "from-primary-100",
-            "to-secondary-100",
-            "-z-10"
-        );
-        if (avoidTOC) {
-            background.classList.add("xl:-right-4");
-            section.classList.add("xl:mr-4");
-        }
-        section.classList.add("relative", "alternate"); // tagging purpose only
-        section.appendChild(background);
-        return () => section?.removeChild(background);
-    }
+export default function Section({
+    id = "",
+    title = "",
+    subtitle = "",
+    level = 2,
+    children = null,
+    flow = false,
+    alternate = "even",
+    avoidTOC = true,
+    className = "",
+    style = {},
+    contentClassName = "",
+    contentStyle = {}
+}: SectionProps) {
+    const ref = React.useRef<HTMLDivElement>(null),
+        hasTitle = title || subtitle,
+        [alternating, setAlternating] = React.useState(alternate === "this"),
+        [width, setWidth] = React.useState(0),
+        spacingClass = ["my-6", "py-4", "sm:py-8"];
 
     useEffect(() => {
         let section = ref.current;
@@ -85,25 +68,65 @@ export default function Section({
             section.classList.add("mb-6");
         }
         if (isParentMain(section) || isParentRoot(section)) {
-            switch (alternate) {
-                case "even":
-                    isEvenChild(section) && addBackground(section);
-                    break;
-                case "odd":
-                    isOddChild(section) && addBackground(section);
-                    break;
-                case "this":
-                    addBackground(section);
-                    break;
-            }
+            setAlternating(
+                alternate === "this" ||
+                    (alternate === "even" && isEvenChild(section)) ||
+                    (alternate === "odd" && isOddChild(section))
+            );
         }
-    });
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, [alternating, alternate]);
 
-    return (
-        <section id={id} className={cls(...spacingClass, className)} ref={ref}>
-            {hasTitle && <Title title={title} subtitle={subtitle} level={level} />}
-            <div className={cls(...flowClass, titleClass, contentClassName)}>{children}</div>
+    const section = (
+        <section
+            id={id}
+            className={cls(...spacingClass, className)}
+            ref={ref}
+            style={style}
+        >
+            {hasTitle && (
+                <Title title={title} subtitle={subtitle} level={level} />
+            )}
+            <div
+                className={cls(
+                    flow
+                        ? cls(
+                              "grid",
+                              "grid-cols-fit-72",
+                              "md:grid-cols-fit-102",
+                              "gap-2",
+                              "sm:gap-4"
+                          )
+                        : "",
+                    contentClassName
+                )}
+                style={contentStyle}
+            >
+                {children}
+            </div>
         </section>
+    );
+
+    return alternating ? (
+        <Banner
+            className="py-4"
+            bannerStyle={
+                avoidTOC && ["2xl"].includes(currentBreakpoint(width))
+                    ? {
+                          right: "-2rem",
+                          borderTopRightRadius: "1rem",
+                          borderBottomRightRadius: "1rem"
+                      }
+                    : {}
+            }
+        >
+            {section}
+        </Banner>
+    ) : (
+        section
     );
 }
 

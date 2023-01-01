@@ -14,7 +14,9 @@ export default function Project(props: {
 }) {
     let size = props.size || 64,
         description =
-            props.description || typeof props.children === "string" ? props.children : "",
+            props.description || typeof props.children === "string"
+                ? props.children
+                : "",
         ref = useRef(null),
         router = useRouter();
 

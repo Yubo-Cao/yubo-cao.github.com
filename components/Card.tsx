@@ -27,7 +27,9 @@ export default function Card(props: {
     useEffect(() => {
         let current = ref.current;
         if (!current) return;
-        setColor(isContainingSectionAlternating(current) ? alternateAccent : accent);
+        setColor(
+            isContainingSectionAlternating(current) ? alternateAccent : accent
+        );
     }, [ref, alternateAccent, accent]);
 
     const classes = [
@@ -53,6 +55,8 @@ export default function Card(props: {
         }[activeType],
         className
     ];
+
+    if (/\bp-\d+\b/.test(className)) classes.splice(classes.indexOf("p-4"), 1);
 
     return (
         <div className={classes.join(" ")} onClick={props.onClick} ref={ref}>

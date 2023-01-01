@@ -3,6 +3,8 @@ import matter from "gray-matter";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import { formatDate } from "./utils";
 
 interface BlogPost {
@@ -58,7 +60,8 @@ class Blog implements BlogPost {
         }
 
         function _ensure_list(data: string | string[]): string[] {
-            if (typeof data === "string") return data.split(",").map((s) => s.trim());
+            if (typeof data === "string")
+                return data.split(",").map((s) => s.trim());
             return data;
         }
 
@@ -101,14 +104,18 @@ class Blog implements BlogPost {
 
     static async next(id: string[]): Promise<Blog | null> {
         if (!this._list) this._list = await this.list();
-        let index = this._list.findIndex((blog) => blog.id.join("/") === id.join("/"));
+        let index = this._list.findIndex(
+            (blog) => blog.id.join("/") === id.join("/")
+        );
         if (index === -1) return null;
         return this._list[index - 1] || null;
     }
 
     static async prev(id: string[]): Promise<Blog | null> {
         if (!this._list) this._list = await this.list();
-        let index = this._list.findIndex((blog) => blog.id.join("/") === id.join("/"));
+        let index = this._list.findIndex(
+            (blog) => blog.id.join("/") === id.join("/")
+        );
         if (index === -1) return null;
         return this._list[index + 1] || null;
     }
@@ -116,7 +123,12 @@ class Blog implements BlogPost {
     static async render(blog: Blog): Promise<MDXRemoteSerializeResult> {
         let content = await promises.readFile(blog.path, "utf-8");
         let { content: mdx } = matter(content);
-        return await serialize(mdx, { mdxOptions: { development: false } });
+        return await serialize(mdx, {
+            mdxOptions: {
+                remarkPlugins: [remarkGfm, remarkMath],
+                development: false
+            }
+        });
     }
 
     get header() {
@@ -158,7 +170,9 @@ class Blog implements BlogPost {
 
     get id() {
         const fn = (s: string) => (s[0] === path.sep ? s.slice(1) : s);
-        return fn(this.path.replace(/\.mdx$/, "").replace(BLOG_DIRECTORY, "")).split(path.sep);
+        return fn(
+            this.path.replace(/\.mdx$/, "").replace(BLOG_DIRECTORY, "")
+        ).split(path.sep);
     }
 
     get json(): BlogPost {

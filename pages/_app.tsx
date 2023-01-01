@@ -6,7 +6,7 @@ import "../styles/globals.css";
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
-    display: "block",
+    display: "block"
 });
 
 interface AppProps {
@@ -22,7 +22,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
                 <meta name="author" content="Yubo Cao" />
                 <link rel="icon" href="/favicon.png" />
                 <link rel="icon" href="/favicon.ico" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
             </Head>
             <div className={`${inter.variable} font-sans`}>
                 <Component {...pageProps} />

@@ -23,7 +23,6 @@ export default function Skill(props: {
                 </Icons>
             }
             level={3}
-            contentClassName="prose max-w-3xl"
         >
             <p className="mt-2">{props.children}</p>
         </Section>

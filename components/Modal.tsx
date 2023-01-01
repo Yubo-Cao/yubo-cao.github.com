@@ -38,7 +38,9 @@ export default function Modal(props: {
             <div
                 className={`relative bg-white rounded-md p-8 ${
                     props.className || ""
-                } transition-all  transform ${isVisible ? "scale-100" : "scale-95"}`}
+                } transition-all  transform ${
+                    isVisible ? "scale-100" : "scale-95"
+                }`}
                 style={props.style}
             >
                 {showCloseButton && (

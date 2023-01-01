@@ -1,6 +1,9 @@
 import { Component, ReactNode } from "react";
 
-export class Chip extends Component<{ children: ReactNode; onClick?: () => any }> {
+export class Chip extends Component<{
+    children: ReactNode;
+    onClick?: () => any;
+}> {
     render() {
         return (
             <button

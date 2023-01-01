@@ -28,10 +28,12 @@ const secondary = {
     800: "#3730a3",
     900: "#312e81"
 };
-const secondaryColors = Object.entries(secondary).reduce((acc, [key, value]) => {
-    acc[`secondary-${key}`] = value;
-    return acc;
-});
+const secondaryColors = Object.entries(secondary).reduce(
+    (acc, [key, value]) => {
+        acc[`secondary-${key}`] = value;
+        return acc;
+    }
+);
 const colors = {
     ...primaryColors,
     ...secondaryColors
@@ -39,7 +41,10 @@ const colors = {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}"
+    ],
     mode: "jit",
     theme: {
         extend: {
@@ -108,12 +113,15 @@ module.exports = {
             gridTemplateColumns: (theme) => {
                 const spacing = theme("spacing");
                 return {
-                    ...Object.keys(spacing).reduce((accumulator, spacingKey) => {
-                        return {
-                            ...accumulator,
-                            [`fit-${spacingKey}`]: `repeat(auto-fit,minmax(${spacing[spacingKey]}, 1fr))`
-                        };
-                    }, {}),
+                    ...Object.keys(spacing).reduce(
+                        (accumulator, spacingKey) => {
+                            return {
+                                ...accumulator,
+                                [`fit-${spacingKey}`]: `repeat(auto-fit,minmax(${spacing[spacingKey]}, 1fr))`
+                            };
+                        },
+                        {}
+                    ),
                     ...{
                         nav: "1fr 24rem"
                     }

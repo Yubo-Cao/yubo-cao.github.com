@@ -25,10 +25,11 @@ export default function Index() {
                 >
                     <Title level={1}>Yubo Cao</Title>
                     <p className="text-lg mt-2">
-                        I am a highly motivated and ambitious sophomore with a passion for
-                        programming and artificial intelligence. I am excited to continue
-                        exploring and learning about these fields, and I am committed to strive
-                        for excellence in all of my endeavors.
+                        I am a highly motivated and ambitious sophomore with a
+                        passion for programming and artificial intelligence. I
+                        am excited to continue exploring and learning about
+                        these fields, and I am committed to strive for
+                        excellence in all of my endeavors.
                     </p>
                 </div>
             </Section>

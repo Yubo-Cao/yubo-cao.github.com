@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { currentBreakpoint } from "../lib/breakpoints";
 import {
     isEvenChild,
     isFirstChild,
@@ -78,7 +77,11 @@ export default function Section({
     const section = (
         <section
             id={id}
-            className={cls(...spacingClass, className)}
+            className={cls(
+                ...spacingClass,
+                alternating ? "alternate" : "",
+                className
+            )}
             ref={ref}
             style={style}
         >
@@ -106,10 +109,7 @@ export default function Section({
     );
 
     return alternating ? (
-        <Banner
-            className="py-2 max-2xl:py-6"
-            avoidTOC={avoidTOC}
-        >
+        <Banner className="py-2 max-2xl:py-6" avoidTOC={avoidTOC}>
             {section}
         </Banner>
     ) : (

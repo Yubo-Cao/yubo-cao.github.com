@@ -66,7 +66,6 @@ export default function Title(props: {
         h5: "text-lg font-medium",
         h6: "text-base font-medium"
     };
-    console.log(/\bm[tlbrxy]?-\d+\b/.test(containerClassName));
     return (
         <div
             className={cls(

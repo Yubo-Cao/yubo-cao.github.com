@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Banner from "../../components/Banner";
 import Card from "../../components/Card";
 import { Chip } from "../../components/Chip";
 import HeaderLayout from "../../components/HeaderLayout";
@@ -100,26 +101,23 @@ function BlogCard(props: { blog: BlogPost }) {
 export default function Index({ blogs }: { blogs: BlogPost[] }) {
     return (
         <HeaderLayout active={"blog"}>
-            <Section
-                title={"Recent"}
-                flow={true}
-                alternate={"this"}
-                avoidTOC={false}
-            >
-                {blogs
-                    .filter(
-                        (blog) =>
-                            (Date.now() - new Date(blog.date).getTime()) /
-                                1000 /
-                                60 /
-                                60 /
-                                24 <
-                            7
-                    )
-                    .map((blog) => (
-                        <BlogCard key={blog.id.join("-")} blog={blog} />
-                    ))}
-            </Section>
+            <Banner avoidTOC={false} className="py-8">
+                <Section title={"Recent"} flow={true} avoidTOC={false}>
+                    {blogs
+                        .filter(
+                            (blog) =>
+                                (Date.now() - new Date(blog.date).getTime()) /
+                                    1000 /
+                                    60 /
+                                    60 /
+                                    24 <
+                                7
+                        )
+                        .map((blog) => (
+                            <BlogCard key={blog.id.join("-")} blog={blog} />
+                        ))}
+                </Section>
+            </Banner>
             <Section title={"All"} flow={true} alternate={"none"}>
                 {blogs.map((blog) => (
                     <BlogCard key={blog.id.join("-")} blog={blog} />

@@ -61,7 +61,7 @@ export default function Title(props: {
         h6: "text-base font-medium"
     };
     return (
-        <div className={level < 3 ? "mb-8" : "mb-4"}>
+        <div className={level < 3 ? "mb-4" : "mb-2"}>
             {React.createElement(
                 "h" + level,
                 {
@@ -75,7 +75,7 @@ export default function Title(props: {
             {subtitle !== "" &&
                 React.createElement(
                     "div",
-                    { className: `text-lg ${subtitleClassName}` },
+                    { className: `text-lg ${subtitleClassName} -mt-3` },
                     subtitle,
                     []
                 )}

@@ -46,6 +46,9 @@ export const components = {
     h5: (props: any) => <Title level={5} {...props} />,
     h6: (props: any) => <Title level={6} {...props} />,
     img: (props: any) => <img {...props} className={cls("rounded-lg")} />,
+    blockquote: (props: any) => (
+        <blockquote className="border-primary-500" {...props} />
+    ),
     Banner,
     Icon
 };
@@ -72,7 +75,7 @@ export default function Blog({
                 "md:mx-auto",
                 "xl:ml-0"
             )}
-            maxWidth={1024}
+            maxWidth={1058}
             className={"mx-auto"}
         >
             <Image

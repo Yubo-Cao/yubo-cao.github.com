@@ -11,7 +11,7 @@ import Title from "../components/Title";
 
 export default function Home() {
     return (
-        <NavigationLayout active="About" navigationClassName="mt-32">
+        <NavigationLayout active="About" navigationClassName="mt-24">
             <Head>
                 <title>Yubo Cao - About</title>
                 <meta

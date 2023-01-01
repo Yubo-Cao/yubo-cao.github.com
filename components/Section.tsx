@@ -54,7 +54,6 @@ export default function Section({
     const ref = React.useRef<HTMLDivElement>(null),
         hasTitle = title || subtitle,
         [alternating, setAlternating] = React.useState(alternate === "this"),
-        [width, setWidth] = React.useState(0),
         spacingClass = ["my-6", "py-4", "sm:py-8"];
 
     useEffect(() => {
@@ -74,10 +73,6 @@ export default function Section({
                     (alternate === "odd" && isOddChild(section))
             );
         }
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener("resize", handleResize);
-        handleResize();
-        return () => window.removeEventListener("resize", handleResize);
     }, [alternating, alternate]);
 
     const section = (
@@ -112,16 +107,8 @@ export default function Section({
 
     return alternating ? (
         <Banner
-            className="py-4"
-            bannerStyle={
-                avoidTOC && ["2xl"].includes(currentBreakpoint(width))
-                    ? {
-                          right: "-2rem",
-                          borderTopRightRadius: "1rem",
-                          borderBottomRightRadius: "1rem"
-                      }
-                    : {}
-            }
+            className="py-2 max-2xl:py-6"
+            avoidTOC={avoidTOC}
         >
             {section}
         </Banner>

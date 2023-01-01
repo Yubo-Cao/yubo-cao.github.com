@@ -48,7 +48,7 @@ export default function GithubFriend({
                     alt={username}
                     className={cls(
                         "w-24 h-24 rounded-full",
-                        "md:w-36 md:h-auto md:rounded-none"
+                        "md:w-36 md:h-full md:rounded-none md:rounded-l-lg"
                     )}
                     width={80}
                     height={80}

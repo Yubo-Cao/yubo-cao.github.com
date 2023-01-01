@@ -115,8 +115,7 @@ export default function Nav({ active }: { active: string }) {
                     "h-full",
                     "w-full",
                     "backdrop-blur-sm",
-                    open ? "z-10 opacity-40" : "-z-10 opacity-0",
-                    "sm:hidden"
+                    open ? "z-10 opacity-40 block" : "-z-10 opacity-0 hidden",
                 )}
             />
             <nav

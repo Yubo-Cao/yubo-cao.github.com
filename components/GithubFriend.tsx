@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { cls } from "../lib/utils";
 import Card from "./Card";
 import Loading from "./Loading";
 import Title from "./Title";
@@ -13,7 +14,7 @@ export default function GithubFriend({ username, name }: { username: string; nam
             .then((res) => res.json())
             .then((data) => {
                 setImage(data.avatar_url);
-                setDescription(data.bio || "NULL");
+                setDescription(data.bio || "");
             })
             .catch((err) => {
                 setImage("/images/error.png");
@@ -24,7 +25,10 @@ export default function GithubFriend({ username, name }: { username: string; nam
     return (
         <Card
             onClick={() => window.open(`https://github.com/${username}`, "_blank")}
-            className="flex flex-col gap-2 xs:flex-row xs:gap-4 xs:items-center"
+            className={cls(
+                "flex flex-col gap-4 text-center items-center",
+                "md:flex-row md:text-left"
+            )}
             hoverType="elevated"
             activeType="elevated"
             accent={"gray"}
@@ -34,7 +38,10 @@ export default function GithubFriend({ username, name }: { username: string; nam
                 <Image
                     src={image}
                     alt={username}
-                    className="w-20 h-20 rounded-full"
+                    className={cls(
+                        "w-24 h-24 rounded-full",
+                        "md:w-36 md:h-auto md:rounded-none"
+                    )}
                     width={80}
                     height={80}
                 />
@@ -43,13 +50,11 @@ export default function GithubFriend({ username, name }: { username: string; nam
             )}
             <div className="space-y-0">
                 <Title level={3}>{name || username}</Title>
-                {description !== "NULL" ? (
-                    description ? (
-                        <p>{description}</p>
-                    ) : (
-                        <Loading type="text" width={300} height={45} />
-                    )
-                ) : null}
+                {description ? (
+                    <p>{description}</p>
+                ) : (
+                    <Loading type="text" width={300} height={45} />
+                )}
             </div>
         </Card>
     );

@@ -7,25 +7,31 @@ export default function Title(props: {
     level: 1 | 2 | 3 | 4 | 5 | 6;
     className?: string;
     subtitleClassName?: string;
+    containerClassName?: string;
     children?: string | ReactNode;
 }) {
     const titleCase = (str: string | ReactNode) =>
-        typeof str === "string"
+        str && typeof str === "string"
             ? str
                   .split(/\s+/)
                   .map((s) => s[0].toUpperCase() + s.substring(1))
                   .join(" ")
             : str;
 
-    let title = props.title ? titleCase(props.title) : "",
-        subtitle = props.subtitle ? titleCase(props.subtitle) : "",
-        level = props.level,
-        className = props.className || "",
-        subtitleClassName = props.subtitleClassName || "";
+    let {
+        children = undefined,
+        title = children,
+        subtitle = "",
+        level = 1,
+        className = "",
+        subtitleClassName = "",
+        containerClassName = ""
+    } = props;
 
-    if (props.children !== undefined && props.title === undefined)
-        title = props.children;
-    if (title === undefined) throw new Error("Title must have a title.");
+    title = titleCase(title) as any;
+    subtitle = titleCase(subtitle) as any;
+
+    if (title == null) throw new Error("Title must have a title.");
     if (title === "" && subtitle !== "")
         throw new Error("Subtitle must have a title.");
 
@@ -49,7 +55,7 @@ export default function Title(props: {
             "after:w-32",
             "after:h-1",
             "after:mb-4",
-            "after:mt-1",
+            "after:mt-1.5",
             "after:rounded-full",
             "after:bg-gradient-to-r",
             "after:from-primary-500",
@@ -60,8 +66,18 @@ export default function Title(props: {
         h5: "text-lg font-medium",
         h6: "text-base font-medium"
     };
+    console.log(/\bm[tlbrxy]?-\d+\b/.test(containerClassName));
     return (
-        <div className={level < 3 ? "mb-4" : "mb-2"}>
+        <div
+            className={cls(
+                !/\bm[tlbrxy]?-\d+\b/.test(containerClassName)
+                    ? level < 3
+                        ? "mb-6"
+                        : "mb-3"
+                    : "",
+                containerClassName
+            )}
+        >
             {React.createElement(
                 "h" + level,
                 {
@@ -75,7 +91,7 @@ export default function Title(props: {
             {subtitle !== "" &&
                 React.createElement(
                     "div",
-                    { className: `text-lg ${subtitleClassName} -mt-3` },
+                    { className: `text-lg ${subtitleClassName} -mt-2` },
                     subtitle,
                     []
                 )}

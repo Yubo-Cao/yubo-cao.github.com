@@ -20,10 +20,15 @@ export default function Index() {
                     style={{ flexGrow: 1 }}
                 />
                 <div
-                    className="flex flex-col gap-2 basis-96 flex-1 md:mx-16 max-md:basis-16 prose "
+                    className="flex flex-col basis-96 flex-1 md:mx-16 max-md:basis-16 prose "
                     style={{ flexGrow: 3 }}
                 >
-                    <Title level={1}>Yubo Cao</Title>
+                    <Title
+                        level={1}
+                        containerClassName={"-mb-2"}
+                    >
+                        Yubo Cao
+                    </Title>
                     <p className="text-lg mt-2">
                         I am a highly motivated and ambitious sophomore with a
                         passion for programming and artificial intelligence. I

@@ -1,5 +1,4 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-const { PHASE_PRODUCTION_BUILD } = require("next/dist/shared/lib/constants");
 
 module.exports = (phase) => {
     const config = {

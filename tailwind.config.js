@@ -145,5 +145,5 @@ module.exports = {
             roman: "upper-roman"
         }
     },
-    plugins: [require("@tailwindcss/typography")]
+    plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")]
 };

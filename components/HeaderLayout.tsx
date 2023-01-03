@@ -15,7 +15,7 @@ export default function HeaderLayout({
                 className="mt-4 mx-auto max-xl:overflow-x-hidden"
                 style={{ maxWidth: "min(100%, 1444px)" }}
             >
-                <main className="mx-6 sm:mx-8 md:mx-16 flex flex-col">
+                <main className="mx-6 sm:mx-8 md:mx-16">
                     {children}
                 </main>
             </div>

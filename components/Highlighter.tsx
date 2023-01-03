@@ -237,15 +237,27 @@ export const highlightStyle = {
 };
 
 export default function Highlighter(props: any) {
+    const {
+        language: lang = props.children.props.className?.split("-")[1],
+        code = props.children.props.children,
+        className = "",
+        ...rest
+    } = props;
+
     return (
         <SyntaxHighlighter
-            language={props.children.props.className?.split("-")[1]}
-            className={cls("rounded-lg", "p-4", "shadow", "bg-slate-50")}
+            language={lang}
+            className={cls(
+                "rounded-lg",
+                "p-4",
+                "bg-slate-100",
+                className
+            )}
             style={highlightStyle}
             wrapLongLines={true}
-            {...props}
+            {...rest}
         >
-            {props.children.props.children}
+            {code}
         </SyntaxHighlighter>
     );
 }

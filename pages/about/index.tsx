@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Achievement from "../components/Achievement";
-import Contact from "../components/Contact";
-import Experience from "../components/Experience";
-import GithubFriend from "../components/GithubFriend";
-import NavigationLayout from "../components/NavigationLayout";
-import Project from "../components/Project";
-import Section from "../components/Section";
-import Skill from "../components/Skill";
-import Title from "../components/Title";
+import Achievement from "../../components/Achievement";
+import Contact from "../../components/Contact";
+import Experience from "../../components/Experience";
+import GithubFriend from "../../components/GithubFriend";
+import NavigationLayout from "../../components/NavigationLayout";
+import Project from "../../components/Project";
+import Section from "../../components/Section";
+import Skill from "../../components/Skill";
+import Title from "../../components/Title";
 
 export default function Home() {
     return (

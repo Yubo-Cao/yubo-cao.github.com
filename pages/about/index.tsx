@@ -233,15 +233,6 @@ export default function Home() {
                 </Skill>
             </Section>
             <Section
-                title="Friends"
-                subtitle="Some close people in my circle"
-                flow={true}
-            >
-                <GithubFriend username="anishgoyal1108" name="Anish G." />
-                <GithubFriend username="ModAegis" name="Sean L." />
-                <GithubFriend username="CelineCherry" name="Celine C." />
-            </Section>
-            <Section
                 title="Contact"
                 subtitle="You can reach me at…"
                 flow={true}

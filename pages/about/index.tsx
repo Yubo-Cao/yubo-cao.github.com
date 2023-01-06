@@ -249,7 +249,6 @@ export default function Home() {
                 <Contact type="email" value="cao2006721@gmail.com" />
                 <Contact type="discord" value="yubo#6746" />
                 <Contact type="github" value="yubo-cao" />
-                <Contact type="tel" value="4709549826" />
             </Section>
         </NavigationLayout>
     );

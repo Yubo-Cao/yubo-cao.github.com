@@ -102,7 +102,12 @@ export default function Index({ blogs }: { blogs: BlogPost[] }) {
     return (
         <HeaderLayout active={"blog"}>
             <Banner avoidTOC={false} className="py-8">
-                <Section title={"Recent"} flow={true} avoidTOC={false}>
+                <Section
+                    title={"Recent"}
+                    flow={true}
+                    avoidTOC={false}
+                    contentStyle={{ gridAutoRows: "1fr" }}
+                >
                     {blogs
                         .filter(
                             (blog) =>
@@ -118,7 +123,12 @@ export default function Index({ blogs }: { blogs: BlogPost[] }) {
                         ))}
                 </Section>
             </Banner>
-            <Section title={"All"} flow={true} alternate={"none"}>
+            <Section
+                title={"All"}
+                flow={true}
+                alternate={"none"}
+                contentStyle={{ gridAutoRows: "1fr" }}
+            >
                 {blogs.map((blog) => (
                     <BlogCard key={blog.id.join("-")} blog={blog} />
                 ))}

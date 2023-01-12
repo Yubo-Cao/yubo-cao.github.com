@@ -40,10 +40,10 @@ export default function Project(props: {
             <Icon
                 name={props.name}
                 size={size}
-                className="image-primary-400"
                 wrap={true}
                 grade={200}
                 iconSize={props.iconSize}
+                className="text-primary-500"
             />
             <div className="flex-1 basis-64 prose" ref={ref}>
                 <h3>{props.title}</h3>

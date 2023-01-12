@@ -125,7 +125,7 @@ export default function Nav({ active }: { active: string }) {
             <nav
                 className={cls(
                     // common
-                    "transition-all",
+                    open ? "max-sm:transition-all" : "",
                     "bg-white",
                     // sidebar
                     "fixed",

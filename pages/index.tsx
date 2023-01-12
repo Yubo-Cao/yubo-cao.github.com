@@ -23,18 +23,13 @@ export default function Index() {
                     className="flex flex-col basis-96 flex-1 md:mx-16 max-md:basis-16 prose "
                     style={{ flexGrow: 3 }}
                 >
-                    <Title
-                        level={1}
-                        containerClassName={"-mb-2"}
-                    >
+                    <Title level={1} containerClassName={"-mb-2"}>
                         Yubo Cao
                     </Title>
                     <p className="text-lg mt-2">
-                        I am a highly motivated and ambitious sophomore with a
-                        passion for programming and artificial intelligence. I
-                        am excited to continue exploring and learning about
-                        these fields, and I am committed to strive for
-                        excellence in all of my endeavors.
+                        I am a motivated sophomore with a passion for
+                        programming and artificial intelligence, excited to
+                        continue learning and striving for excellence.
                     </p>
                 </div>
             </Section>

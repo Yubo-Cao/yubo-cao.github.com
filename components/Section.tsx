@@ -68,8 +68,8 @@ export default function Section({
         if (isParentMain(section) || isParentRoot(section)) {
             setAlternating(
                 alternate === "this" ||
-                    (alternate === "even" && isEvenChild(section)) ||
-                    (alternate === "odd" && isOddChild(section))
+                (alternate === "even" && isEvenChild(section)) ||
+                (alternate === "odd" && isOddChild(section))
             );
         }
     }, [alternating, alternate]);
@@ -92,12 +92,12 @@ export default function Section({
                 className={cls(
                     flow
                         ? cls(
-                              "grid",
-                              "grid-cols-fit-72",
-                              "md:grid-cols-fit-102",
-                              "gap-2",
-                              "sm:gap-4"
-                          )
+                            "grid",
+                            "grid-cols-fit-72",
+                            "md:grid-cols-fit-102",
+                            "gap-2",
+                            "sm:gap-4"
+                        )
                         : "",
                     contentClassName
                 )}

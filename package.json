@@ -4,7 +4,7 @@
         "dev": "pnpm next",
         "build": "pnpm next build && next export",
         "deploy": "pnpm next build && echo $null >> out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
-        "prettier": "pnpm prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
+        "fmt": "pnpm prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
         "lint": "pnpm next lint"
     },
     "dependencies": {

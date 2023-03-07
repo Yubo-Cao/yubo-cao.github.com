@@ -1,7 +1,7 @@
 import Header from "./Header";
 import StickyNavigation from "./StickyNavigation";
 
-export default function NavigatioLayout({
+export default function NavigationLayout({
     active,
     children,
     className = "",

@@ -1,12 +1,10 @@
 import Image from "next/image";
-import { cls } from "../lib/utils";
-import Title from "./Title";
+import { cls } from "@/lib/utils";
 
 export default function Achievement(props: {
     title: string;
     subtitle?: string;
     description?: string;
-    level?: 1 | 2 | 3 | 4 | 5 | 6;
     children?: React.ReactNode;
     height?: number;
 }) {
@@ -30,14 +28,7 @@ export default function Achievement(props: {
                     "px-6"
                 )}
             >
-                {
-                    <Title
-                        title={props.title}
-                        subtitle={props.subtitle}
-                        level={props.level || 3}
-                        subtitleClassName={cls("-mt-4", "mb-2")}
-                    />
-                }
+                <h3>{props.title}</h3>
                 <p
                     className={cls(
                         "text-sm",

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import HeaderLayout from "../components/HeaderLayout";
 import Section from "../components/Section";
-import Title from "../components/Title";
 
 export default function Index() {
     return (
@@ -23,9 +22,7 @@ export default function Index() {
                     className="flex flex-col basis-96 flex-1 md:mx-16 max-md:basis-16 prose "
                     style={{ flexGrow: 3 }}
                 >
-                    <Title level={1} containerClassName={"-mb-2"}>
-                        Yubo Cao
-                    </Title>
+                    <h1>Yubo Cao</h1>
                     <p className="text-lg mt-2">
                         I am a motivated sophomore with a passion for
                         programming and artificial intelligence, excited to

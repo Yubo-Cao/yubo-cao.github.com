@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Title from "./Title";
 
 function TOC(props: {
     items: { id: string; title: string; level: number }[];
@@ -104,8 +103,8 @@ export default class StickyNavigation extends React.Component<
         let headings: HTMLElement[] = Array.from(
             root.querySelector("main")
                 ? root
-                      .querySelector("main")!
-                      .querySelectorAll("h1, h2, h3, h4, h5, h6")
+                    .querySelector("main")!
+                    .querySelectorAll("h1, h2, h3, h4, h5, h6")
                 : root.querySelectorAll("h1, h2, h3, h4, h5, h6")
         );
 
@@ -194,9 +193,7 @@ export default class StickyNavigation extends React.Component<
                 }
                 style={{ top: `${(this.props.top || 0) + this.state.top}px` }}
             >
-                <Title level={2} className="my-2 mb-4">
-                    Catalogue
-                </Title>
+                <h2 className="my-2 mb-4"> Catalogue </h2>
                 <nav ref={this.nav}>
                     <TOC items={this.state.toc} ordered={this.ordered} />
                 </nav>

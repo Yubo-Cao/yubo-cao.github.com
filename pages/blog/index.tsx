@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Banner from "../../components/Banner";
-import Card from "../../components/Card";
-import { Chip } from "../../components/Chip";
-import HeaderLayout from "../../components/HeaderLayout";
-import Icon from "../../components/Icon";
-import Section from "../../components/Section";
-import Title from "../../components/Title";
+import {
+    Banner,
+    Card,
+    Chip,
+    HeaderLayout,
+    Icon,
+    Section,
+} from "@/components";
 import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
 
@@ -64,17 +65,12 @@ function BlogCard(props: { blog: BlogPost }) {
                         "flex-col"
                     )}
                 >
-                    <Title
-                        level={3}
-                        title={blog.title}
-                        subtitle={blog.abstract}
-                        subtitleClassName={cls(
-                            "text-slate-500",
-                            "text-lg",
-                            "font-semibold"
-                        )}
-                        className={cls("mb-0")}
-                    />
+                    <div className="margin-y-2">
+                        <h3>{blog.title}</h3>
+                        <p className="text-slate-500 text-lg font-semibold">
+                            {blog.abstract}
+                        </p>
+                    </div>
                     <div className={cls("mt-4", "space-y-2")}>
                         <p className={cls("text-sm", "text-gray-500")}>
                             {blog.date}
@@ -112,10 +108,10 @@ export default function Index({ blogs }: { blogs: BlogPost[] }) {
                         .filter(
                             (blog) =>
                                 (Date.now() - new Date(blog.date).getTime()) /
-                                    1000 /
-                                    60 /
-                                    60 /
-                                    24 <
+                                1000 /
+                                60 /
+                                60 /
+                                24 <
                                 7
                         )
                         .map((blog) => (

@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { cls } from "../lib/utils";
+import { cls } from "@/lib/utils";
 import Card from "./Card";
 import Loading from "./Loading";
-import Title from "./Title";
 
 export default function GithubFriend({
     username,
@@ -57,7 +56,7 @@ export default function GithubFriend({
                 <Loading type="icon" size={80} />
             )}
             <div className="space-y-0 md:m-4">
-                <Title level={3}>{name || username}</Title>
+                <h3>{name || username}</h3>
                 {description !== "NULL" ? (
                     description ? (
                         <p>{description}</p>

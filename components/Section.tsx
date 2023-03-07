@@ -8,7 +8,6 @@ import {
 } from "../lib/elements";
 import { cls } from "../lib/utils";
 import Banner from "./Banner";
-import Title from "./Title";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
     while (el.tagName !== "SECTION" && el.parentElement) el = el.parentElement;
@@ -25,7 +24,6 @@ export type SectionProps = {
     id?: string;
     title?: string | React.ReactNode;
     subtitle?: string | React.ReactNode;
-    level?: 1 | 2 | 3 | 4 | 5 | 6;
     children?: React.ReactNode;
     flow?: boolean;
     alternate?: "even" | "odd" | "none" | "this";
@@ -40,7 +38,6 @@ export default function Section({
     id = "",
     title = "",
     subtitle = "",
-    level = 2,
     children = null,
     flow = false,
     alternate = "even",
@@ -85,9 +82,13 @@ export default function Section({
             ref={ref}
             style={style}
         >
-            {hasTitle && (
-                <Title title={title} subtitle={subtitle} level={level} />
-            )}
+            {
+                hasTitle &&
+                <div className="flex flex-col gap-2">
+                    {title && <h2 className="text-2xl">{title}</h2>}
+                    {subtitle && <h3 className="text-xl">{subtitle}</h3>}
+                </div>
+            }
             <div
                 className={cls(
                     flow

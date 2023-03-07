@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles for title and subtitle */
+.title {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+}
+
+.subtitle {
+    color: #718096;
+}
+
+/* Heading styles */
+h1 {
+    @apply text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 leading-tight mb-2;
+}
+
+h2 {
+    @apply text-5xl font-extrabold;
+    /* draw line under */
+    @apply after:content-[''] after:block after:w-32 after:h-1 after:mb-4 after:mt-1.5 after:rounded-full after:bg-gradient-to-r after:from-primary-500 after:to-secondary-500;
+}
+
+h3 {
+    @apply text-2xl font-bold;
+}
+
+h4 {
+    @apply text-xl font-semibold;
+}
+
+h5 {
+    @apply text-lg font-medium;
+}
+
+h6 {
+    @apply text-base font-medium;
+}
+
+h1, h2, h3 {
+    @apply mb-4;
+}

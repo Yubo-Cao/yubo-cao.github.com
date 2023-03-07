@@ -35,7 +35,6 @@ export default function Experience(props: {
                     </p>
                 </>
             }
-            level={3}
             contentClassName="prose"
         >
             {props.children}

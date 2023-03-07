@@ -7,7 +7,6 @@ import {
     Project,
     Section,
     Skill,
-    Title,
 } from "@/components";
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
                     content="About Yubo Cao: a highly motivated and ambitious sophomore with a passion for programming and artificial intelligence."
                 />
             </Head>
-            <Title level={1}>About me</Title>
+            <h1>About me</h1>
             <Section
                 title="Projects"
                 subtitle="My hobby, passion, and dream"

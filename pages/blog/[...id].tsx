@@ -1,12 +1,13 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Banner from "../../components/Banner";
-import Highlighter from "../../components/Highlighter";
-import Icon from "../../components/Icon";
-import NavButton from "../../components/NavButton";
-import NavigationLayout from "../../components/NavigationLayout";
-import Title from "../../components/Title";
+import {
+    Banner,
+    Highlighter,
+    Icon,
+    NavButton,
+    NavigationLayout
+} from "@/components";
 import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
 
@@ -39,13 +40,7 @@ async function getStaticProps({
 
 export const components = {
     pre: (props: any) => <Highlighter {...props} />,
-    h1: (props: any) => <Title level={1} {...props} />,
-    h2: (props: any) => <Title level={2} {...props} />,
-    h3: (props: any) => <Title level={3} {...props} />,
-    h4: (props: any) => <Title level={4} {...props} />,
-    h5: (props: any) => <Title level={5} {...props} />,
-    h6: (props: any) => <Title level={6} {...props} />,
-    img: (props: any) => <img {...props} className={cls("rounded-lg")} />,
+    img: (props: any) => <Image width={300} height={200} alt={""} {...props} className={cls("rounded-lg")} />,
     blockquote: (props: any) => (
         <blockquote className="border-primary-500" {...props} />
     ),
@@ -85,7 +80,7 @@ export default function Blog({
                 height={512}
                 className={"rounded-xl"}
             />
-            <Title level={1}>{blog.title}</Title>
+            <h1>{blog.title}</h1>
             <MDXRemote {...content} components={components} />
             <hr className="my-0 mt-16" />
             <div className={cls("flex", "justify-between")}>

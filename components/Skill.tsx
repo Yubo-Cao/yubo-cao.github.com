@@ -22,7 +22,6 @@ export default function Skill(props: {
                     {props.icons}
                 </Icons>
             }
-            level={3}
         >
             <p className="mt-2">{props.children}</p>
         </Section>

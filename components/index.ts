@@ -1,4 +1,3 @@
-import Editor from "@monaco-editor/react";
 import Achievement from "./Achievement";
 import Banner from "./Banner";
 import Card from "./Card";
@@ -8,8 +7,8 @@ import Contact from "./Contact";
 import Experience from "./Experience";
 import GithubFriend from "./GithubFriend";
 import Header from "./Header";
-import HeaderLayout from "./HeaderLayout";
 import Highlighter from "./Highlighter";
+import HeaderLayout from "./HeaderLayout";
 import Icon from "./Icon";
 import Loading from "./Loading";
 import MenuButton from "./MenuButton";
@@ -29,16 +28,16 @@ export {
     Chip,
     ClickCopy,
     Contact,
-    Editor,
     Experience, GithubFriend,
     Header,
     HeaderLayout,
-    Highlighter, Icon, Loading,
+    Icon, Loading,
     MenuButton,
     Modal,
     Nav,
     NavButton,
     NavigationLayout,
     Project,
-    Section, Skill, StickyNavigation
+    Section, Skill, StickyNavigation,
+    Highlighter
 };

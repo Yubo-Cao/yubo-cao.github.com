@@ -69,7 +69,7 @@ export default function Section({
                 (alternate === "odd" && isOddChild(section))
             );
         }
-    }, [alternating, alternate]);
+    }, [alternating, alternate, spacingClass]);
 
     const section = (
         <section

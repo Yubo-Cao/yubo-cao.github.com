@@ -76,7 +76,7 @@ function NavButton({
             <Icon
                 from="md"
                 name={icon}
-                className={cls("transition-all")}
+                className={cls("transition-all cursor-pointer")}
                 grade={entered ? 200 : 0}
                 iconSize={24}
                 fill={entered}

@@ -11,7 +11,7 @@ export default function Index() {
                         alt="Yubo’s Figure"
                         width={200}
                         height={300}
-                        className="grayscale basis-12 flex-auto max-h-96 object-contain object-left drop-shadow-2xl"
+                        className="figure grayscale basis-12 flex-auto max-h-96 object-contain object-left shadow-indigo-500"
                         style={{ flexGrow: 1 }}
                     />
                     <div

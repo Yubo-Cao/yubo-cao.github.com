@@ -4,7 +4,6 @@ import { HeaderLayout, Banner } from "@/components";
 export default function Index() {
     return (
         <HeaderLayout active={"Home"}>
-
             <Banner>
                 <div className="flex gap-16 items-center max-w-4xl mx-auto">
                     <Image

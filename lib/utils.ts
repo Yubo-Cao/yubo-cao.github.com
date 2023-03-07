@@ -33,13 +33,11 @@ function cls(...es: string[]): string {
     return es.filter((e) => e).join(" ");
 }
 
-
 function capitlize(str: string): string {
     return (
         str.toUpperCase().substring(0, 1) +
         str.toLowerCase().substring(1, str.length)
     );
 }
-
 
 export { formatDate, cls, capitlize };

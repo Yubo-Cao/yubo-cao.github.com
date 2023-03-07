@@ -34,7 +34,7 @@ export default class Card extends React.Component<CardProps, CardState> {
         this.setState({
             color:
                 isContainingSectionAlternating(current) &&
-                    this.props.alternateAccent
+                this.props.alternateAccent
                     ? this.props.alternateAccent
                     : this.props.accent || "gray"
         });
@@ -51,14 +51,14 @@ export default class Card extends React.Component<CardProps, CardState> {
 
     render() {
         const {
-            type = "outlined",
-            hoverType = "elevated",
-            activeType = "elevated",
-            className = "",
-            rounded = true,
-            onClick,
-            children
-        } = this.props,
+                type = "outlined",
+                hoverType = "elevated",
+                activeType = "elevated",
+                className = "",
+                rounded = true,
+                onClick,
+                children
+            } = this.props,
             color = this.state.color;
 
         const classes = [

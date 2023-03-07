@@ -8,7 +8,8 @@ export function Achievement(props: {
     children?: React.ReactNode;
     height?: number;
 }) {
-    let height = props.height || 144, width = Math.round(height * 0.5);
+    let height = props.height || 144,
+        width = Math.round(height * 0.5);
     return (
         <div className="flex items-center">
             <Image
@@ -16,7 +17,8 @@ export function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                className="-mr-10" />
+                className="-mr-10"
+            />
             <div
                 className={cls(
                     "flex-1",
@@ -44,7 +46,8 @@ export function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                className={cls("-ml-10")} />
+                className={cls("-ml-10")}
+            />
         </div>
     );
 }

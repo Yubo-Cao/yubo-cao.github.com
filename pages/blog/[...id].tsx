@@ -40,7 +40,15 @@ async function getStaticProps({
 
 export const components = {
     pre: (props: any) => <Highlighter {...props} />,
-    img: (props: any) => <Image width={300} height={200} alt={""} {...props} className={cls("rounded-lg")} />,
+    img: (props: any) => (
+        <Image
+            width={300}
+            height={200}
+            alt={""}
+            {...props}
+            className={cls("rounded-lg")}
+        />
+    ),
     blockquote: (props: any) => (
         <blockquote className="border-primary-500" {...props} />
     ),

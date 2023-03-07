@@ -11,9 +11,13 @@ export function Project(props: {
     iconSize?: number;
     children?: React.ReactNode;
 }) {
-    let size = props.size || 64, description = props.description || typeof props.children === "string"
-        ? props.children
-        : "", ref = useRef(null), router = useRouter();
+    let size = props.size || 64,
+        description =
+            props.description || typeof props.children === "string"
+                ? props.children
+                : "",
+        ref = useRef(null),
+        router = useRouter();
 
     return (
         <Card
@@ -24,14 +28,14 @@ export function Project(props: {
             hoverType="elevated"
             activeType="elevated"
         >
-
             <Icon
                 name={props.name}
                 size={size}
                 wrap={true}
                 grade={200}
                 iconSize={props.iconSize}
-                className="text-primary-500" />
+                className="text-primary-500"
+            />
             <div className="flex-1 basis-64 prose" ref={ref}>
                 <h3>{props.title}</h3>
                 <div className="flex-1">

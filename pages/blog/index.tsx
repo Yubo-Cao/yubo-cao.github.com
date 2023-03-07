@@ -1,13 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import {
-    Banner,
-    Card,
-    Chip,
-    HeaderLayout,
-    Icon,
-    Section,
-} from "@/components";
+import { Banner, Card, Chip, HeaderLayout, Icon, Section } from "@/components";
 import { Blog as BlogManager, BlogPost } from "../../lib/blog";
 import { cls } from "../../lib/utils";
 
@@ -108,10 +101,10 @@ export default function Index({ blogs }: { blogs: BlogPost[] }) {
                         .filter(
                             (blog) =>
                                 (Date.now() - new Date(blog.date).getTime()) /
-                                1000 /
-                                60 /
-                                60 /
-                                24 <
+                                    1000 /
+                                    60 /
+                                    60 /
+                                    24 <
                                 7
                         )
                         .map((blog) => (

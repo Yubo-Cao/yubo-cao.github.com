@@ -247,12 +247,7 @@ export default function Highlighter(props: any) {
     return (
         <SyntaxHighlighter
             language={lang}
-            className={cls(
-                "rounded-lg",
-                "p-4",
-                "bg-slate-100",
-                className
-            )}
+            className={cls("rounded-lg", "p-4", "bg-slate-100", className)}
             style={highlightStyle}
             wrapLongLines={true}
             {...rest}

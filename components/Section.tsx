@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo } from "react";
+import { Banner } from "@/components";
 import {
+    cls,
     isEvenChild,
     isFirstChild,
     isOddChild,
     isParentMain,
     isParentRoot
-} from "../lib/elements";
-import { cls } from "../lib/utils";
-import Banner from "./utils/Banner";
+} from "@/lib";
+import React, { useEffect, useMemo } from "react";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
     while (el.tagName !== "SECTION" && el.parentElement) el = el.parentElement;
@@ -51,7 +51,7 @@ export default function Section({
     titleClassName = "",
     subtitleClassName = "",
     contentStyle = {},
-    level = 2,
+    level = 2
 }: SectionProps) {
     const ref = React.useRef<HTMLDivElement>(null),
         hasTitle = title || subtitle,
@@ -71,8 +71,8 @@ export default function Section({
         if (isParentMain(section) || isParentRoot(section)) {
             setAlternating(
                 alternate === "this" ||
-                (alternate === "even" && isEvenChild(section)) ||
-                (alternate === "odd" && isOddChild(section))
+                    (alternate === "even" && isEvenChild(section)) ||
+                    (alternate === "odd" && isOddChild(section))
             );
         }
     }, [alternating, alternate, spacingClass]);
@@ -88,36 +88,32 @@ export default function Section({
             ref={ref}
             style={style}
         >
-            {
-                hasTitle &&
+            {hasTitle && (
                 <>
-                    {
-                        title && React.createElement(
+                    {title &&
+                        React.createElement(
                             `h${level}`,
                             { className: "text-slate-800 " + titleClassName },
                             title
-                        )
-                    }
-                    {
-                        subtitle && React.createElement(
+                        )}
+                    {subtitle &&
+                        React.createElement(
                             `h${level + 1}`,
                             { className: "text-slate-600" + subtitleClassName },
                             subtitle
-                        )
-                    }
+                        )}
                 </>
-
-            }
+            )}
             <div
                 className={cls(
                     flow
                         ? cls(
-                            "grid",
-                            "grid-cols-fit-72",
-                            "md:grid-cols-fit-102",
-                            "gap-2",
-                            "sm:gap-4"
-                        )
+                              "grid",
+                              "grid-cols-fit-72",
+                              "md:grid-cols-fit-102",
+                              "gap-2",
+                              "sm:gap-4"
+                          )
                         : "",
                     contentClassName
                 )}
@@ -137,4 +133,4 @@ export default function Section({
     );
 }
 
-export { findContainingSection, isContainingSectionAlternating, Section };
+export { Section, findContainingSection, isContainingSectionAlternating };

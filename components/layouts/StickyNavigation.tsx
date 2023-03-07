@@ -103,8 +103,8 @@ export default class StickyNavigation extends React.Component<
         let headings: HTMLElement[] = Array.from(
             root.querySelector("main")
                 ? root
-                    .querySelector("main")!
-                    .querySelectorAll("h1, h2, h3, h4, h5, h6")
+                      .querySelector("main")!
+                      .querySelectorAll("h1, h2, h3, h4, h5, h6")
                 : root.querySelectorAll("h1, h2, h3, h4, h5, h6")
         );
 

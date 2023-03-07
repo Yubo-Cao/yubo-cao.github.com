@@ -5,14 +5,7 @@ import Loading from "./Loading";
 import NavButton from "./NavButton";
 import Section from "./Section";
 
-export {
-    Card,
-    Chip,
-    Loading,
-    Highlighter,
-    NavButton,
-    Section,
-};
+export { Card, Chip, Loading, Highlighter, NavButton, Section };
 export * from "./icon";
 export * from "./layouts";
 export * from "./utils";

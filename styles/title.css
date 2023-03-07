@@ -4,7 +4,7 @@
 
 /* Base styles for title and subtitle */
 .title {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.2;
 }
 
@@ -39,7 +39,9 @@ h6 {
     @apply text-base font-medium;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     @apply mb-4;
 }
 

@@ -16,14 +16,19 @@ export default function Banner({
     style,
     stick = "both",
     avoidTOC = true,
-    variant = "gradient",
+    variant = "gradient"
 }: BannerProps) {
     return (
         <>
             <div className={styles.container + " " + className} style={style}>
                 {children}
-                <div className={`${avoidTOC && styles.avoid} ${styles.base} ${styles[stick]} ${styles[variant] || `bg-${variant}`}`} style={style} />
+                <div
+                    className={`${avoidTOC && styles.avoid} ${styles.base} ${
+                        styles[stick]
+                    } ${styles[variant] || `bg-${variant}`}`}
+                    style={style}
+                />
             </div>
         </>
-    )
+    );
 }

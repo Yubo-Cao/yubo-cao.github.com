@@ -5,11 +5,4 @@ import { Achievement } from "./Achievement";
 import { Project } from "./Project";
 import { Skill } from "./Skill";
 
-export {
-    Contact,
-    GithubFriend,
-    Experience,
-    Achievement,
-    Project,
-    Skill
-}
+export { Contact, GithubFriend, Experience, Achievement, Project, Skill };

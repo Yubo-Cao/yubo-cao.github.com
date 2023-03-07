@@ -1,7 +1,4 @@
-import {
-    NavigationLayout,
-    Section
-} from "@/components";
+import { NavigationLayout, Section } from "@/components";
 import Head from "next/head";
 import {
     Experience,
@@ -22,10 +19,7 @@ export default function Home() {
                 />
             </Head>
             <h1>About me</h1>
-            <Section
-                title="Projects"
-                flow={true}
-            >
+            <Section title="Projects" flow={true}>
                 <Project
                     title="My Website"
                     name="public"
@@ -84,10 +78,7 @@ export default function Home() {
                     and <code>Playwright</code>.
                 </Project>
             </Section>
-            <Section
-                title="Experience"
-                flow={true}
-            >
+            <Section title="Experience" flow={true}>
                 <Experience
                     title="officer"
                     company="Computer Science Club"
@@ -174,10 +165,7 @@ export default function Home() {
                     silver tier at Georgia open division.
                 </Achievement>
             </Section>
-            <Section
-                title="Skills"
-                flow={true}
-            >
+            <Section title="Skills" flow={true}>
                 <Skill
                     title="Office"
                     icons="file-powerpoint file-word file-excel file-pdf /images/about/TeX.svg"
@@ -231,10 +219,7 @@ export default function Home() {
                     Action.
                 </Skill>
             </Section>
-            <Section
-                title="Contact"
-                flow={true}
-            >
+            <Section title="Contact" flow={true}>
                 <Contact type="email" value="cao2006721@gmail.com" />
                 <Contact type="discord" value="yubo#6746" />
                 <Contact type="github" value="yubo-cao" />

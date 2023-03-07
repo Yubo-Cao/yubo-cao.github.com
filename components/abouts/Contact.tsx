@@ -35,7 +35,7 @@ export default function Contact(props: {
             setOpen(true);
         },
         github: () => {
-            window.open(`https://${value}.github.com`, "_blank");
+            window.open(`https://www.github.com/${value}`, "_blank");
         }
     }[type];
     return (

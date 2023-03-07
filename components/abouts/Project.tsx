@@ -34,7 +34,7 @@ export function Project(props: {
                 wrap={true}
                 grade={200}
                 iconSize={props.iconSize}
-                className="text-primary-500"
+                className="text-primary-500 image-primary-400"
             />
             <div className="flex-1 basis-64 prose" ref={ref}>
                 <h3>{props.title}</h3>

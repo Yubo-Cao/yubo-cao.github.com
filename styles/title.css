@@ -18,9 +18,8 @@ h1 {
 }
 
 h2 {
-    @apply text-5xl font-extrabold;
-    /* draw line under */
-    @apply after:content-[''] after:block after:w-32 after:h-1 after:mb-4 after:mt-1.5 after:rounded-full after:bg-gradient-to-r after:from-primary-500 after:to-secondary-500;
+    @apply text-5xl font-extrabold inline-block;
+    @apply after:content-[''] after:block after:w-full after:h-1 after:mb-4 after:mt-1.5 after:rounded-full after:bg-gradient-to-r after:from-primary-500 after:to-secondary-500;
 }
 
 h3 {

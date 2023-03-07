@@ -1,0 +1,37 @@
+.container {
+    @apply relative;
+}
+
+.base {
+    @apply absolute -z-20 h-full top-0;
+}
+
+.gradient {
+    @apply bg-gradient-to-br from-blue-100 to-indigo-100;
+}
+
+.both {
+    @apply left-[-100vw] right-[-100vw];
+}
+
+.left {
+    @apply fixed left-[-100vw];
+}
+
+.right {
+    @apply fixed right-[-100vw];
+}
+
+.avoid {
+    /* notice 2xl is the breakpoint of toc */
+    @apply 2xl:absolute;
+}
+
+.avoid.left,
+.avoid.both {
+    @apply 2xl:-right-6 2xl:rounded-r-md;
+}
+
+.avoid.right {
+    @apply 2xl:-left-6 2xl:rounded-l-md;
+}

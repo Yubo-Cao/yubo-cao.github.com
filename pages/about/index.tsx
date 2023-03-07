@@ -31,20 +31,21 @@ export default function Home() {
                     <code>TypeScript</code>.
                 </Project>
                 <Project
-                    title="FPN Object detection"
+                    title="RCNN Object detection"
                     name="/images/about/object.png"
                     iconSize={48}
                     url="https://www.github.com/yubo-cao/RedFTCController"
+                    recolor={true}
                 >
-                    A feature pyramid network object detection model for the FTC
-                    robotics competition. Built with <code>Python</code> and{" "}
-                    <code>TensorFlow</code>.
+                    An F-RCNN detection model for the FTC robotics competition.
+                    Built with <code>Python</code> and <code>TensorFlow</code>.
                 </Project>
                 <Project
                     title="Algorithms"
                     name="/images/about/flow-chart.png"
                     iconSize={48}
                     url="https://www.github.com/yubo-cao/Algorithms"
+                    recolor={true}
                 >
                     A collection of solutions to common algorithms question and
                     a book regarding them. Built with <code>C++</code>,{" "}
@@ -138,7 +139,7 @@ export default function Home() {
                     </ul>
                 </Experience>
             </Section>
-            <Section title="Achievement" flow={true} >
+            <Section title="Achievement" flow={true}>
                 <Achievement
                     title="Academic achievement"
                     subtitle="in mathematics"

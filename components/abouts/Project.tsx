@@ -10,6 +10,7 @@ export function Project(props: {
     size?: number;
     iconSize?: number;
     children?: React.ReactNode;
+    recolor?: boolean;
 }) {
     let size = props.size || 64,
         description =
@@ -17,7 +18,8 @@ export function Project(props: {
                 ? props.children
                 : "",
         ref = useRef(null),
-        router = useRouter();
+        router = useRouter(),
+        recolor = props.recolor === undefined ? false : props.recolor;
 
     return (
         <Card
@@ -34,7 +36,7 @@ export function Project(props: {
                 wrap={true}
                 grade={200}
                 iconSize={props.iconSize}
-                className="text-primary-500 image-primary-400"
+                className={`text-primary-500 ${recolor && "image-primary-500"}`}
             />
             <div className="flex-1 basis-64 prose" ref={ref}>
                 <h3>{props.title}</h3>

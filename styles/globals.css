@@ -8,6 +8,10 @@ html {
     text-size-adjust: 100%;
 }
 
+* {
+    @apply text-slate-800;
+}
+
 /* https://codepen.io/sosuke/pen/Pjoqqp */
 .image-primary-300 {
     filter: grayscale(100%) invert(73%) sepia(34%) saturate(808%)

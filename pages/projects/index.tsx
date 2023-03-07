@@ -33,6 +33,7 @@ export default function Projects() {
                         name="/images/about/flow-chart.png"
                         iconSize={48}
                         url="https://www.github.com/yubo-cao/Algorithms"
+                        recolor={true}
                     >
                         A collection of solutions to common algorithms question
                         and a book regarding them. Built with <code>C++</code>,{" "}

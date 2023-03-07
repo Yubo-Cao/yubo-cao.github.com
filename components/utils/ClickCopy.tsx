@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { cls } from "../lib/utils";
+import { cls } from "../../lib/utils";
 
 export default function ClickCopy({
     children,

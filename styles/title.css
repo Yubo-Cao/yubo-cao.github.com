@@ -42,3 +42,23 @@ h6 {
 h1, h2, h3 {
     @apply mb-4;
 }
+
+h1 + h2,
+h1 + p,
+h2 + h3,
+h2 + p,
+h3 + h4,
+h3 + p {
+    /* subtitles */
+    @apply -mt-2 text-slate-700;
+}
+
+/* Headings inside section */
+
+section h2 {
+    @apply text-3xl;
+}
+
+section h3 {
+    @apply text-lg;
+}

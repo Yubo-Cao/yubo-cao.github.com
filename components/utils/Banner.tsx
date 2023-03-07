@@ -20,9 +20,9 @@ export default function Banner({
 }: BannerProps) {
     return (
         <>
-            <div className={styles.container}>
+            <div className={styles.container + " " + className} style={style}>
                 {children}
-                <div className={`${avoidTOC && styles.avoid} ${styles.base} ${styles[stick]} ${styles[variant] || `bg-${variant}`} ${className} py-6`} style={style} />
+                <div className={`${avoidTOC && styles.avoid} ${styles.base} ${styles[stick]} ${styles[variant] || `bg-${variant}`}`} style={style} />
             </div>
         </>
     )

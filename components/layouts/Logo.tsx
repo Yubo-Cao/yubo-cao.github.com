@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { cls } from "../lib/utils";
-import Icon from "./Icon";
+import { cls } from "../../lib/utils";
+import Icon from "../icon/Icon";
 
 export default function Logo({
     size = 24,

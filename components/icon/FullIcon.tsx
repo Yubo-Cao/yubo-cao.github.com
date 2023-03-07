@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cls } from "../lib/utils";
+import { cls } from "@/lib/utils";
 
 function to_nearest(value: number, valids: number[]) {
     let nearest = valids[0];

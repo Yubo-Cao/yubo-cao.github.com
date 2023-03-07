@@ -1,6 +1,5 @@
-import HeaderLayout from "../../components/HeaderLayout";
-import Project from "../../components/Project";
-import Section from "../../components/Section";
+import HeaderLayout from "../../components/layouts/HeaderLayout";
+import { Project, Section } from "@/components";
 
 export default function Projects() {
     return (

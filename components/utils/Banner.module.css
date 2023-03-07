@@ -1,5 +1,5 @@
 .container {
-    @apply relative;
+    @apply relative py-2;
 }
 
 .base {
@@ -23,15 +23,15 @@
 }
 
 .avoid {
-    /* notice 2xl is the breakpoint of toc */
-    @apply 2xl:absolute;
+    /* notice xl is the breakpoint of toc */
+    @apply xl:absolute;
 }
 
 .avoid.left,
 .avoid.both {
-    @apply 2xl:-right-6 2xl:rounded-r-md;
+    @apply xl:-right-6 xl:rounded-r-md;
 }
 
 .avoid.right {
-    @apply 2xl:-left-6 2xl:rounded-l-md;
+    @apply xl:-left-6 xl:rounded-l-md;
 }

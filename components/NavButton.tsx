@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Icon from "./Icon";
+import Icon from "./icon/Icon";
 
 type ButtonType = "forward" | "backward";
 

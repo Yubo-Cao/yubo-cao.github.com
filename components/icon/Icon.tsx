@@ -1,15 +1,15 @@
 import localFont from "next/font/local";
 import Image from "next/image";
-import { cls } from "../lib/utils";
+import { cls } from "../../lib/utils";
 
 const materialSymbolsRounded = localFont({
-    src: "./fonts/MaterialSymbolsRounded.woff2",
+    src: "../fonts/MaterialSymbolsRounded.woff2",
     variable: "--font-material-symbols-rounded",
     display: "block"
 });
 
 const faBrand = localFont({
-    src: "./fonts/fa-brands-400.woff2",
+    src: "../fonts/fa-brands-400.woff2",
     variable: "--font-fa-brand",
     display: "block"
 });
@@ -27,7 +27,7 @@ const faBrandCodepoints: { [key: string]: string } = {
 };
 
 const faSolid = localFont({
-    src: "./fonts/fa-solid-900.woff2",
+    src: "../fonts/fa-solid-900.woff2",
     variable: "--font-fa-solid",
     display: "block"
 });

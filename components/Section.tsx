@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
     isEvenChild,
     isFirstChild,
@@ -7,7 +7,7 @@ import {
     isParentRoot
 } from "../lib/elements";
 import { cls } from "../lib/utils";
-import Banner from "./Banner";
+import Banner from "./utils/Banner";
 
 function findContainingSection(el: HTMLElement): HTMLElement | null {
     while (el.tagName !== "SECTION" && el.parentElement) el = el.parentElement;
@@ -24,7 +24,6 @@ export type SectionProps = {
     id?: string;
     title?: string | React.ReactNode;
     subtitle?: string | React.ReactNode;
-    children?: React.ReactNode;
     flow?: boolean;
     alternate?: "even" | "odd" | "none" | "this";
     avoidTOC?: boolean;
@@ -32,6 +31,10 @@ export type SectionProps = {
     style?: React.CSSProperties;
     contentClassName?: string;
     contentStyle?: React.CSSProperties;
+    titleClassName?: string;
+    subtitleClassName?: string;
+    level?: number;
+    children?: React.ReactNode;
 };
 
 export default function Section({
@@ -45,12 +48,15 @@ export default function Section({
     className = "",
     style = {},
     contentClassName = "",
-    contentStyle = {}
+    titleClassName = "",
+    subtitleClassName = "",
+    contentStyle = {},
+    level = 2,
 }: SectionProps) {
     const ref = React.useRef<HTMLDivElement>(null),
         hasTitle = title || subtitle,
         [alternating, setAlternating] = React.useState(alternate === "this"),
-        spacingClass = ["my-6", "py-4", "sm:py-8"];
+        spacingClass = useMemo(() => ["my-6", "py-4", "sm:py-8"], []);
 
     useEffect(() => {
         let section = ref.current;
@@ -84,10 +90,23 @@ export default function Section({
         >
             {
                 hasTitle &&
-                <div className="flex flex-col gap-2">
-                    {title && <h2 className="text-2xl">{title}</h2>}
-                    {subtitle && <h3 className="text-xl">{subtitle}</h3>}
-                </div>
+                <>
+                    {
+                        title && React.createElement(
+                            `h${level}`,
+                            { className: "text-slate-800 " + titleClassName },
+                            title
+                        )
+                    }
+                    {
+                        subtitle && React.createElement(
+                            `h${level + 1}`,
+                            { className: "text-slate-600" + subtitleClassName },
+                            subtitle
+                        )
+                    }
+                </>
+
             }
             <div
                 className={cls(
@@ -110,7 +129,7 @@ export default function Section({
     );
 
     return alternating ? (
-        <Banner className="py-2 max-2xl:py-6" avoidTOC={avoidTOC}>
+        <Banner avoidTOC={avoidTOC} style={{ paddingTop: "2rem" }}>
             {section}
         </Banner>
     ) : (

@@ -1,9 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Card from "./Card";
-import ClickCopy from "./ClickCopy";
-import Icon from "./Icon";
-import Modal from "./Modal";
+import { Icon, Card, Modal, ClickCopy } from "@/components";
 
 export default function Contact(props: {
     type: "email" | "tel" | "discord" | "github";

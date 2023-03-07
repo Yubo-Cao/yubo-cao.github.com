@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { cls } from "../lib/utils";
+import { cls } from "../../lib/utils";
 import Logo from "./Logo";
 import Nav from "./Nav";
 

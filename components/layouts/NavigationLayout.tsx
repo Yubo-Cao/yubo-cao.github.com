@@ -21,7 +21,7 @@ export default function NavigationLayout({
             <Header active={active} />
             <div
                 className={
-                    "xl:grid xl:grid-cols-nav xl:gap-8 mt-4 mx-auto max-xl:overflow-x-hidden " +
+                    "xl:grid xl:grid-cols-nav xl:gap-12 mt-4 mx-auto max-xl:overflow-x-hidden " +
                     className
                 }
                 style={{ maxWidth: `min(100%, ${maxWidth}px)` }}

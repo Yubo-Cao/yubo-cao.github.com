@@ -1,5 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { cls } from "../lib/utils";
+import { cls } from "@/lib/utils";
 
 export const highlightStyle = {
     hljs: {

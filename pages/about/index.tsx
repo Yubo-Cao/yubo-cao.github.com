@@ -1,13 +1,15 @@
+import {
+    NavigationLayout,
+    Section
+} from "@/components";
 import Head from "next/head";
 import {
-    Achievement,
-    Contact,
     Experience,
-    NavigationLayout,
     Project,
-    Section,
+    Achievement,
     Skill,
-} from "@/components";
+    Contact
+} from "@/components/abouts";
 
 export default function Home() {
     return (
@@ -22,7 +24,6 @@ export default function Home() {
             <h1>About me</h1>
             <Section
                 title="Projects"
-                subtitle="My hobby, passion, and dream"
                 flow={true}
             >
                 <Project
@@ -85,7 +86,6 @@ export default function Home() {
             </Section>
             <Section
                 title="Experience"
-                subtitle="I have worked with…"
                 flow={true}
             >
                 <Experience
@@ -176,7 +176,6 @@ export default function Home() {
             </Section>
             <Section
                 title="Skills"
-                subtitle="Some thing I am proficient with"
                 flow={true}
             >
                 <Skill
@@ -234,7 +233,6 @@ export default function Home() {
             </Section>
             <Section
                 title="Contact"
-                subtitle="You can reach me at…"
                 flow={true}
             >
                 <Contact type="email" value="cao2006721@gmail.com" />

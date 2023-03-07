@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { cls } from "../lib/utils";
-import Icon from "./Icon";
+import { cls } from "../../lib/utils";
+import Icon from "../icon/Icon";
 
 export default function MenuButton({
     open,

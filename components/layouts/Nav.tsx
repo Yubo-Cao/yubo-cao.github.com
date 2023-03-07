@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { cls } from "../lib/utils";
-import Icon from "./Icon";
+import { cls } from "../../lib/utils";
+import Icon from "../icon/Icon";
 import MenuButton from "./MenuButton";
 
 const links = [

@@ -1,15 +1,14 @@
-import Image from "next/image";
 import { cls } from "@/lib/utils";
+import Image from "next/image";
 
-export default function Achievement(props: {
+export function Achievement(props: {
     title: string;
     subtitle?: string;
     description?: string;
     children?: React.ReactNode;
     height?: number;
 }) {
-    let height = props.height || 144,
-        width = Math.round(height * 0.5);
+    let height = props.height || 144, width = Math.round(height * 0.5);
     return (
         <div className="flex items-center">
             <Image
@@ -17,8 +16,7 @@ export default function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                className="-mr-10"
-            />
+                className="-mr-10" />
             <div
                 className={cls(
                     "flex-1",
@@ -28,12 +26,12 @@ export default function Achievement(props: {
                     "px-6"
                 )}
             >
-                <h3>{props.title}</h3>
+                <h3 className="text-2xl">{props.title}</h3>
                 <p
                     className={cls(
                         "text-sm",
                         "font-light",
-                        "text-slate-500",
+                        "text-slate-700",
                         "prose"
                     )}
                 >
@@ -46,8 +44,7 @@ export default function Achievement(props: {
                 alt="Left side of wheat"
                 width={width}
                 height={height}
-                className={cls("-ml-10")}
-            />
+                className={cls("-ml-10")} />
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cls } from "@/lib/utils";
-import Card from "./Card";
-import Loading from "./Loading";
+import Card from "../Card";
+import Loading from "../Loading";
 
 export default function GithubFriend({
     username,

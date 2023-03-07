@@ -55,7 +55,7 @@ function NavButton({
             onMouseLeave={() => setEntered(false)}
             onClick={() => router.push(href)}
             className={cls(
-                "h-12",
+                "h-10",
                 "flex",
                 "items-center",
                 "gap-4",
@@ -81,7 +81,7 @@ function NavButton({
                 iconSize={24}
                 fill={entered}
             />
-            <Link href={href} className={cls("sm:max-md:hidden")}>
+            <Link href={href} className={cls("sm:max-md:hidden text-sm")}>
                 {name}
             </Link>
         </div>

@@ -59,7 +59,7 @@ function NavButton({
                 "flex",
                 "items-center",
                 "gap-4",
-                "px-3",
+                "px-2.5",
                 "py-0.5",
                 "rounded-full",
                 "transition-all",

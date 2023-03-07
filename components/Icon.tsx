@@ -1,4 +1,4 @@
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import Image from "next/image";
 import { cls } from "../lib/utils";
 

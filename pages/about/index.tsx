@@ -2,7 +2,6 @@ import Head from "next/head";
 import Achievement from "../../components/Achievement";
 import Contact from "../../components/Contact";
 import Experience from "../../components/Experience";
-import GithubFriend from "../../components/GithubFriend";
 import NavigationLayout from "../../components/NavigationLayout";
 import Project from "../../components/Project";
 import Section from "../../components/Section";

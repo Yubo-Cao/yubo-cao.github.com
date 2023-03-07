@@ -138,11 +138,7 @@ export default function Home() {
                     </ul>
                 </Experience>
             </Section>
-            <Section
-                title="Achievement"
-                subtitle="I have received…"
-                flow={true}
-            >
+            <Section title="Achievement" flow={true} >
                 <Achievement
                     title="Academic achievement"
                     subtitle="in mathematics"

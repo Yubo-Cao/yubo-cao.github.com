@@ -2,7 +2,7 @@
 
 As a high school student with a passion for computer science, I have created this website to showcase my skills and achievements.
 
-The website contains a compilation of my various projects and achievements. I used a diverse tech stack that includes next.js, react, sass, typescript, python, and other system administration tools to build this website. I also employed git and other version control tools to effectively manage the project.
+The website contains a compilation of my various projects and achievements. I used a diverse tech stack that includes next.js, react, sass, typescript, python, and other system administration tools to build this website. I also employed git as a version control system for this project.
 
 The website adheres to material design principles, utilizing a range of breakpoints to ensure responsiveness across various devices. The website is designed carefully with the prototype created in Figma before any code is written.
 

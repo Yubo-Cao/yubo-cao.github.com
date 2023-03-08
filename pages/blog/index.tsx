@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Banner, Card, Chip, HeaderLayout, Icon, Section } from "@/components";
-import { Blog as BlogManager, BlogPost } from "../../lib/blog";
-import { cls } from "../../lib/utils";
+import { Blog as BlogManager, BlogPost } from "@/lib/blog";
+import { cls } from "@/lib";
 
 function BlogCard(props: { blog: BlogPost }) {
     let router = useRouter(),

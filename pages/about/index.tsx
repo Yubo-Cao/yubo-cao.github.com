@@ -38,7 +38,7 @@ export default function Home() {
                     recolor={true}
                 >
                     An F-RCNN detection model for the FTC robotics competition.
-                    Built with <code>Python</code> and <code>TensorFlow</code>.
+                    Built with <code>Python</code> and <code>PyTorch</code>.
                 </Project>
                 <Project
                     title="Algorithms"
@@ -61,12 +61,11 @@ export default function Home() {
                     <code>Python</code>.
                 </Project>
                 <Project
-                    title="Todo Grade"
+                    title="Redo-list"
                     name="list"
                     url="https://github.com/Yubo-Cao/todo_list"
                 >
-                    A tool for analyzing grades and prioritizing
-                    assignments/todo lists. Built with <code>Python</code> and{" "}
+                    A super powerful todo-list program. Built with <code>Tauri</code> and{" "}
                     <code>Next.js</code>.
                 </Project>
                 <Project

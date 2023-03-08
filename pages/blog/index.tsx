@@ -88,30 +88,35 @@ function BlogCard(props: { blog: BlogPost }) {
 }
 
 export default function Index({ blogs }: { blogs: BlogPost[] }) {
+    const recents = blogs
+        .filter(
+            (blog) =>
+                (Date.now() - new Date(blog.date).getTime()) /
+                1000 /
+                60 /
+                60 /
+                24 <
+                7
+        )
+        .map((blog) => (
+            <BlogCard key={blog.id.join("-")} blog={blog} />
+        ))
     return (
         <HeaderLayout active={"blog"}>
-            <Banner avoidTOC={false} className="py-8">
-                <Section
-                    title={"Recent"}
-                    flow={true}
-                    avoidTOC={false}
-                    contentStyle={{ gridAutoRows: "1fr" }}
-                >
-                    {blogs
-                        .filter(
-                            (blog) =>
-                                (Date.now() - new Date(blog.date).getTime()) /
-                                    1000 /
-                                    60 /
-                                    60 /
-                                    24 <
-                                7
-                        )
-                        .map((blog) => (
-                            <BlogCard key={blog.id.join("-")} blog={blog} />
-                        ))}
-                </Section>
-            </Banner>
+            {
+                recents.length > 0 && (
+                    <Banner avoidTOC={false} className="py-8">
+                        <Section
+                            title={"Recent"}
+                            flow={true}
+                            avoidTOC={false}
+                            contentStyle={{ gridAutoRows: "1fr" }}
+                        >
+                            {recents}
+                        </Section>
+                    </Banner>
+                )
+            }
             <Section
                 title={"All"}
                 flow={true}
